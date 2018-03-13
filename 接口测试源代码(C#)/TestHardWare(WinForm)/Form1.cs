@@ -20,7 +20,7 @@ namespace TestHardWare_WinForm_
         List<string> m_listStrainType = new List<string>();
         List<string> m_listBridgeType = new List<string>();
         bool m_bThread = false;
-        static Thread DataThread;
+        static Thread DataThread1;
         event EventHandler<ShowDataEventArgs> RefreshListBox;
 
         public TestHardWare()
@@ -468,8 +468,21 @@ namespace TestHardWare_WinForm_
                         {
                             main.comboChan.Invoke(new Action(() =>
                             {
-                                strChannel = "1-1";//main.comboChan.SelectedItem.ToString();
+
+                                if (j == 0)
+                                {
+                                    strChannel = "1-1";//main.comboChan.SelectedItem.ToString();//eg:1-1/1-2/1-3
+                                }
+                                else if (j == 1)
+                                {
+                                    strChannel = "1-2";
+                                }
+                                else if (j == 2)
+                                {
+                                    strChannel = "1-3";
+                                }
                             }));
+                            
                         }
                         nSelGroupID = strChannel.Left('-').ToInt() - 1;
                         nSelChanID = strChannel.Right('-').ToInt() - 1;
@@ -480,6 +493,7 @@ namespace TestHardWare_WinForm_
                         float[] pChanData = new float[nReceiveCount];
                         for (int nCount = 0; nCount < nReceiveCount; nCount++)
                         {
+                            //Log.WriteLog("nCount:"+nCount);
                             pChanData[nCount] = pfltData[i * GroupChannel.m_nChannelNumber * nReceiveCount + j * nReceiveCount + nCount];
                         }
 
@@ -489,176 +503,118 @@ namespace TestHardWare_WinForm_
                             main.Invoke(new Action(() => 
                             {
                                 main.RefreshListBox(main, new ShowDataEventArgs(pChanData, nReceiveCount));
-                                int nDataCount = nReceiveCount;
-                                for (int ii = 0; ii < nDataCount; ii++)
-                                {
-                                    //if (i % 30 == 0)
-                                    //{
-                                    //    main.listBox1.Items.Add(strText);
-                                    //    strText = "";
-                                    //}
-                                    string strData = String.Format("{0:f3}   ", pfltData[ii]);
-
-                                    Log.WriteLog1("ch1:" + strData+"time:"+ii*0.1+"ii:"+ii);
-
-                                }
+                                Log.WriteLog("nTotalDataPos:" + nTotalDataPos);
                             }));
                     }
                 }
+                float fltTime;
+                float fltValue;
+                int ReturnValue;
+                // 获取转速通道1的数据
+                //main.axDHTestHardWare.GetSampleStatValue(0, 1, 0, out fltTime, out fltValue, out ReturnValue);
+
+                //TRACE("GetSampleStatValue nReturnValue %d fltTime %f fltValue %f \n", nReturnValue, fltTime, fltValue);
+                // 获取GPS的速度信息
+                //		pTest->m_HardWare.GetSampleStatValue(nSelGroupID, 1, 0, &fltTime, &fltValue, &nReturnValue);
                 Thread.Sleep(200);
             }
         }
-        static void GetDataThread1(object o)
+        static void GetDTime(object o)
         {
             TestHardWare main = (TestHardWare)o;
-            string strChannel = "";
-            int nSelGroupID, nSelChanID;
-            while (main.m_bThread)
-            {
-                int nTotalDataPos, nReceiveCount, nChnCount, nReturnValue;
-                object oChnData;
-                main.axDHTestHardWare.GetAllChnDataEx(out oChnData, out nTotalDataPos, out nReceiveCount, out nChnCount, out nReturnValue);
-                if (nReceiveCount <= 0)
-                    continue;
-                float[] pfltData;
-                // 解析所有仪器的数据
-                for (int i = 0; i < main.m_listGroupChannel.Count; i++)
-                {
-                    GroupChannel GroupChannel = main.m_listGroupChannel[i];
-                    int nChannelGroupID = GroupChannel.m_GroupID;
-
-                    // 获取每个通道的数据 默认数据类型为float
-                    for (int j = 0; j < GroupChannel.m_nChannelNumber; j++)
-                    {
-                        if (main.m_bThread)
-                        {
-                            main.comboChan.Invoke(new Action(() => 
-                            {
-                                strChannel = "1-2";//main.comboChan.SelectedItem.ToString();
-                            }));
-                        }
-                        nSelGroupID = strChannel.Left('-').ToInt() - 1;
-                        nSelChanID = strChannel.Right('-').ToInt() - 1;
-                        if (nChannelGroupID != nSelGroupID || main.m_listHardChannel[j].m_nChannelID != nSelChanID)
-                            continue;
-                        pfltData = (float[])oChnData;
-
-                        float[] pChanData = new float[nReceiveCount];
-                        for (int nCount = 0; nCount < nReceiveCount; nCount++)
-                        {
-                            pChanData[nCount] = pfltData[i * GroupChannel.m_nChannelNumber * nReceiveCount + j * nReceiveCount + nCount];
-                        }
-
-                        IntPtr Handle = new IntPtr();
-                        main.Invoke(new Action(() => { Handle = main.Handle; }));
-                        if (Handle != null)
-                            main.Invoke(new Action(() => 
-                            {
-                                //main.RefreshListBox(main, new ShowDataEventArgs(pChanData, nReceiveCount));
-                                int nDataCount = nReceiveCount;
-                                for (int ii = 0; ii < nDataCount; ii++)
-                                {
-                                    //if (i % 30 == 0)
-                                    //{
-                                    //    main.listBox1.Items.Add(strText);
-                                    //    strText = "";
-                                    //}
-                                    string strData = String.Format("{0:f3}   ", pfltData[ii]);
-
-                                    Log.WriteLog2("ch2:"+strData+"time:"+ii*0.1+"ii:"+ii);
-
-                                }
-                            }));
-                    }
-                }
-                Thread.Sleep(200);
-            }
-        }
-        static void GetDataThread2(object o)
-        {
-            TestHardWare main = (TestHardWare)o;
-            string strChannel = "";
-            int nSelGroupID, nSelChanID;
-            while (main.m_bThread)
-            {
-                int nTotalDataPos, nReceiveCount, nChnCount, nReturnValue;
-                object oChnData;
-                main.axDHTestHardWare.GetAllChnDataEx(out oChnData, out nTotalDataPos, out nReceiveCount, out nChnCount, out nReturnValue);
-                if (nReceiveCount <= 0)
-                    continue;
-                float[] pfltData;
-                // 解析所有仪器的数据
-                for (int i = 0; i < main.m_listGroupChannel.Count; i++)
-                {
-                    GroupChannel GroupChannel = main.m_listGroupChannel[i];
-                    int nChannelGroupID = GroupChannel.m_GroupID;
-
-                    // 获取每个通道的数据 默认数据类型为float
-                    for (int j = 0; j < GroupChannel.m_nChannelNumber; j++)
-                    {
-                        if (main.m_bThread)
-                        {
-                            main.comboChan.Invoke(new Action(() => 
-                            {
-                                strChannel = "1-3";//main.comboChan.SelectedItem.ToString();
-                            }));
-                        }
-                        nSelGroupID = strChannel.Left('-').ToInt() - 1;
-                        nSelChanID = strChannel.Right('-').ToInt() - 1;
-                        if (nChannelGroupID != nSelGroupID || main.m_listHardChannel[j].m_nChannelID != nSelChanID)
-                            continue;
-                        pfltData = (float[])oChnData;
-
-                        float[] pChanData = new float[nReceiveCount];
-                        for (int nCount = 0; nCount < nReceiveCount; nCount++)
-                        {
-                            pChanData[nCount] = pfltData[i * GroupChannel.m_nChannelNumber * nReceiveCount + j * nReceiveCount + nCount];
-                        }
-
-                        IntPtr Handle = new IntPtr();
-                        main.Invoke(new Action(() => { Handle = main.Handle; }));
-                        if (Handle != null)
-                            main.Invoke(new Action(() => 
-                            {
-                                //main.RefreshListBox(main, new ShowDataEventArgs(pChanData, nReceiveCount));
-                                int nDataCount = nReceiveCount;
-                                for (int ii = 0; ii < nDataCount; ii++)
-                                {
-                                    //if (i % 30 == 0)
-                                    //{
-                                    //    main.listBox1.Items.Add(strText);
-                                    //    strText = "";
-                                    //}
-                                    string strData = String.Format("{0:f3}   ", pfltData[i]);
-
-                                    Log.WriteLog3("ch3:"+strData+"time:"+ii*0.1+"ii:"+ii);
-                                    
-                                }
-                            }));
-                    }
-                }
-                Thread.Sleep(200);
-            }
-        }
-        static void GetDataThreadCallBackToDir()
-        {
-            TestHardWare main = new TestHardWare();
-            string strTestName="test_"+DateTime.Now.ToString("yyyy-MM-ddHHmmss"), strDestDir= @"D:\文件夹\DLL\招商局交通科研设计研究院检测中心_DH5902新版软件二次开发接口(陈源)\DHDAS新版软件网络仪器二次开发接口_V6.11.32\接口测试源代码\测试程序\bin\Debug\saveCallBackFile", strMacIP="192.168.0.102";
-            int bDelLinuxData=0;
+            float fltTime;
+            float fltValue;
             int ReturnValue;
-            //strTestName–回收工程名称，支持多个工程回收，用”|”隔开
-            //strDestDir–回收后保存目录
-            //strMacIP–回收仪器IP
-            //bDelLinuxData–是否删除下位机数据0—不删除, 1—删除
-            //ReturnValue –返回值– 0 回收失败  1 –回收成功
-            main.axDHTestHardWare.CallbackDataToDir(strTestName, strDestDir, strMacIP, bDelLinuxData, out ReturnValue);
-            if (ReturnValue == 1)
+            // 获取转速通道1的数据
+            main.axDHTestHardWare.GetSampleStatValue(1, 4, 1, out fltTime, out fltValue, out ReturnValue);
+            Log.WriteLog("ReturnValue:" + ReturnValue);
+        }
+        static void GetDataTime(object o)
+        {
+            ///GPS数据类型定义：
+            /// GPS经度
+            ///constint GPS_TYPE_LONG = 0;
+            /// GPS纬度
+            ///constint GPS_TYPE_LAT = 1;
+            /// GPS可见卫星数
+            ///constint GPS_TYPE_VISCOUNT = 2;
+            /// 追踪卫星数
+            ///constint GPS_TYPE_TRACKCOUNT = 3;
+            /// GPS速度
+            ///constint GPS_TYPE_SPEED = 4;
+            /// GPS高度
+            ///constintGPS_TYPE_HEIGHT = 5;
+
+            TestHardWare main = (TestHardWare)o;
+            
+            string strChannel = "";
+            int nSelGroupID, nSelChanID;
+            while (main.m_bThread)
             {
-                Log.WriteLog("回收成功");
+                int nMachineID = 0;
+                int inChannelStyle = 1;
+                int nValueType = 0;
+                float fltTime, fltValue;
+                int ReturnValue;
+                main.axDHTestHardWare.GetSampleStatValue(0, 1, 0, out fltTime, out fltValue, out ReturnValue);
+                //main.axDHTestHardWare.GetSampleStatValue(nMachineID, inChannelStyle, nValueType, out fltTime, out fltValue, out ReturnValue);
+                Log.WriteLog("ReturnValue:" + ReturnValue);
+                if (fltValue <= 0)
+                    continue;
+                float[] pfltData;
+                // 解析所有仪器的数据
+                for (int i = 0; i < main.m_listGroupChannel.Count; i++)
+                {
+                    GroupChannel GroupChannel = main.m_listGroupChannel[i];
+                    int nChannelGroupID = GroupChannel.m_GroupID;
+
+                    // 获取每个通道的数据 默认数据类型为float
+                    for (int j = 0; j < GroupChannel.m_nChannelNumber; j++)
+                    {
+                        if (main.m_bThread)
+                        {
+                            main.comboChan.Invoke(new Action(() =>
+                            {
+                                strChannel = "1-1";//main.comboChan.SelectedItem.ToString();
+                            }));
+                        }
+                        nSelGroupID = strChannel.Left('-').ToInt() - 1;
+                        nSelChanID = strChannel.Right('-').ToInt() - 1;
+                        if (nChannelGroupID != nSelGroupID || main.m_listHardChannel[j].m_nChannelID != nSelChanID)
+                            continue;
+                        pfltData = new float[] { fltTime };
+
+                        float[] pChanData = new float[(int)fltValue];
+                        for (int nCount = 0; nCount < fltValue; nCount++)
+                        {
+                            pChanData[nCount] = pfltData[i * GroupChannel.m_nChannelNumber * (int)fltValue + j * (int)fltValue + nCount];
+                        }
+
+                        IntPtr Handle = new IntPtr();
+                        main.Invoke(new Action(() => { Handle = main.Handle; }));
+                        if (Handle != null)
+                            main.Invoke(new Action(() =>
+                            {
+                                main.RefreshListBox(main, new ShowDataEventArgs(pChanData, (int)fltValue));
+                                int nDataCount = (int)fltValue;
+                                for (int ii = 0; ii < nDataCount; ii++)
+                                {
+                                    //if (i % 30 == 0)
+                                    //{
+                                    //    main.listBox1.Items.Add(strText);
+                                    //    strText = "";
+                                    //}
+                                    string strData = String.Format("{0:f3}   ", pfltData[ii]);
+
+                                    Log.WriteLog1("time:" + strData);
+
+                                }
+                            }));
+                    }
+                }
+                Thread.Sleep(200);
             }
-            else
-            {
-                Log.WriteLog("回收失败");            }
+
         }
         static void main_RefreshListBox(object sender, ShowDataEventArgs e)
         {
@@ -675,7 +631,7 @@ namespace TestHardWare_WinForm_
                 //}
                 strData = String.Format("{0:f3}   ", pfltData[i]);
                 strText += strData;
-                Log.WriteLog("ch1:"+strData);
+                Log.WriteLog("ch1:" + strData);
                 string index = main.comboChan.SelectedItem.ToString();
             }
             main.listBox1.Items.Add(strText);

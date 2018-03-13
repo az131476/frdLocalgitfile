@@ -30,6 +30,7 @@
         {
             this.components = new System.ComponentModel.Container();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.projectInstaller1 = new WinComServer.ProjectInstaller();
             // 
             // timer1
             // 
@@ -44,5 +45,6 @@
         #endregion
 
         private System.Windows.Forms.Timer timer1;
+        private ProjectInstaller projectInstaller1;
     }
 }

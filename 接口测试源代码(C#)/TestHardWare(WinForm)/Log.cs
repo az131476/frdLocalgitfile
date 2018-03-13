@@ -20,7 +20,7 @@ namespace TestHardWare_WinForm_
             {
                 FileStream fs = new FileStream(filePath, FileMode.Append);
                 StreamWriter sw = new StreamWriter(fs);
-                sw.WriteLine(DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss")+"   "+context);
+                sw.WriteLine(DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss.fff")+"   "+context);
                 sw.Close();
                 fs.Close();
             }
@@ -28,7 +28,7 @@ namespace TestHardWare_WinForm_
             {
                 FileStream fs = new FileStream(filePath, FileMode.Create);
                 StreamWriter sw = new StreamWriter(fs);
-                sw.WriteLine(DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss")+"  "+context);
+                sw.WriteLine(DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss.fff")+"  "+context);
                 sw.Close();
                 fs.Close();
             }

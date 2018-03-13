@@ -171,32 +171,16 @@ namespace TestHardWare_WinForm_
 
             //启动取数线程
             m_bThread = true;
-            DataThread = new Thread(GetDataThread);
+
+            DataThread1 = new Thread(GetDataThread);
             // 清空list
             listBox1.Items.Clear();
-            DataThread.SetApartmentState(ApartmentState.STA);
-            DataThread.IsBackground = true;
-            DataThread.Name = "GetData";
-            DataThread.Start(this);
+            DataThread1.SetApartmentState(ApartmentState.STA);
+            DataThread1.IsBackground = true;
+            DataThread1.Name = "GetData";
+            DataThread1.Start(this);
 
-            GetDataThreadCallBackToDir();
-            //m_bThread = true;
-            //DataThread = new Thread(GetDataThread1);
-            //// 清空list
-            //listBox1.Items.Clear();
-            //DataThread.SetApartmentState(ApartmentState.STA);
-            //DataThread.IsBackground = true;
-            //DataThread.Name = "GetData";
-            //DataThread.Start(this);
 
-            //m_bThread = true;
-            //DataThread = new Thread(GetDataThread2);
-            //// 清空list
-            //listBox1.Items.Clear();
-            //DataThread.SetApartmentState(ApartmentState.STA);
-            //DataThread.IsBackground = true;
-            //DataThread.Name = "GetData";
-            //DataThread.Start(this);
         }
 
         private void buttonStopSample_Click(object sender, EventArgs e)

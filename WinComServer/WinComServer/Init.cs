@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using DHHardWareLib;
 
 namespace WinComServer
 {
@@ -23,7 +22,8 @@ namespace WinComServer
 
             int nReturnValue;
             //初始化仪器控制接口
-            DHHardWareLib.DHTestHardWare.axDHTestHardWare.Init(strPath, "chinese", out nReturnValue);
+            axDHTestHardWare.Init(strPath, "chinese", out nReturnValue);
+            
             return nReturnValue == 1 ? true : false;
         }
 
