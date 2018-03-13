@@ -1,0 +1,8 @@
+D:\gitFile\frdLocalgitfile\WinComServer\WinComServer\bin\Debug\WinComServer.exe.config
+D:\gitFile\frdLocalgitfile\WinComServer\WinComServer\obj\Debug\WinComServer.ProjectInstaller.resources
+D:\gitFile\frdLocalgitfile\WinComServer\WinComServer\obj\Debug\WinComServer.csproj.GenerateResource.Cache
+D:\gitFile\frdLocalgitfile\WinComServer\WinComServer\obj\Debug\WinComServer.Service1.resources
+D:\gitFile\frdLocalgitfile\WinComServer\WinComServer\bin\Debug\WinComServer.exe
+D:\gitFile\frdLocalgitfile\WinComServer\WinComServer\bin\Debug\WinComServer.pdb
+D:\gitFile\frdLocalgitfile\WinComServer\WinComServer\obj\Debug\WinComServer.exe
+D:\gitFile\frdLocalgitfile\WinComServer\WinComServer\obj\Debug\WinComServer.pdb

@@ -1,0 +1,34 @@
+﻿<ChartStyle>
+  <ClrContainerPanel Value="-1"/>
+  <ClrChartPanel Value="-1"/>
+  <FontTitle FontName="微软雅黑" Size="8"/>
+  <ClrTitle Value="-926365496"/>
+  <ClrGrid Value="-939524096"/>
+  <LineStyleGrid Value="5"/>
+  <BoldGrid Value="1"/>
+  <FontXAxis FontName="微软雅黑" Size="8"/>
+  <ClrXAxis Value="-939524096"/>
+  <FontYAxis FontName="微软雅黑" Size="8"/>
+  <ClrYAxis Value="-939524096"/>
+  <FontChannel FontName="微软雅黑" Size="8"/>
+  <ClrAxis Value="-16777216"/>
+  <LineStyleAxis Value="0"/>
+  <BoldAxis Value="1"/>
+  <ClrCoord Value="-939524096"/>
+  <BoldCoord Value="1"/>
+  <ClrInfoTitleBack Value="-8355712"/>
+  <FontInfoTitle FontName="微软雅黑" Size="8"/>
+  <ClrInfoTitle Value="-16777216"/>
+  <ClrInfoBack Value="-2147483648"/>
+  <FontInfo FontName="微软雅黑" Size="8"/>
+  <ClrInfo Value=""/>
+  <ClrCursor1 Value="-16777216"/>
+  <LineStyleCursor1 Value="0"/>
+  <BoldCursor1 Value="1"/>
+  <ClrCursor2 Value="-16777216"/>
+  <LineStyleCursor2 Value="0"/>
+  <BoldCursor2 Value="1"/>
+  <ClrNote Value="-16777216"/>
+  <ClrNoteBack Value="-16777216"/>
+  <FontNote FontName="微软雅黑" Size="8"/>
+</ChartStyle>

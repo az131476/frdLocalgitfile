@@ -1,0 +1,13 @@
+﻿正在安装程序集“D:\gitFile\frdLocalgitfile\WinComServer\WinComServer\bin\Debug\WinComServer.exe”。
+受影响的参数是:
+   logtoconsole = 
+   logfile = D:\gitFile\frdLocalgitfile\WinComServer\WinComServer\bin\Debug\WinComServer.InstallLog
+   assemblypath = D:\gitFile\frdLocalgitfile\WinComServer\WinComServer\bin\Debug\WinComServer.exe
+正在安装服务 wincomserver...
+已成功安装服务 wincomserver。
+正在日志 Application 中创建 EventLog 源 wincomserver...
+正在提交程序集“D:\gitFile\frdLocalgitfile\WinComServer\WinComServer\bin\Debug\WinComServer.exe”。
+受影响的参数是:
+   logtoconsole = 
+   logfile = D:\gitFile\frdLocalgitfile\WinComServer\WinComServer\bin\Debug\WinComServer.InstallLog
+   assemblypath = D:\gitFile\frdLocalgitfile\WinComServer\WinComServer\bin\Debug\WinComServer.exe

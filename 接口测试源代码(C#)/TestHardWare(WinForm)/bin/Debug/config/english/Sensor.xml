@@ -1,0 +1,45 @@
+<DH>
+  <Sensors>
+    <Sensor SensorType="Piezoresistive Transducer" SensorID="1" SensorModel="DH201-050" SerialNumber="2010" Meterage="" Unit="" CoeffTypeName="Sensitivity" Transfor="1" KCoief="1" BCoief="0"/>
+    <Sensor SensorType="Piezoresistive Transducer" SensorID="2" SensorModel="DH201-100" SerialNumber="2011" Meterage="" Unit="" CoeffTypeName="Sensitivity" Transfor="1" KCoief="1" BCoief="0"/>
+    <Sensor SensorType="Piezoresistive Transducer" SensorID="3" SensorModel="DH201-200" SerialNumber="2012" Meterage="" Unit="" CoeffTypeName="Sensitivity" Transfor="1" KCoief="1" BCoief="0"/>
+    <Sensor SensorType="Piezoresistive Transducer" SensorID="4" SensorModel="DH201-500" SerialNumber="2013" Meterage="" Unit="" CoeffTypeName="Sensitivity" Transfor="1" KCoief="1" BCoief="0"/>
+    <Sensor SensorType="Piezoresistive Transducer" SensorID="5" SensorModel="DH202-002" SerialNumber="2014" Meterage="" Unit="" CoeffTypeName="Sensitivity" Transfor="1" KCoief="1" BCoief="0"/>
+    <Sensor SensorType="Piezoresistive Transducer" SensorID="6" SensorModel="DH202-005" SerialNumber="2015" Meterage="" Unit="" CoeffTypeName="Sensitivity" Transfor="1" KCoief="1" BCoief="0"/>
+    <Sensor SensorType="Piezoresistive Transducer" SensorID="7" SensorModel="DH202-010" SerialNumber="2016" Meterage="" Unit="" CoeffTypeName="Sensitivity" Transfor="1" KCoief="1" BCoief="0"/>
+    <Sensor SensorType="Piezoresistive Transducer" SensorID="8" SensorModel="DH203-2000" SerialNumber="2017" Meterage="" Unit="" CoeffTypeName="Sensitivity" Transfor="1" KCoief="1" BCoief="0"/>
+
+    <Sensor SensorType="Capacitive Transducer" SensorID="9" SensorModel="DH301" SerialNumber="2018" Meterage="" Unit="" CoeffTypeName="Sensitivity" Transfor="1" KCoief="1" BCoief="0"/>
+    <Sensor SensorType="Capacitive Transducer" SensorID="10" SensorModel="DH302" SerialNumber="2019" Meterage="" Unit="" CoeffTypeName="Sensitivity" Transfor="1" KCoief="1" BCoief="0"/>
+
+    <Sensor SensorType="Piezoelectric Transducer" SensorID="11" SensorModel="DH105" SerialNumber="2020" Meterage="" Unit="" CoeffTypeName="Sensitivity" Transfor="1" KCoief="1" BCoief="0"/>
+    <Sensor SensorType="Piezoelectric Transducer" SensorID="12" SensorModel="DH112" SerialNumber="2021" Meterage="" Unit="" CoeffTypeName="Sensitivity" Transfor="1" KCoief="1" BCoief="0"/>
+    <Sensor SensorType="Piezoelectric Transducer" SensorID="13" SensorModel="DH131" SerialNumber="2022" Meterage="" Unit="" CoeffTypeName="Sensitivity" Transfor="1" KCoief="1" BCoief="0"/>
+    <Sensor SensorType="Piezoelectric Transducer" SensorID="14" SensorModel="DH132" SerialNumber="2023" Meterage="" Unit="" CoeffTypeName="Sensitivity" Transfor="1" KCoief="1" BCoief="0"/>
+    <Sensor SensorType="Piezoelectric Transducer" SensorID="15" SensorModel="DH151" SerialNumber="2024" Meterage="" Unit="" CoeffTypeName="Sensitivity" Transfor="1" KCoief="1" BCoief="0"/>
+    <Sensor SensorType="Piezoelectric Transducer" SensorID="16" SensorModel="DH161" SerialNumber="2025" Meterage="" Unit="" CoeffTypeName="Sensitivity" Transfor="1" KCoief="1" BCoief="0"/>
+    <Sensor SensorType="Piezoelectric Transducer" SensorID="17" SensorModel="DH311" SerialNumber="2026" Meterage="" Unit="" CoeffTypeName="Sensitivity" Transfor="1" KCoief="1" BCoief="0"/>
+
+    <Sensor SensorType="IEPE" SensorID="18" SensorModel="DH105E" SerialNumber="201" Meterage="Voltage" Unit="mV" CoeffTypeName="Sensitivity" Transfor="1" KCoief="1" BCoief="0"/>
+    <Sensor SensorType="IEPE" SensorID="19" SensorModel="DH131E" SerialNumber="202" Meterage="Voltage" Unit="mV" CoeffTypeName="Sensitivity" Transfor="1" KCoief="1" BCoief="0"/>
+    <Sensor SensorType="IEPE" SensorID="20" SensorModel="DH186E" SerialNumber="203" Meterage="Voltage" Unit="mV" CoeffTypeName="Sensitivity" Transfor="1" KCoief="1" BCoief="0"/>
+    <Sensor SensorType="IEPE" SensorID="21" SensorModel="DH186ET" SerialNumber="204" Meterage="Voltage" Unit="mV" CoeffTypeName="Sensitivity" Transfor="1" KCoief="1" BCoief="0"/>
+    <Sensor SensorType="IEPE" SensorID="22" SensorModel="DH311E" SerialNumber="205" Meterage="Voltage" Unit="mV" CoeffTypeName="Sensitivity" Transfor="1" KCoief="1" BCoief="0"/>
+
+    <Sensor SensorType="Electro-dynamic Transducer" SensorID="23" SensorModel="DH610" SerialNumber="206" Meterage="Voltage" Unit="mV" CoeffTypeName="Sensitivity" Transfor="1" KCoief="1" BCoief="0"/>
+    <Sensor SensorType="Electro-dynamic Transducer" SensorID="24" SensorModel="DH620" SerialNumber="207" Meterage="Voltage" Unit="mV" CoeffTypeName="Sensitivity" Transfor="1" KCoief="1" BCoief="0"/>
+
+
+    <Sensor SensorType="Draw wire displacement sensor" SensorID="25" SensorModel="DH801-I" SerialNumber="2027" Meterage="" Unit="" CoeffTypeName="Sensitivity" Transfor="1" KCoief="1" BCoief="0"/>
+    <Sensor SensorType="Draw wire displacement sensor" SensorID="26" SensorModel="DH801-U" SerialNumber="2028" Meterage="" Unit="" CoeffTypeName="Sensitivity" Transfor="1" KCoief="1" BCoief="0"/>
+    <Sensor SensorType="Draw wire displacement sensor" SensorID="27" SensorModel="DH801-R" SerialNumber="2029" Meterage="" Unit="" CoeffTypeName="Sensitivity" Transfor="1" KCoief="1" BCoief="0"/>
+
+    <Sensor SensorType="Piezoelectric Transducer" SensorID="28" SensorModel="753" SerialNumber="2030" Meterage="" Unit="" CoeffTypeName="Sensitivity" Transfor="1" KCoief="1" BCoief="0"/>
+    <Sensor SensorType="Piezoelectric Transducer" SensorID="29" SensorModel="1003A" SerialNumber="2031" Meterage="" Unit="" CoeffTypeName="Sensitivity" Transfor="1" KCoief="1" BCoief="0"/>
+    <Sensor SensorType="Piezoelectric Transducer" SensorID="30" SensorModel="1003B" SerialNumber="2032" Meterage="" Unit="" CoeffTypeName="Sensitivity" Transfor="1" KCoief="1" BCoief="0"/>
+    <Sensor SensorType="Piezoelectric Transducer" SensorID="31" SensorModel="1008D" SerialNumber="2033" Meterage="" Unit="" CoeffTypeName="Sensitivity" Transfor="1" KCoief="1" BCoief="0"/>
+
+    <Sensor SensorType="Photoelectric Tachometer" SensorID="32" SensorModel="DH5640" SerialNumber="2034" Meterage="" Unit="" CoeffTypeName="Sensitivity" Transfor="1" KCoief="1" BCoief="0"/>
+
+  </Sensors>
+</DH>
