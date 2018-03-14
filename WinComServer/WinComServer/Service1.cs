@@ -32,15 +32,15 @@ namespace WinComServer
             //server.server();
 
             ////初始化仪器
-            //MainHardWare main = new MainHardWare();
-            //if (!main.InitInterface())
-            //{
-            //    Debug.Write("初始化失败");
-            //}
-            //else
-            //{
-            //    Debug.Write("初始化成功");
-            //}
+            MainHardWare main = new MainHardWare();
+            if (!main.InitInterface())
+            {
+                Debug.Write("初始化失败");
+            }
+            else
+            {
+                Debug.Write("初始化成功");
+            }
             //连接设备
             //main.DeviceConnect();
             ///<summary>
@@ -49,7 +49,7 @@ namespace WinComServer
             ///发送数据给客户端、其他
             ///</summary>
             //main.GetDeviceData();
-            
+
         }
 
         protected override void OnStop()

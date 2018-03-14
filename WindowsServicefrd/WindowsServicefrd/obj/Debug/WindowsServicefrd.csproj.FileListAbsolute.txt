@@ -5,3 +5,9 @@ D:\gitFile\frdLocalgitfile\WindowsServicefrd\WindowsServicefrd\obj\Debug\Windows
 D:\gitFile\frdLocalgitfile\WindowsServicefrd\WindowsServicefrd\obj\Debug\WindowsServicefrd.pdb
 D:\gitFile\frdLocalgitfile\WindowsServicefrd\WindowsServicefrd\obj\Debug\WindowsServicefrd.ProjectInstaller.resources
 D:\gitFile\frdLocalgitfile\WindowsServicefrd\WindowsServicefrd\obj\Debug\WindowsServicefrd.csproj.GenerateResource.Cache
+D:\gitFile\frdLocalgitfile\WindowsServicefrd\WindowsServicefrd\bin\Debug\Interop.DHHardWareLib.dll
+D:\gitFile\frdLocalgitfile\WindowsServicefrd\WindowsServicefrd\bin\Debug\AxInterop.DHHardWareLib.dll
+D:\gitFile\frdLocalgitfile\WindowsServicefrd\WindowsServicefrd\obj\Debug\Interop.DHHardWareLib.dll
+D:\gitFile\frdLocalgitfile\WindowsServicefrd\WindowsServicefrd\obj\Debug\AxInterop.DHHardWareLib.dll
+D:\gitFile\frdLocalgitfile\WindowsServicefrd\WindowsServicefrd\obj\Debug\WindowsServicefrd.csproj.ResolveComReference.cache
+D:\gitFile\frdLocalgitfile\WindowsServicefrd\WindowsServicefrd\obj\Debug\WindowsServicefrd.HardWare.resources

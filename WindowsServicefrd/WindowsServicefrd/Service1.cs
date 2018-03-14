@@ -26,15 +26,14 @@ namespace WindowsServicefrd
             server.server();
 
             ////初始化仪器
-            //MainHardWare main = new MainHardWare();
-            //if (!main.InitInterface())
-            //{
-            //    Debug.Write("初始化失败");
-            //}
-            //else
-            //{
-            //    Debug.Write("初始化成功");
-            //}
+            if (!MainHardWare.InitInterface())
+            {
+                Debug.Write("初始化失败");
+            }
+            else
+            {
+                Debug.Write("初始化成功");
+            }
             //连接设备
             //main.DeviceConnect();
             ///<summary>
@@ -47,6 +46,12 @@ namespace WindowsServicefrd
 
         protected override void OnStop()
         {
+            Debug.Write("windows server stop");
         }
+        protected override void OnContinue()
+        {
+            base.OnContinue();
+        }
+
     }
 }

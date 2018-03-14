@@ -1,5 +1,0 @@
-start....名称:WindowsServicefrd.exe
-无上下文策略。
-\log
-start....D:\gitFile\frdLocalgitfile\WindowsServicefrd\WindowsServicefrd\bin\Debug\\log
-start....D:\gitFile\frdLocalgitfile\WindowsServicefrd\WindowsServicefrd\bin\Debug\\log

@@ -7,7 +7,7 @@ using System.IO;
 
 namespace WindowsServicefrd
 {
-    class Debug
+    public class Debug
     {
         public static void Write(string str)    // 记录服务启动  
         {
