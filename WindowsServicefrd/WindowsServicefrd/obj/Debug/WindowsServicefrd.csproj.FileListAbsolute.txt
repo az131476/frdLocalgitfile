@@ -1,0 +1,7 @@
+D:\gitFile\frdLocalgitfile\WindowsServicefrd\WindowsServicefrd\bin\Debug\WindowsServicefrd.exe.config
+D:\gitFile\frdLocalgitfile\WindowsServicefrd\WindowsServicefrd\bin\Debug\WindowsServicefrd.exe
+D:\gitFile\frdLocalgitfile\WindowsServicefrd\WindowsServicefrd\bin\Debug\WindowsServicefrd.pdb
+D:\gitFile\frdLocalgitfile\WindowsServicefrd\WindowsServicefrd\obj\Debug\WindowsServicefrd.exe
+D:\gitFile\frdLocalgitfile\WindowsServicefrd\WindowsServicefrd\obj\Debug\WindowsServicefrd.pdb
+D:\gitFile\frdLocalgitfile\WindowsServicefrd\WindowsServicefrd\obj\Debug\WindowsServicefrd.ProjectInstaller.resources
+D:\gitFile\frdLocalgitfile\WindowsServicefrd\WindowsServicefrd\obj\Debug\WindowsServicefrd.csproj.GenerateResource.Cache

@@ -28,23 +28,15 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
-            this.timer1 = new System.Windows.Forms.Timer(this.components);
-            this.projectInstaller1 = new WinComServer.ProjectInstaller();
-            // 
-            // timer1
-            // 
-            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
             // Service1
             // 
+            this.CanPauseAndContinue = true;
+            this.CanShutdown = true;
             this.ServiceName = "Service1";
 
         }
 
         #endregion
-
-        private System.Windows.Forms.Timer timer1;
-        private ProjectInstaller projectInstaller1;
     }
 }

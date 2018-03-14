@@ -9,3 +9,8 @@ D:\gitFile\frdLocalgitfile\WinComServer\WinComServer\obj\Debug\WinComServer.pdb
 D:\gitFile\frdLocalgitfile\WinComServer\WinComServer\obj\Debug\Interop.DHHardWareLib.dll
 D:\gitFile\frdLocalgitfile\WinComServer\WinComServer\obj\Debug\WinComServer.csproj.ResolveComReference.cache
 D:\gitFile\frdLocalgitfile\WinComServer\WinComServer\obj\Debug\AxInterop.DHHardWareLib.dll
+D:\gitFile\frdLocalgitfile\WinComServer\WinComServer\obj\Debug\WinComServer.HardWare.resources
+D:\gitFile\frdLocalgitfile\WinComServer\WinComServer\bin\Debug\DevComponents.DotNetBar2.dll
+D:\gitFile\frdLocalgitfile\WinComServer\WinComServer\bin\Debug\DevComponents.DotNetBar2.xml
+D:\gitFile\frdLocalgitfile\WinComServer\WinComServer\bin\Debug\Interop.DHHardWareLib.dll
+D:\gitFile\frdLocalgitfile\WinComServer\WinComServer\bin\Debug\AxInterop.DHHardWareLib.dll

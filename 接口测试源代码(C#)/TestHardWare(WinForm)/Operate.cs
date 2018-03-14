@@ -179,8 +179,6 @@ namespace TestHardWare_WinForm_
             DataThread1.IsBackground = true;
             DataThread1.Name = "GetData";
             DataThread1.Start(this);
-
-
         }
 
         private void buttonStopSample_Click(object sender, EventArgs e)
