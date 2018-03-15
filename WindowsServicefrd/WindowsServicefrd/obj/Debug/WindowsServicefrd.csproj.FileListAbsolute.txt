@@ -11,3 +11,4 @@ D:\gitFile\frdLocalgitfile\WindowsServicefrd\WindowsServicefrd\obj\Debug\Interop
 D:\gitFile\frdLocalgitfile\WindowsServicefrd\WindowsServicefrd\obj\Debug\AxInterop.DHHardWareLib.dll
 D:\gitFile\frdLocalgitfile\WindowsServicefrd\WindowsServicefrd\obj\Debug\WindowsServicefrd.csproj.ResolveComReference.cache
 D:\gitFile\frdLocalgitfile\WindowsServicefrd\WindowsServicefrd\obj\Debug\WindowsServicefrd.HardWare.resources
+D:\gitFile\frdLocalgitfile\WindowsServicefrd\WindowsServicefrd\obj\Debug\WindowsServicefrd.csprojResolveAssemblyReference.cache

@@ -9,3 +9,10 @@ D:\文件夹\DLL\招商局交通科研设计研究院检测中心_DH5902新版�
 D:\文件夹\DLL\招商局交通科研设计研究院检测中心_DH5902新版软件二次开发接口(陈源)\DHDAS新版软件网络仪器二次开发接口_V6.11.32\接口测试源代码\测试程序\接口测试源代码(C#)\TestHardWare(WinForm)\obj\x86\Debug\TestHardWare_WinForm_.HardWare.resources
 D:\gitFile\frdLocalgitfile\接口测试源代码(C#)\TestHardWare(WinForm)\obj\x86\Debug\TestHardWare(WinForm).exe
 D:\gitFile\frdLocalgitfile\接口测试源代码(C#)\TestHardWare(WinForm)\obj\x86\Debug\TestHardWare(WinForm).pdb
+D:\gitFile\frdLocalgitfile\bin\Debug\TestHardWare(WinForm).exe
+D:\gitFile\frdLocalgitfile\bin\Debug\TestHardWare(WinForm).pdb
+D:\gitFile\frdLocalgitfile\接口测试源代码(C#)\TestHardWare(WinForm)\obj\x86\Debug\TestHardWare(WinForm).csprojResolveAssemblyReference.cache
+D:\gitFile\frdLocalgitfile\接口测试源代码(C#)\TestHardWare(WinForm)\obj\x86\Debug\TestHardWare_WinForm_.TestHardWare.resources
+D:\gitFile\frdLocalgitfile\接口测试源代码(C#)\TestHardWare(WinForm)\obj\x86\Debug\TestHardWare_WinForm_.HardWare.resources
+D:\gitFile\frdLocalgitfile\接口测试源代码(C#)\TestHardWare(WinForm)\obj\x86\Debug\TestHardWare_WinForm_.Properties.Resources.resources
+D:\gitFile\frdLocalgitfile\接口测试源代码(C#)\TestHardWare(WinForm)\obj\x86\Debug\TestHardWare(WinForm).csproj.GenerateResource.Cache

@@ -14,7 +14,7 @@ namespace WindowsFormsApplication1
         //创建 1个客户端套接字 和1个负责监听服务端请求的线程  
         Thread threadclient = null;
         Socket socketclient = null;
-        private void socketConnect()
+        public void socketConnect()
         {
             //定义一个套接字监听  
             socketclient = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);

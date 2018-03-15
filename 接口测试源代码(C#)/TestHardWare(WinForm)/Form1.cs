@@ -103,31 +103,39 @@ namespace TestHardWare_WinForm_
         {
             ClearAllGroupChannel();
             int i = 0, j = 0;
-            int nGroupCount;
-            axDHTestHardWare.GetChannelGroupCount(out nGroupCount);
+            int nGroupCount=1;
+            //axDHTestHardWare.GetChannelGroupCount(out nGroupCount);
             int nGroupChannelID, nChannelFirst, nChannelNumber, nDataType;
+            Log.WriteLog("nGroupCount:"+ nGroupCount);
             string strMachineIP;
             int nReturnValue = 0;
             for (i = 0; i < nGroupCount; i++)
             {
+                Log.WriteLog("nGroupCount0:" + nGroupCount);
                 GroupChannel stuGroupChannel = new GroupChannel();
 
                // 获取通道组信息
                 axDHTestHardWare.GetChannelGroup(i, out nGroupChannelID, out strMachineIP, out nReturnValue);
                 stuGroupChannel.m_GroupID = nGroupChannelID;
                 stuGroupChannel.m_strMachineIP = strMachineIP;
+                Log.WriteLog("nGroupChannelID:" + nGroupChannelID);//0
+                Log.WriteLog("strMachineIP:" + strMachineIP);//192.168.0.102
+                Log.WriteLog("nReturnValue:" + nReturnValue);//1
 
                 // 获取某台仪器的起始通道ID
                 axDHTestHardWare.GetChannelFirstID(nGroupChannelID, strMachineIP, out nChannelFirst);
                 stuGroupChannel.m_nChannelFirst = nChannelFirst;
+                Log.WriteLog("nChannelFirst:" + nChannelFirst);//0
 
                 // 获取某台仪器的总的通道数
                 axDHTestHardWare.GetChannelCount(nGroupChannelID, strMachineIP, out nChannelNumber);
                 stuGroupChannel.m_nChannelNumber = nChannelNumber;
+                Log.WriteLog("nChannelNumber:" + nChannelNumber);//16
 
                 // 获取某台仪器的数据类型
                 axDHTestHardWare.GetChannelGroupDataType(nGroupChannelID, strMachineIP, out nDataType);
                 stuGroupChannel.m_nDataType = nDataType;
+                Log.WriteLog("nDataType:" + nDataType);//0
 
                 m_listGroupChannel.Add(stuGroupChannel);
 
@@ -147,6 +155,8 @@ namespace TestHardWare_WinForm_
 
                     HardChannel.m_strMachineIP = strMachineIP;
                     m_listHardChannel.Add(HardChannel);
+                    Log.WriteLog("bOnLine:" + bOnLine);//1
+                    Log.WriteLog("nMeasureType:" + nMeasureType);//0
                 }
             }
 

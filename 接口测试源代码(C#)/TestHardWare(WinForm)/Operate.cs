@@ -24,14 +24,13 @@ namespace TestHardWare_WinForm_
                 MessageBox.Show("连接成功");
             }
             EnableAllWindow(true);
-
             GetAllGroupChannel();
             InitChannelCombo();
             GetSampleFreqList();
-            GetSampleParam();
-            InitFrepCombo();
+            //GetSampleParam();
+            //InitFrepCombo();
             //除通道信息外获取所有参数
-            RefreshAllParam();
+            //RefreshAllParam();
         }
 
         private void comboFreq_SelectedIndexChanged(object sender, EventArgs e)

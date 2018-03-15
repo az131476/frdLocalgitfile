@@ -24,7 +24,16 @@ namespace WindowsFormsApplication1
 
         private void Form1_Load(object sender, EventArgs e)
         {
+            #region 设置桌面风格等
             initCompoents();
+            #endregion
+            #region 启动Socket与通讯服务建立连接
+            SocketClient client = new SocketClient();
+            client.socketConnect();
+            #endregion
+            #region 请求获取服务器初始化设备参数，并加载界面参数列表
+
+            #endregion
 
         }
         private void initCompoents()

@@ -12,5 +12,3 @@ D:\gitFile\frdLocalgitfile\WinComServer\WinComServer\obj\Debug\AxInterop.DHHardW
 D:\gitFile\frdLocalgitfile\WinComServer\WinComServer\obj\Debug\WinComServer.HardWare.resources
 D:\gitFile\frdLocalgitfile\WinComServer\WinComServer\bin\Debug\DevComponents.DotNetBar2.dll
 D:\gitFile\frdLocalgitfile\WinComServer\WinComServer\bin\Debug\DevComponents.DotNetBar2.xml
-D:\gitFile\frdLocalgitfile\WinComServer\WinComServer\bin\Debug\Interop.DHHardWareLib.dll
-D:\gitFile\frdLocalgitfile\WinComServer\WinComServer\bin\Debug\AxInterop.DHHardWareLib.dll

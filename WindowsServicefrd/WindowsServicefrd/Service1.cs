@@ -26,6 +26,7 @@ namespace WindowsServicefrd
             server.server();
 
             ////初始化仪器
+            bool state = true;
             if (!MainHardWare.InitInterface())
             {
                 Debug.Write("初始化失败");
