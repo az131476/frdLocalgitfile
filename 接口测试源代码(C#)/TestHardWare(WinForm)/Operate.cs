@@ -27,10 +27,10 @@ namespace TestHardWare_WinForm_
             GetAllGroupChannel();
             InitChannelCombo();
             GetSampleFreqList();
-            //GetSampleParam();
-            //InitFrepCombo();
-            //除通道信息外获取所有参数
-            //RefreshAllParam();
+            GetSampleParam();
+            InitFrepCombo();
+            ////除通道信息外获取所有参数
+            RefreshAllParam();
         }
 
         private void comboFreq_SelectedIndexChanged(object sender, EventArgs e)

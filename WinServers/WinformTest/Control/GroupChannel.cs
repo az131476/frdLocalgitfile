@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace WinformTest.Control
 {
-    class GroupChannel
+    public class GroupChannel
     {
         /// 组ID
         public int m_GroupID;

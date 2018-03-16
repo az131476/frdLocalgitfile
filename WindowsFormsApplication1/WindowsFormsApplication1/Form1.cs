@@ -32,7 +32,6 @@ namespace WindowsFormsApplication1
             client.socketConnect();
             #endregion
             #region 请求获取服务器初始化设备参数，并加载界面参数列表
-
             #endregion
 
         }

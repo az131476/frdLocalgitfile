@@ -47,7 +47,7 @@ namespace WinformTest.Control
         //监听客户端发来的请求  
         public static void watchconnecting()
         {
-            //持续不断监听客户端发来的请求     
+            //监听客户端发来的请求     
             while (true)
             {
                 try

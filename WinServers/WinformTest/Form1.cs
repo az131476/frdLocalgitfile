@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Threading;
 
 namespace WinformTest
 {
@@ -16,6 +17,12 @@ namespace WinformTest
         private static List<Control.GroupChannel> m_listGroupChannel = new List<Control.GroupChannel>();
         private static List<Control.HardChannel> m_listHardChannel = new List<Control.HardChannel>();
         private static Dictionary<int, int> m_dirBufferIndex = new Dictionary<int, int>();
+        private static List<string> m_listFreq = new List<string>(); //采样频率集
+        private static List<string> m_CommboChan = new List<string>();//通道列表
+        private Thread sample_thread;
+        private bool thread_state = false;
+        Control.SampleParam sampleParam = new Control.SampleParam();
+
         public Form1()
         {
             InitializeComponent();
@@ -54,12 +61,69 @@ namespace WinformTest
                 MessageBox.Show("连接成功");
             }
             #endregion
-            #region 初始化设备参数：获取通道组所有数据
-            GetAllGroupMsg();
+            #region 初始化设备参数：获取通道组数据
+            //GetAllGroupMsg();//保存通道组信息
+            //设置默认初始参数
+            GetInitParams();
+            #endregion
+            #region 启动采样
+            startSample();
             #endregion
 
         }
+        private void startSample()
+        {
+            SetSampleParam();
+            //SetSampleDialog(false);
+            int nIsSampling;
+            //是否正在采集数据
+            hardWare.GetHardWare().IsSampling(out nIsSampling);
+            if (nIsSampling == 1)
+            {
+                MessageBox.Show("仪器采样中，请先停止采样!");
+                return;
+            }
 
+            int nSample;
+            //启动采样
+            //axDHTestHardWare.StartSample("DH3820", 0, 1024, out nSample);
+            hardWare.GetHardWare().StartSample("DH5902", 0, 1024, out nSample);
+            if (nSample == 1)
+            {
+                MessageBox.Show("开始采样");
+            }
+            else
+            {
+                MessageBox.Show("失败");
+            }
+
+            //启动取数线程
+            thread_state = true;
+
+            sample_thread = new Thread(GetDataThread);
+            sample_thread.SetApartmentState(ApartmentState.STA);
+            sample_thread.IsBackground = true;
+            sample_thread.Name = "GetData";
+            sample_thread.Start(this);
+        }
+        /// <summary>
+        /// 设置采样参数
+        /// </summary>
+        private void SetSampleParam()
+        {
+            int nReturnValue;
+            string strText;
+            strText = "10";  //默认采样频率10
+            float fltSampleFrequency = float.Parse(strText);
+            sampleParam.m_fltSampleFrequency = fltSampleFrequency;
+
+            //设置采样参数
+            hardWare.GetHardWare().SetSampleFreq(sampleParam.m_fltSampleFrequency, out nReturnValue);
+            hardWare.GetHardWare().SetSampleMode(sampleParam.m_nSampleMode, out nReturnValue);
+            hardWare.GetHardWare().SetSampleTrigMode(sampleParam.m_nSampleTrigMode, out nReturnValue);
+            hardWare.GetHardWare().SetTrigBlockCount(sampleParam.m_nSampleBlockSize, out nReturnValue);
+            hardWare.GetHardWare().SetTrigDelayCount(sampleParam.m_nSampleDelayPoints, out nReturnValue);
+        }
         public bool InitInterface()
         {
             string baseDir = AppDomain.CurrentDomain.BaseDirectory;
@@ -184,5 +248,213 @@ namespace WinformTest
                     m_dirBufferIndex.Add(sortID[i], i);
             }
         }
+ 
+        /// <summary>
+        /// 获取当前采样参数
+        /// </summary>
+        private void GetSampleParam()
+        {
+            float fltSampleFreq;
+            int nSampleMode, nTrigMode, nBlockSize, nDelayCount;
+
+            hardWare.GetHardWare().GetSampleFreq(out fltSampleFreq);
+            hardWare.GetHardWare().GetSampleMode(out nSampleMode);
+            hardWare.GetHardWare().GetSampleTrigMode(out nTrigMode);
+            hardWare.GetHardWare().GetTrigBlockCount(out nBlockSize);
+            hardWare.GetHardWare().GetTrigDelayCount(out nDelayCount);
+
+            sampleParam.m_fltSampleFrequency = fltSampleFreq;//频率
+            sampleParam.m_nSampleMode = nSampleMode;//采样方式
+            sampleParam.m_nSampleTrigMode = nTrigMode;//触发方式(瞬态模式下有效)
+            sampleParam.m_nSampleBlockSize = nBlockSize;//采样块大小
+            sampleParam.m_nSampleDelayPoints = nDelayCount;//延迟点数(瞬态模式下有效)
         }
+        //将字符串进行分解。strSeprator中的任何一个字符都作为分隔符。返回分节得到的字符串数目
+        private static int BreakString(string strSrc, out List<string> lstDest, string strSeprator)
+        {
+            //清空列表
+            lstDest = new List<string>();
+            //个数
+            int iCount = 0;
+
+            if (strSeprator.Length == 0)
+            {
+                lstDest.Add(strSrc);
+                iCount = 1;
+                return iCount;
+            }
+
+            //查找的位置
+            int iPos = 0;
+            while (iPos < strSrc.Length)
+            {
+                int iNewPos = strSrc.IndexOf(strSeprator, iPos);
+                //当前字符即分隔符
+                if (iNewPos == iPos)
+                {
+                    iPos++;
+                }
+                //没找到分隔符
+                else if (iNewPos == -1)
+                {
+                    lstDest.Add(strSrc.Substring(iPos, strSrc.Length - iPos));
+                    iCount++;
+                    iPos = strSrc.Length;
+                }
+                //其它
+                else
+                {
+                    lstDest.Add(strSrc.Substring(iPos, iNewPos - iPos));
+                    iCount++;
+                    iPos = iNewPos;
+                    iPos++;
+                }
+            }
+            return iCount;
+        }
+        /// <summary>
+        /// 初始化设备参数
+        /// </summary>
+        private void GetInitParams()
+        {
+            ///获取所有通道组信息
+            GetAllGroupMsg();
+            ///通道列表
+            GetChannelCombo();
+            ///频率列表
+            GetSampleFreqList();
+            ///采样参数
+            GetSampleParam();
+        }       
+        ///<summary>
+        ///初始化通道选择列表
+        /// </summary>
+        private void GetChannelCombo()
+        {
+            m_CommboChan.Clear();
+            for (int i = 0; i < m_listHardChannel.Count; i++)
+            {
+                // 跳过不在线通道
+                if (!m_listHardChannel[i].m_bOnlineFlag)
+                    continue;
+
+                int nGroupID = m_listHardChannel[i].m_nChannelGroupID;
+                string strGroupID = String.Format("{0}", nGroupID + 1);
+                string strChannelID = String.Format("{0}", m_listHardChannel[i].m_nChannelID + 1);
+                string strText = strGroupID + "-" + strChannelID;
+
+                m_CommboChan.Add(strText);
+            }
+        }
+        /// <summary>
+        /// 获取仪器采样频率列表
+        /// </summary>
+        private void GetSampleFreqList()
+        {
+            //获取采样频率可选项
+            string strFrepList = "";
+            hardWare.GetHardWare().GetSampleFreqList(2, out strFrepList);
+            int nFreqCount = BreakString(strFrepList, out m_listFreq, "|"); //个数
+        }
+        ///<summary>
+        ///将获取的设备参数提供给客户端
+        /// </summary>
+        public void SendAllParams()
+        {
+        }
+        ///<summary>
+        ///执行更新客户端修改的参数
+        /// </summary>
+        public void UpdateClientParams()
+        {
+        }
+        /// <summary>
+        /// 采样数据
+        /// </summary>
+        private static void GetDataThread(object o)
+        {
+            Form1 main = (Form1)o;
+            string strChannel = "";
+            int nSelGroupID, nSelChanID;
+            while (main.thread_state)
+            {
+                ///nTotalDataPos-单个通道已采集的总数据量（不含本次接收数据量）
+                ///nReceiveCount-每通道数据量
+                ///nChnCount-通道数
+                ///oChnData-仪器采集的数据
+                int nTotalDataPos, nReceiveCount, nChnCount, nReturnValue;
+                object oChnData;
+                hardWare.GetHardWare().GetAllChnDataEx(out oChnData, out nTotalDataPos, out nReceiveCount, out nChnCount, out nReturnValue);
+                if (nReceiveCount <= 0)
+                    continue;
+                float[] pfltData;
+                // 解析所有仪器的数据
+                for (int i = 0; i < m_listGroupChannel.Count; i++)
+                {
+                    Control.GroupChannel GroupChannel = m_listGroupChannel[i];
+                    int nChannelGroupID = GroupChannel.m_GroupID;
+
+                    // 获取每个通道的数据 默认数据类型为float
+                    for (int j = 0; j < GroupChannel.m_nChannelNumber; j++)
+                    {
+                        if (main.thread_state)
+                        {
+                                if (j == 0)
+                                {
+                                    strChannel = "1-1";//main.comboChan.SelectedItem.ToString();//eg:1-1/1-2/1-3
+                                }
+                                else if (j == 1)
+                                {
+                                    strChannel = "1-2";
+                                }
+                                else if (j == 2)
+                                {
+                                    strChannel = "1-3";
+                                }
+                        }
+                        nSelGroupID = int.Parse(strChannel.Substring(0, strChannel.LastIndexOf('-')))-1;
+                        string m = "";
+                        
+                        nSelChanID = int.Parse(strChannel.Substring(strChannel.LastIndexOf('-') + 1, strChannel.Length - 1 - strChannel.LastIndexOf('-'))) - 1;
+                        if (nChannelGroupID != nSelGroupID || m_listHardChannel[j].m_nChannelID != nSelChanID)
+                            continue;
+                        pfltData = (float[])oChnData;
+
+                        float[] pChanData = new float[nReceiveCount];
+                        for (int nCount = 0; nCount < nReceiveCount; nCount++)
+                        {
+                            pChanData[nCount] = pfltData[i * GroupChannel.m_nChannelNumber * nReceiveCount + j * nReceiveCount + nCount];
+
+                            string strData = String.Format("{0:f3}", pChanData[nCount]);
+                            string time_ns = String.Format("{0:f4}", (double)nTotalDataPos / 10);
+                            AnlySampleData(strData,nTotalDataPos, time_ns.ToString(), nChannelGroupID, nSelGroupID, nSelChanID,nCount,nReceiveCount);
+                        }
+                    }
+                }
+                #region 获取GPS信息
+                float fltTime;
+                float fltValue;
+                int ReturnValue;
+                // 获取转速通道1的数据
+                //main.axDHTestHardWare.GetSampleStatValue(0, 1, 0, out fltTime, out fltValue, out ReturnValue);
+
+                //TRACE("GetSampleStatValue nReturnValue %d fltTime %f fltValue %f \n", nReturnValue, fltTime, fltValue);
+                // 获取GPS的速度信息
+                //		pTest->m_HardWare.GetSampleStatValue(nSelGroupID, 1, 0, &fltTime, &fltValue, &nReturnValue);
+                #endregion
+                Thread.Sleep(200);
+            }
+        }
+        ///<summary>
+        ///处理采样数据
+        /// </summary>
+        public static void AnlySampleData(string data,int nTotalDataPos, string time_ns, int nChannelGroupID,int nSelGroupID,int nSelChanID,int nCount,int nReceiveCount)
+        {
+            //strData:-164.1896  nTotalDataPos:3158  time_ns:315.0000
+            //${123.00,7849,32.5432}
+            //仪器ID，通道组ID，通道组对应通道ID
+            string sendData = "$SampleData"+"{"+nChannelGroupID+","+nSelGroupID+","+nSelChanID+","+nCount+ ",nReceiveCount:" + nReceiveCount+","+data+","+ nTotalDataPos+","+time_ns+"}";
+            Log.Debug.Write("  "+sendData);
+        }
+    }
 }

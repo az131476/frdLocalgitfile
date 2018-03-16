@@ -63,7 +63,7 @@ namespace TestHardWare_WinForm_
             RemoveAllEvent();
             foreach (var val in m_listFreq)
             {
-                ChanHelp.GetValidFloatString(val, out strFreq);
+                ChanHelp.GetValidFloatString(val, out strFreq);//去点号
                 comboFreq.Items.Add(strFreq);
 
                 float flt = strFreq.ToFloat();
