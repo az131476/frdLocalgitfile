@@ -684,6 +684,7 @@ namespace TestHardWare_WinForm_
             //HardWare m_hardWare = new HardWare();
             //int nResultValue = 0;
             //m_hardWare.GetHardWare().Init(@"D:\文件夹\DLL\招商局交通科研设计研究院检测中心_DH5902新版软件二次开发接口(陈源)\DHDAS新版软件网络仪器二次开发接口_V6.11.32\接口测试源代码\测试程序\bin\Debug\config\", "chinese", out nResultValue);
+            
         }
 
         private void listBox_SelectedIndexChanged(object sender, EventArgs e)

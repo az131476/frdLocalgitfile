@@ -10,11 +10,13 @@ using System.Windows.Forms;
 using DevComponents.DotNetBar;
 using DevComponents.DotNetBar.Controls;
 using DevComponents.DotNetBar.Rendering;
+using System.Threading;
 
 namespace WindowsFormsApplication1
 {
     public partial class Form1 : Office2007Form
     {
+        SocketClient client = new SocketClient();
         public Form1()
         {
             this.EnableGlass = false;
@@ -28,12 +30,38 @@ namespace WindowsFormsApplication1
             initCompoents();
             #endregion
             #region 启动Socket与通讯服务建立连接
-            SocketClient client = new SocketClient();
-            client.socketConnect();
+            Thread td_socket = new Thread(new ThreadStart(socketConnect));
+            td_socket.IsBackground = true;
+            td_socket.Start();
             #endregion
             #region 请求获取服务器初始化设备参数，并加载界面参数列表
             #endregion
 
+        }
+        private void socketConnect()
+        {
+            while(true)
+            {
+                if (client.socketConnect())
+                {
+                    Debug.Write("connection success!");
+                    break;
+                }
+                Thread.Sleep(1000);
+            }
+            
+        }
+        /// <summary>
+        /// 原始数据波形显示
+        /// </summary>
+        private void ShapeShow()
+        {
+
+            zGraph1.f_ClearAllPix();
+            zGraph1.f_reXY();
+            //zGraph1.f_LoadOnePix(ref x2, ref y2, Color.Red, 2);
+            //zGraph1.f_AddPix(ref x2, ref y2, Color.Blue, 3);
+            zGraph1.f_Refresh();
         }
         private void initCompoents()
         {

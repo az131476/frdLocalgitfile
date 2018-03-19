@@ -14,7 +14,8 @@ namespace WindowsFormsApplication1
         //创建 1个客户端套接字 和1个负责监听服务端请求的线程  
         Thread threadclient = null;
         Socket socketclient = null;
-        public void socketConnect()
+        bool flg = false;
+        public bool socketConnect()
         {
             //定义一个套接字监听  
             socketclient = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
@@ -32,17 +33,18 @@ namespace WindowsFormsApplication1
             }
             catch (Exception)
             {
-                Debug.Write("连接失败\r\n");
-                return;
+                Debug.Write("连接失败");
+                return false;
             }
 
             threadclient = new Thread(recv);
             threadclient.IsBackground = true;
             threadclient.Start();
+            return true;
         }
 
         // 接收服务端发来信息的方法    
-        void recv()
+        public void recv()
         {
             int x = 0;
             //持续监听服务端发来的消息 
@@ -58,21 +60,35 @@ namespace WindowsFormsApplication1
 
                     //将套接字获取到的字符数组转换字符串  
                     string strRevMsg = Encoding.UTF8.GetString(arrRecvmsg, 0, length);
-                    if (x == 1)
+
+                    //$SampleData{0,0,0,0,2,-0.327,0,0.0000}
+                    //
+                    if (strRevMsg.Substring(0, 11).Equals("$SampleData"))
                     {
-                        //this.txtDebugInfo.AppendText("服务器:" + GetCurrentTime() + "\r\n" + strRevMsg + "\r\n\n");
-                        Debug.Write("服务器:" + GetCurrentTime() + "\r\n" + strRevMsg + "\r\n\n");
+                        strRevMsg = strRevMsg.Substring(13, strRevMsg.Length - 12);
+                        int receiveCount = int.Parse(strRevMsg.Substring(4, 1));
+                        int channel = int.Parse(strRevMsg.Substring(2, 1));
+                        for() { }
+                        Debug.Write("  "+strRevMsg);
                     }
-                    else
-                    {
-                        //this.txtDebugInfo.AppendText(strRevMsg + "\r\n\n");
-                        Debug.Write(strRevMsg + "\r\n\n");
-                        x = 1;
-                    }
+
+                    //if (x == 1)
+                    //{
+                    //    //this.txtDebugInfo.AppendText("服务器:" + GetCurrentTime() + "\r\n" + strRevMsg + "\r\n\n");
+                    //    Debug.Write("服务器:" + GetCurrentTime() + "\r\n" + strRevMsg + "\r\n\n");
+
+                    //}
+                    //else
+                    //{
+                    //    //this.txtDebugInfo.AppendText(strRevMsg + "\r\n\n");
+                    //    Debug.Write("mm:"+strRevMsg + "\r\n\n");
+                    //    //ClientSendMsg("sendStart");
+                    //    x = 1;
+                    //}
                 }
                 catch (Exception ex)
                 {
-                    Debug.Write("远程服务器已经中断连接" + "\r\n\n");
+                    Debug.Write("远程服务器已经中断连接" + "\r\n");
                     Debug.Write("远程服务器已经中断连接" + "\r\n");
                     break;
                 }

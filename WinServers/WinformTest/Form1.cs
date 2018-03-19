@@ -22,7 +22,7 @@ namespace WinformTest
         private Thread sample_thread;
         private bool thread_state = false;
         Control.SampleParam sampleParam = new Control.SampleParam();
-
+        Control.SocketServer socket = new Control.SocketServer();
         public Form1()
         {
             InitializeComponent();
@@ -31,7 +31,7 @@ namespace WinformTest
         private void Form1_Load(object sender, EventArgs e)
         {
             #region 启动socket服务,监听客户端
-            Control.SocketServer.server();
+            socket.server();
             #endregion
             #region////初始化仪器
             if (!InitInterface())
@@ -62,14 +62,13 @@ namespace WinformTest
             }
             #endregion
             #region 初始化设备参数：获取通道组数据
-            //GetAllGroupMsg();//保存通道组信息
+            GetAllGroupMsg();//保存通道组信息
             //设置默认初始参数
             GetInitParams();
             #endregion
             #region 启动采样
             startSample();
             #endregion
-
         }
         private void startSample()
         {
@@ -113,7 +112,7 @@ namespace WinformTest
         {
             int nReturnValue;
             string strText;
-            strText = "10";  //默认采样频率10
+            strText = "20";  //默认采样频率10
             float fltSampleFrequency = float.Parse(strText);
             sampleParam.m_fltSampleFrequency = fltSampleFrequency;
 
@@ -371,7 +370,7 @@ namespace WinformTest
         /// <summary>
         /// 采样数据
         /// </summary>
-        private static void GetDataThread(object o)
+        private void GetDataThread(object o)
         {
             Form1 main = (Form1)o;
             string strChannel = "";
@@ -426,7 +425,7 @@ namespace WinformTest
                             pChanData[nCount] = pfltData[i * GroupChannel.m_nChannelNumber * nReceiveCount + j * nReceiveCount + nCount];
 
                             string strData = String.Format("{0:f3}", pChanData[nCount]);
-                            string time_ns = String.Format("{0:f4}", (double)nTotalDataPos / 10);
+                            string time_ns = String.Format("{0:f4}", (double)nTotalDataPos / 20);
                             AnlySampleData(strData,nTotalDataPos, time_ns.ToString(), nChannelGroupID, nSelGroupID, nSelChanID,nCount,nReceiveCount);
                         }
                     }
@@ -448,13 +447,35 @@ namespace WinformTest
         ///<summary>
         ///处理采样数据
         /// </summary>
-        public static void AnlySampleData(string data,int nTotalDataPos, string time_ns, int nChannelGroupID,int nSelGroupID,int nSelChanID,int nCount,int nReceiveCount)
+        public void AnlySampleData(string data,int nTotalDataPos, string time_ns, int nChannelGroupID,int nSelGroupID,int nSelChanID,int nCount,int nReceiveCount)
         {
             //strData:-164.1896  nTotalDataPos:3158  time_ns:315.0000
             //${123.00,7849,32.5432}
             //仪器ID，通道组ID，通道组对应通道ID
-            string sendData = "$SampleData"+"{"+nChannelGroupID+","+nSelGroupID+","+nSelChanID+","+nCount+ ",nReceiveCount:" + nReceiveCount+","+data+","+ nTotalDataPos+","+time_ns+"}";
+            string sendData = "$SampleData"+"{"+nChannelGroupID+","+nSelGroupID+","+nSelChanID+","+nCount+ "," + nReceiveCount+","+data+","+ nTotalDataPos+","+time_ns+"}";
             Log.Debug.Write("  "+sendData);
+            SendSampleData(sendData);
+        }
+        /// <summary>
+        /// 发送数据
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void SendSampleData(string data)
+        {
+            if (socket.clientIP != null)
+            {
+                socket.sendMsg(data);
+            }
+            else
+            {
+                Log.Debug.Write("客户端未连接");
+            }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            
         }
     }
 }

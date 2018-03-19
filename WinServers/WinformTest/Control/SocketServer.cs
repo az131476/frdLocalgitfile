@@ -9,15 +9,16 @@ using System.Threading;
 
 namespace WinformTest.Control
 {
-    class SocketServer
+    public class SocketServer
     {
         // 创建一个和客户端通信的套接字
         public static Socket socketwatch = null;
         public static Socket connection = null;
+        public IPAddress clientIP;
         //定义一个集合，存储客户端信息
         static Dictionary<string, Socket> clientConnectionItems = new Dictionary<string, Socket> { };
 
-        public static void server()
+        public void server()
         {
             //定义一个套接字用于监听客户端发来的消息，包含三个参数（IP4寻址协议，流式连接，Tcp协议）  
             socketwatch = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
@@ -45,7 +46,7 @@ namespace WinformTest.Control
             Log.Debug.Write("socketserver start...");
         }
         //监听客户端发来的请求  
-        public static void watchconnecting()
+        public void watchconnecting()
         {
             //监听客户端发来的请求     
             while (true)
@@ -57,46 +58,61 @@ namespace WinformTest.Control
                 catch (Exception ex)
                 {
                     //提示套接字监听异常     
-                    Log.Debug.Write(ex.Message);
+                    Log.Debug.Write("异常");
                     break;
                 }
-                //获取客户端的IP和端口号  
-                IPAddress clientIP = (connection.RemoteEndPoint as IPEndPoint).Address;
-                int clientPort = (connection.RemoteEndPoint as IPEndPoint).Port;
+                try
+                {
+                    //获取客户端的IP和端口号  
+                    clientIP = (connection.RemoteEndPoint as IPEndPoint).Address;
+                    int clientPort = (connection.RemoteEndPoint as IPEndPoint).Port;
 
-                //client显示"连接成功的"  
-                string sendmsg = "连接服务端成功！\r\n" + "本地IP:" + clientIP + "，本地端口" + clientPort.ToString();
-                sendMsg(sendmsg);
+                    //client显示"连接成功的"  
+                    string sendmsg = "连接服务端成功！\r\n" + "本地IP:" + clientIP + "，本地端口" + clientPort.ToString();
+                    sendMsg(sendmsg);
 
-                //客户端网络结点号  
-                string remoteEndPoint = connection.RemoteEndPoint.ToString();
-                //显示与客户端连接情况
-                Log.Debug.Write("成功与" + remoteEndPoint + "客户端建立连接！\t\n");
-                //添加客户端信息  
-                clientConnectionItems.Add(remoteEndPoint, connection);
+                    //客户端网络结点号  
+                    string remoteEndPoint = connection.RemoteEndPoint.ToString();
+                    //显示与客户端连接情况
+                    Log.Debug.Write("成功与" + remoteEndPoint + "客户端建立连接！\t\n");
+                    //添加客户端信息  
+                    clientConnectionItems.Add(remoteEndPoint, connection);
 
-                //IPEndPoint netpoint = new IPEndPoint(clientIP,clientPort); 
-                IPEndPoint netpoint = connection.RemoteEndPoint as IPEndPoint;
+                    //IPEndPoint netpoint = new IPEndPoint(clientIP,clientPort); 
+                    IPEndPoint netpoint = connection.RemoteEndPoint as IPEndPoint;
 
-                //创建一个通信线程      
-                ParameterizedThreadStart pts = new ParameterizedThreadStart(recv);
-                Thread thread = new Thread(pts);
-                //设置为后台线程，随着主线程退出而退出 
-                thread.IsBackground = true;
-                //启动线程     
-                thread.Start(connection);
+                    //创建一个通信线程      
+                    ParameterizedThreadStart pts = new ParameterizedThreadStart(recv);
+                    Thread thread = new Thread(pts);
+                    //设置为后台线程，随着主线程退出而退出 
+                    thread.IsBackground = true;
+                    //启动线程     
+                    thread.Start(connection);
+                }
+                catch (Exception ex)
+                {
+                    
+                }
             }
         }
-        public static void sendMsg(string sendmsg)
+        public int sendMsg(string sendmsg)
         {
-            byte[] arrSendMsg = Encoding.UTF8.GetBytes(sendmsg);
-            connection.Send(arrSendMsg);
+            try
+            {
+                byte[] arrSendMsg = Encoding.UTF8.GetBytes(sendmsg);
+                return connection.Send(arrSendMsg);
+            }
+            catch (Exception ex)
+            {
+                Log.Debug.Write("发送指令失败"+ex.Message);
+                return -1;
+            }
         }
         /// <summary>
         /// 接收客户端发来的信息，客户端套接字对象
         /// </summary>
         /// <param name="socketclientpara"></param>    
-        static void recv(object socketclientpara)
+        public void recv(object socketclientpara)
         {
             Socket socketServer = socketclientpara as Socket;
 
@@ -148,9 +164,13 @@ namespace WinformTest.Control
                             //执行平衡设置
                         }
                     }
+                    else if (strSRecMsg.Equals("sendStart"))
+                    {
+                        
+                    }
                     Log.Debug.Write("客户端:" + socketServer.RemoteEndPoint + ",time:" + GetCurrentTime() + "\r\n" + strSRecMsg + "\r\n\n");
 
-                    socketServer.Send(Encoding.UTF8.GetBytes("测试server 是否可以发送数据给client "));
+                    socketServer.Send(Encoding.UTF8.GetBytes("jdk"));
                 }
                 catch (Exception ex)
                 {
