@@ -81,8 +81,5 @@ namespace ZhengJuyin.UI
             toolStripTextBoxX.ForeColor = toolStripTextBoxY.ForeColor = _coordinateStringColor;
             
         }
-
-
-
     }
 }

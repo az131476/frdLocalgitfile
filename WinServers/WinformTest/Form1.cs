@@ -21,6 +21,7 @@ namespace WinformTest
         private static List<string> m_CommboChan = new List<string>();//通道列表
         private Thread sample_thread;
         private bool thread_state = false;
+        private List<string> data_list = new List<string>();
         Control.SampleParam sampleParam = new Control.SampleParam();
         Control.SocketServer socket = new Control.SocketServer();
         public Form1()
@@ -49,7 +50,7 @@ namespace WinformTest
             #region 与所有在线仪器建立连接
 
             int nReturnValue;
-            hardWare.GetHardWare().ReConnectAllMac(out nReturnValue);//连接在DeviceInfo.ini文件的IP的仪器。IsConnectMachine
+            hardWare.GetHardWare().ReConnectAllMac(out nReturnValue);//连接在DeviceInfo.ini文件的IP的仪器。IsConnectMachine,重新连接所有仪器
             //axDHTestHardWare.WireLessChange(13124007);
             if (!Control.DeviceConnect.ConAllDevice())
             {
@@ -61,6 +62,7 @@ namespace WinformTest
                 MessageBox.Show("连接成功");
             }
             #endregion
+
             #region 初始化设备参数：获取通道组数据
             GetAllGroupMsg();//保存通道组信息
             //设置默认初始参数
@@ -435,7 +437,10 @@ namespace WinformTest
                 float fltValue;
                 int ReturnValue;
                 // 获取转速通道1的数据
-                //main.axDHTestHardWare.GetSampleStatValue(0, 1, 0, out fltTime, out fltValue, out ReturnValue);
+                //int nMachineID, int nChannelStyle, int nValueType, out float fltTime, out float fltValue, out int ReturnValue
+                //hardWare.GetHardWare().GetSampleStatValue(1, 4, 1, out fltTime, out fltValue, out ReturnValue);
+
+                //Log.Debug.Write("ReturnValue:" + ReturnValue);
 
                 //TRACE("GetSampleStatValue nReturnValue %d fltTime %f fltValue %f \n", nReturnValue, fltTime, fltValue);
                 // 获取GPS的速度信息
@@ -454,7 +459,10 @@ namespace WinformTest
             //仪器ID，通道组ID，通道组对应通道ID
             string sendData = "$SampleData"+"{"+nChannelGroupID+","+nSelGroupID+","+nSelChanID+","+nCount+ "," + nReceiveCount+","+data+","+ nTotalDataPos+","+time_ns+"}";
             Log.Debug.Write("  "+sendData);
+
             SendSampleData(sendData);
+            //string[] dataStr = new string[] { strData, nTotalDataPos.ToString(), time_ns.ToString(), nChannelGroupID.ToString(), nSelGroupID.ToString(), nSelChanID.ToString(), nCount.ToString(), nReceiveCount.ToString() };
+            //data_list.AddRange(dataStr);
         }
         /// <summary>
         /// 发送数据
@@ -474,6 +482,11 @@ namespace WinformTest
         }
 
         private void button1_Click(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void timer1_Tick(object sender, EventArgs e)
         {
             
         }

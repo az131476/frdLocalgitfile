@@ -69,8 +69,8 @@
             // 
             // pictureBoxBottom
             // 
-            this.pictureBoxBottom.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.pictureBoxBottom.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.pictureBoxBottom.BackColor = System.Drawing.Color.White;
             this.pictureBoxBottom.ErrorImage = null;
             this.pictureBoxBottom.InitialImage = null;
@@ -78,15 +78,15 @@
             this.pictureBoxBottom.Margin = new System.Windows.Forms.Padding(0);
             this.pictureBoxBottom.MinimumSize = new System.Drawing.Size(0, 45);
             this.pictureBoxBottom.Name = "pictureBoxBottom";
-            this.pictureBoxBottom.Size = new System.Drawing.Size(454, 45);
+            this.pictureBoxBottom.Size = new System.Drawing.Size(449, 45);
             this.pictureBoxBottom.TabIndex = 0;
             this.pictureBoxBottom.TabStop = false;
             this.pictureBoxBottom.Paint += new System.Windows.Forms.PaintEventHandler(this.pictureBoxBottom_Paint);
             // 
             // pictureBoxLeft
             // 
-            this.pictureBoxLeft.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-                        | System.Windows.Forms.AnchorStyles.Left)));
+            this.pictureBoxLeft.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
             this.pictureBoxLeft.BackColor = System.Drawing.Color.White;
             this.pictureBoxLeft.ErrorImage = null;
             this.pictureBoxLeft.InitialImage = null;
@@ -101,8 +101,8 @@
             // 
             // pictureBoxRight
             // 
-            this.pictureBoxRight.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.pictureBoxRight.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.pictureBoxRight.BackColor = System.Drawing.Color.White;
             this.pictureBoxRight.ErrorImage = null;
             this.pictureBoxRight.InitialImage = null;
@@ -117,8 +117,8 @@
             // 
             // pictureBoxTop
             // 
-            this.pictureBoxTop.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.pictureBoxTop.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.pictureBoxTop.BackColor = System.Drawing.Color.White;
             this.pictureBoxTop.ErrorImage = null;
             this.pictureBoxTop.InitialImage = null;
@@ -145,15 +145,15 @@
             this.buttonLinesShowXY.TabIndex = 5;
             this.buttonLinesShowXY.TabStop = false;
             this.buttonLinesShowXY.UseVisualStyleBackColor = false;
-            this.buttonLinesShowXY.MouseLeave += new System.EventHandler(this.buttonLinesShowXY_MouseLeave);
-            this.buttonLinesShowXY.Paint += new System.Windows.Forms.PaintEventHandler(this.buttonLinesShowXY_Paint);
             this.buttonLinesShowXY.Click += new System.EventHandler(this.buttonLinesShowXY_Click);
+            this.buttonLinesShowXY.Paint += new System.Windows.Forms.PaintEventHandler(this.buttonLinesShowXY_Paint);
             this.buttonLinesShowXY.MouseEnter += new System.EventHandler(this.buttonLinesShowXY_MouseEnter);
+            this.buttonLinesShowXY.MouseLeave += new System.EventHandler(this.buttonLinesShowXY_MouseLeave);
             // 
             // panelControlItem
             // 
-            this.panelControlItem.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.panelControlItem.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.panelControlItem.AutoScroll = true;
             this.panelControlItem.BackColor = System.Drawing.Color.Black;
             this.panelControlItem.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
@@ -166,8 +166,8 @@
             // 
             // panelItemsIN
             // 
-            this.panelItemsIN.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.panelItemsIN.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.panelItemsIN.BackColor = System.Drawing.Color.Transparent;
             this.panelItemsIN.Controls.Add(this.buttonReXY);
             this.panelItemsIN.Controls.Add(this.buttonBigModeXY);
@@ -193,10 +193,10 @@
             this.buttonReXY.TabIndex = 11;
             this.buttonReXY.TabStop = false;
             this.buttonReXY.UseVisualStyleBackColor = false;
-            this.buttonReXY.MouseLeave += new System.EventHandler(this.buttonReXY_MouseLeave);
-            this.buttonReXY.Paint += new System.Windows.Forms.PaintEventHandler(this.buttonReXY_Paint);
             this.buttonReXY.Click += new System.EventHandler(this.buttonReXY_Click);
+            this.buttonReXY.Paint += new System.Windows.Forms.PaintEventHandler(this.buttonReXY_Paint);
             this.buttonReXY.MouseEnter += new System.EventHandler(this.buttonReXY_MouseEnter);
+            this.buttonReXY.MouseLeave += new System.EventHandler(this.buttonReXY_MouseLeave);
             // 
             // buttonBigModeXY
             // 
@@ -212,10 +212,10 @@
             this.buttonBigModeXY.TabIndex = 10;
             this.buttonBigModeXY.TabStop = false;
             this.buttonBigModeXY.UseVisualStyleBackColor = false;
-            this.buttonBigModeXY.MouseLeave += new System.EventHandler(this.buttonBigModeXY_MouseLeave);
-            this.buttonBigModeXY.Paint += new System.Windows.Forms.PaintEventHandler(this.buttonBigModeXY_Paint);
             this.buttonBigModeXY.Click += new System.EventHandler(this.buttonBigModeXY_Click);
+            this.buttonBigModeXY.Paint += new System.Windows.Forms.PaintEventHandler(this.buttonBigModeXY_Paint);
             this.buttonBigModeXY.MouseEnter += new System.EventHandler(this.buttonBigModeXY_MouseEnter);
+            this.buttonBigModeXY.MouseLeave += new System.EventHandler(this.buttonBigModeXY_MouseLeave);
             // 
             // buttonAutoModeXY
             // 
@@ -231,10 +231,10 @@
             this.buttonAutoModeXY.TabIndex = 9;
             this.buttonAutoModeXY.TabStop = false;
             this.buttonAutoModeXY.UseVisualStyleBackColor = false;
-            this.buttonAutoModeXY.MouseLeave += new System.EventHandler(this.buttonAutoModeXY_MouseLeave);
-            this.buttonAutoModeXY.Paint += new System.Windows.Forms.PaintEventHandler(this.buttonAutoModeXY_Paint);
             this.buttonAutoModeXY.Click += new System.EventHandler(this.buttonAutoModeXY_Click);
+            this.buttonAutoModeXY.Paint += new System.Windows.Forms.PaintEventHandler(this.buttonAutoModeXY_Paint);
             this.buttonAutoModeXY.MouseEnter += new System.EventHandler(this.buttonAutoModeXY_MouseEnter);
+            this.buttonAutoModeXY.MouseLeave += new System.EventHandler(this.buttonAutoModeXY_MouseLeave);
             // 
             // buttonItemsDown
             // 
@@ -272,9 +272,9 @@
             // 
             // pictureBoxGraph
             // 
-            this.pictureBoxGraph.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-                        | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.pictureBoxGraph.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.pictureBoxGraph.BackColor = System.Drawing.Color.Black;
             this.pictureBoxGraph.ContextMenuStrip = this.MenuRightClick;
             this.pictureBoxGraph.ErrorImage = null;
@@ -285,10 +285,10 @@
             this.pictureBoxGraph.Size = new System.Drawing.Size(354, 198);
             this.pictureBoxGraph.TabIndex = 4;
             this.pictureBoxGraph.TabStop = false;
+            this.pictureBoxGraph.Paint += new System.Windows.Forms.PaintEventHandler(this.pictureBoxGraph_Paint);
+            this.pictureBoxGraph.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pictureBoxGraph_MouseDown);
             this.pictureBoxGraph.MouseLeave += new System.EventHandler(this.pictureBoxGraph_MouseLeave);
             this.pictureBoxGraph.MouseMove += new System.Windows.Forms.MouseEventHandler(this.pictureBoxGraph_MouseMove);
-            this.pictureBoxGraph.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pictureBoxGraph_MouseDown);
-            this.pictureBoxGraph.Paint += new System.Windows.Forms.PaintEventHandler(this.pictureBoxGraph_Paint);
             this.pictureBoxGraph.MouseUp += new System.Windows.Forms.MouseEventHandler(this.pictureBoxGraph_MouseUp);
             // 
             // MenuRightClick

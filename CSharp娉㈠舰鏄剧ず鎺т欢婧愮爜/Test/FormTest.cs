@@ -890,11 +890,5 @@ namespace Test
             timerDraw.Stop();
             zGraphTest.f_ClearAllPix();
         }
-
-
-
-
-
-
     }
 }

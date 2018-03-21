@@ -277,5 +277,17 @@ namespace ZhengJuyin.UI
             outY = _fYEnd - y / (pictureBoxGraph.Height - 1) * (_fYEnd - _fYBegin);
         }
         #endregion
+
+        private void InitializeComponent()
+        {
+            this.SuspendLayout();
+            // 
+            // ZGraph
+            // 
+            this.Name = "ZGraph";
+            this.Size = new System.Drawing.Size(157, 163);
+            this.ResumeLayout(false);
+
+        }
     }
 }

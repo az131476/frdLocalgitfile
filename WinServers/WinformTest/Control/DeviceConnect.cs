@@ -16,13 +16,9 @@ namespace WinformTest.Control
         public static bool ConAllDevice()
         {
             int nReturnValue;
-            int returnValue;
-            hardWare.GetHardWare().ReConnectAllMac(out nReturnValue);//连接在DeviceInfo.ini文件的IP的仪器。IsConnectMachine
-            //axDHTestHardWare.WireLessChange(13124007);
+            hardWare.GetHardWare().IsConnectMachine(out nReturnValue);
+            return nReturnValue == 1 ? true : false;
 
-            hardWare.GetHardWare().IsConnectMachine(out returnValue);
-            return returnValue == 1 ? true : false;
-            
 
             //GetAllGroupChannel();
             //InitChannelCombo();
@@ -32,6 +28,5 @@ namespace WinformTest.Control
             ////除通道信息外获取所有参数
             //RefreshAllParam();
         }
-        
     }
 }

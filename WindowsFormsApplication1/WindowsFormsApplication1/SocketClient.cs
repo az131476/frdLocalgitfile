@@ -53,7 +53,7 @@ namespace WindowsFormsApplication1
                 try
                 {
                     //定义一个1M的内存缓冲区，用于临时性存储接收到的消息  
-                    byte[] arrRecvmsg = new byte[1024 * 1024];
+                    byte[] arrRecvmsg = new byte[512];
 
                     //将客户端套接字接收到的数据存入内存缓冲区，并获取长度  
                     int length = socketclient.Receive(arrRecvmsg);
@@ -65,13 +65,15 @@ namespace WindowsFormsApplication1
                     //
                     if (strRevMsg.Substring(0, 11).Equals("$SampleData"))
                     {
-                        strRevMsg = strRevMsg.Substring(13, strRevMsg.Length - 12);
-                        int receiveCount = int.Parse(strRevMsg.Substring(4, 1));
-                        int channel = int.Parse(strRevMsg.Substring(2, 1));
-                        for() { }
-                        Debug.Write("  "+strRevMsg);
-                    }
+                        string mstrRevMsg = strRevMsg.Substring("$SampleData".Length, strRevMsg.Length - "$SampleData".Length);
+                        //int receiveCount = int.Parse(strRevMsg.Substring(8, 1));
+                        //int channel = int.Parse(strRevMsg.Substring(4, 1));
+                        //float d_y = float.Parse(strRevMsg.Substring("{0,0,0,0,2,".Length,"-0.327".Length));
+                        //float d_s = float.Parse(strRevMsg.Substring("{0,0,0,0,2,-0.327,0,".Length, strRevMsg.Length-"{ 0,0,0,0,2,-0.327,0,".Length));
 
+                        Debug.Write("  " + mstrRevMsg);
+                        //Debug.Write("receiveCount:"+receiveCount+"  channel:"+channel+" d_s:"+d_s+"  d_y"+d_y);
+                    }
                     //if (x == 1)
                     //{
                     //    //this.txtDebugInfo.AppendText("服务器:" + GetCurrentTime() + "\r\n" + strRevMsg + "\r\n\n");
@@ -88,7 +90,6 @@ namespace WindowsFormsApplication1
                 }
                 catch (Exception ex)
                 {
-                    Debug.Write("远程服务器已经中断连接" + "\r\n");
                     Debug.Write("远程服务器已经中断连接" + "\r\n");
                     break;
                 }

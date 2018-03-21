@@ -8,11 +8,11 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace WindowsFormsApplication1
+namespace ZedgraphTest
 {
-    public partial class UserControl1 : UserControl
+    public partial class Upane : UserControl
     {
-        public UserControl1()
+        public Upane()
         {
             InitializeComponent();
         }
