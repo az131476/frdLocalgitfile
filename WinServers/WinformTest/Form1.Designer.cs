@@ -29,58 +29,54 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            this.listViewEx1 = new DevComponents.DotNetBar.Controls.ListViewEx();
-            this.button1 = new System.Windows.Forms.Button();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.listView1 = new System.Windows.Forms.ListView();
+            this.labelX1 = new DevComponents.DotNetBar.LabelX();
             this.SuspendLayout();
-            // 
-            // listViewEx1
-            // 
-            // 
-            // 
-            // 
-            this.listViewEx1.Border.Class = "ListViewBorder";
-            this.listViewEx1.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.listViewEx1.DisabledBackColor = System.Drawing.Color.Empty;
-            this.listViewEx1.Location = new System.Drawing.Point(12, 12);
-            this.listViewEx1.Name = "listViewEx1";
-            this.listViewEx1.Size = new System.Drawing.Size(1122, 600);
-            this.listViewEx1.TabIndex = 0;
-            this.listViewEx1.UseCompatibleStateImageBehavior = false;
-            // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(1140, 589);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 1;
-            this.button1.Text = "button1";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // timer1
             // 
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
+            // listView1
+            // 
+            this.listView1.Location = new System.Drawing.Point(-2, 41);
+            this.listView1.Name = "listView1";
+            this.listView1.Size = new System.Drawing.Size(936, 585);
+            this.listView1.TabIndex = 0;
+            this.listView1.UseCompatibleStateImageBehavior = false;
+            // 
+            // labelX1
+            // 
+            // 
+            // 
+            // 
+            this.labelX1.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.labelX1.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.labelX1.Location = new System.Drawing.Point(-2, 1);
+            this.labelX1.Name = "labelX1";
+            this.labelX1.Size = new System.Drawing.Size(936, 34);
+            this.labelX1.TabIndex = 1;
+            this.labelX1.Text = "                                        仪器运行状态";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1237, 624);
-            this.Controls.Add(this.button1);
-            this.Controls.Add(this.listViewEx1);
+            this.ClientSize = new System.Drawing.Size(934, 624);
+            this.Controls.Add(this.labelX1);
+            this.Controls.Add(this.listView1);
             this.Name = "Form1";
-            this.Text = "Form1";
+            this.Text = "设备通讯监测服务";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.ResumeLayout(false);
 
         }
 
         #endregion
-
-        private DevComponents.DotNetBar.Controls.ListViewEx listViewEx1;
-        private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Timer timer1;
+        private System.Windows.Forms.ListView listView1;
+        private DevComponents.DotNetBar.LabelX labelX1;
     }
 }
 

@@ -29,10 +29,9 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tabControl1 = new DevComponents.DotNetBar.TabControl();
             this.tabControlPanel2 = new DevComponents.DotNetBar.TabControlPanel();
-            this.zedGraphControl1 = new ZedGraph.ZedGraphControl();
             this.button1 = new System.Windows.Forms.Button();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.打印ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -55,8 +54,6 @@
             this.Column9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column10 = new DevComponents.DotNetBar.Controls.DataGridViewButtonXColumn();
             this.tabItem1 = new DevComponents.DotNetBar.TabItem(this.components);
-            this.tabControlPanel3 = new DevComponents.DotNetBar.TabControlPanel();
-            this.tabItem3 = new DevComponents.DotNetBar.TabItem(this.components);
             this.tabControlPanel4 = new DevComponents.DotNetBar.TabControlPanel();
             this.tabItem4 = new DevComponents.DotNetBar.TabItem(this.components);
             this.tabControlPanel5 = new DevComponents.DotNetBar.TabControlPanel();
@@ -64,10 +61,13 @@
             this.tabControlPanel6 = new DevComponents.DotNetBar.TabControlPanel();
             this.tabItem6 = new DevComponents.DotNetBar.TabItem(this.components);
             this.tabItem5 = new DevComponents.DotNetBar.TabItem(this.components);
+            this.tabControlPanel3 = new DevComponents.DotNetBar.TabControlPanel();
+            this.tabItem3 = new DevComponents.DotNetBar.TabItem(this.components);
             this.buttonX1 = new DevComponents.DotNetBar.ButtonX();
-            this.zedGraphControl2 = new ZedGraph.ZedGraphControl();
-            this.zedGraphControl3 = new ZedGraph.ZedGraphControl();
             this.groupPanel1 = new DevComponents.DotNetBar.Controls.GroupPanel();
+            this.zedGraphControl1 = new ZedGraph.ZedGraphControl();
+            this.zedGraphControl3 = new ZedGraph.ZedGraphControl();
+            this.zedGraphControl2 = new ZedGraph.ZedGraphControl();
             ((System.ComponentModel.ISupportInitialize)(this.tabControl1)).BeginInit();
             this.tabControl1.SuspendLayout();
             this.tabControlPanel2.SuspendLayout();
@@ -105,6 +105,7 @@
             // 
             // tabControlPanel2
             // 
+            this.tabControlPanel2.Controls.Add(this.groupPanel1);
             this.tabControlPanel2.Controls.Add(this.button1);
             this.tabControlPanel2.Controls.Add(this.menuStrip1);
             this.tabControlPanel2.DisabledBackColor = System.Drawing.Color.Empty;
@@ -122,21 +123,6 @@
             this.tabControlPanel2.Style.GradientAngle = 90;
             this.tabControlPanel2.TabIndex = 5;
             this.tabControlPanel2.TabItem = this.tabItem2;
-            // 
-            // zedGraphControl1
-            // 
-            this.zedGraphControl1.Location = new System.Drawing.Point(3, 3);
-            this.zedGraphControl1.Name = "zedGraphControl1";
-            this.zedGraphControl1.PanModifierKeys = System.Windows.Forms.Keys.None;
-            this.zedGraphControl1.ScrollGrace = 0D;
-            this.zedGraphControl1.ScrollMaxX = 0D;
-            this.zedGraphControl1.ScrollMaxY = 0D;
-            this.zedGraphControl1.ScrollMaxY2 = 0D;
-            this.zedGraphControl1.ScrollMinX = 0D;
-            this.zedGraphControl1.ScrollMinY = 0D;
-            this.zedGraphControl1.ScrollMinY2 = 0D;
-            this.zedGraphControl1.Size = new System.Drawing.Size(786, 213);
-            this.zedGraphControl1.TabIndex = 3;
             // 
             // button1
             // 
@@ -260,14 +246,14 @@
             this.Column8,
             this.Column9,
             this.Column10});
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridViewX1.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridViewX1.DefaultCellStyle = dataGridViewCellStyle2;
             this.dataGridViewX1.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(215)))), ((int)(((byte)(229)))));
             this.dataGridViewX1.Location = new System.Drawing.Point(4, 84);
             this.dataGridViewX1.Name = "dataGridViewX1";
@@ -333,30 +319,6 @@
             this.tabItem1.AttachedControl = this.tabControlPanel1;
             this.tabItem1.Name = "tabItem1";
             this.tabItem1.Text = "参数设置";
-            // 
-            // tabControlPanel3
-            // 
-            this.tabControlPanel3.DisabledBackColor = System.Drawing.Color.Empty;
-            this.tabControlPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tabControlPanel3.Location = new System.Drawing.Point(0, 26);
-            this.tabControlPanel3.Name = "tabControlPanel3";
-            this.tabControlPanel3.Padding = new System.Windows.Forms.Padding(1);
-            this.tabControlPanel3.Size = new System.Drawing.Size(1616, 775);
-            this.tabControlPanel3.Style.BackColor1.Color = System.Drawing.Color.FromArgb(((int)(((byte)(142)))), ((int)(((byte)(179)))), ((int)(((byte)(231)))));
-            this.tabControlPanel3.Style.BackColor2.Color = System.Drawing.Color.FromArgb(((int)(((byte)(223)))), ((int)(((byte)(237)))), ((int)(((byte)(254)))));
-            this.tabControlPanel3.Style.Border = DevComponents.DotNetBar.eBorderType.SingleLine;
-            this.tabControlPanel3.Style.BorderColor.Color = System.Drawing.Color.FromArgb(((int)(((byte)(59)))), ((int)(((byte)(97)))), ((int)(((byte)(156)))));
-            this.tabControlPanel3.Style.BorderSide = ((DevComponents.DotNetBar.eBorderSide)(((DevComponents.DotNetBar.eBorderSide.Left | DevComponents.DotNetBar.eBorderSide.Right) 
-            | DevComponents.DotNetBar.eBorderSide.Bottom)));
-            this.tabControlPanel3.Style.GradientAngle = 90;
-            this.tabControlPanel3.TabIndex = 9;
-            this.tabControlPanel3.TabItem = this.tabItem3;
-            // 
-            // tabItem3
-            // 
-            this.tabItem3.AttachedControl = this.tabControlPanel3;
-            this.tabItem3.Name = "tabItem3";
-            this.tabItem3.Text = "信号处理";
             // 
             // tabControlPanel4
             // 
@@ -445,6 +407,30 @@
             this.tabItem5.Name = "tabItem5";
             this.tabItem5.Text = "风险信息";
             // 
+            // tabControlPanel3
+            // 
+            this.tabControlPanel3.DisabledBackColor = System.Drawing.Color.Empty;
+            this.tabControlPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tabControlPanel3.Location = new System.Drawing.Point(0, 26);
+            this.tabControlPanel3.Name = "tabControlPanel3";
+            this.tabControlPanel3.Padding = new System.Windows.Forms.Padding(1);
+            this.tabControlPanel3.Size = new System.Drawing.Size(1616, 775);
+            this.tabControlPanel3.Style.BackColor1.Color = System.Drawing.Color.FromArgb(((int)(((byte)(142)))), ((int)(((byte)(179)))), ((int)(((byte)(231)))));
+            this.tabControlPanel3.Style.BackColor2.Color = System.Drawing.Color.FromArgb(((int)(((byte)(223)))), ((int)(((byte)(237)))), ((int)(((byte)(254)))));
+            this.tabControlPanel3.Style.Border = DevComponents.DotNetBar.eBorderType.SingleLine;
+            this.tabControlPanel3.Style.BorderColor.Color = System.Drawing.Color.FromArgb(((int)(((byte)(59)))), ((int)(((byte)(97)))), ((int)(((byte)(156)))));
+            this.tabControlPanel3.Style.BorderSide = ((DevComponents.DotNetBar.eBorderSide)(((DevComponents.DotNetBar.eBorderSide.Left | DevComponents.DotNetBar.eBorderSide.Right) 
+            | DevComponents.DotNetBar.eBorderSide.Bottom)));
+            this.tabControlPanel3.Style.GradientAngle = 90;
+            this.tabControlPanel3.TabIndex = 9;
+            this.tabControlPanel3.TabItem = this.tabItem3;
+            // 
+            // tabItem3
+            // 
+            this.tabItem3.AttachedControl = this.tabControlPanel3;
+            this.tabItem3.Name = "tabItem3";
+            this.tabItem3.Text = "信号处理";
+            // 
             // buttonX1
             // 
             this.buttonX1.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
@@ -456,36 +442,6 @@
             this.buttonX1.TabIndex = 7;
             this.buttonX1.Text = "打印";
             // 
-            // zedGraphControl2
-            // 
-            this.zedGraphControl2.Location = new System.Drawing.Point(3, 222);
-            this.zedGraphControl2.Name = "zedGraphControl2";
-            this.zedGraphControl2.PanModifierKeys = System.Windows.Forms.Keys.None;
-            this.zedGraphControl2.ScrollGrace = 0D;
-            this.zedGraphControl2.ScrollMaxX = 0D;
-            this.zedGraphControl2.ScrollMaxY = 0D;
-            this.zedGraphControl2.ScrollMaxY2 = 0D;
-            this.zedGraphControl2.ScrollMinX = 0D;
-            this.zedGraphControl2.ScrollMinY = 0D;
-            this.zedGraphControl2.ScrollMinY2 = 0D;
-            this.zedGraphControl2.Size = new System.Drawing.Size(786, 213);
-            this.zedGraphControl2.TabIndex = 6;
-            // 
-            // zedGraphControl3
-            // 
-            this.zedGraphControl3.Location = new System.Drawing.Point(1, 441);
-            this.zedGraphControl3.Name = "zedGraphControl3";
-            this.zedGraphControl3.PanModifierKeys = System.Windows.Forms.Keys.None;
-            this.zedGraphControl3.ScrollGrace = 0D;
-            this.zedGraphControl3.ScrollMaxX = 0D;
-            this.zedGraphControl3.ScrollMaxY = 0D;
-            this.zedGraphControl3.ScrollMaxY2 = 0D;
-            this.zedGraphControl3.ScrollMinX = 0D;
-            this.zedGraphControl3.ScrollMinY = 0D;
-            this.zedGraphControl3.ScrollMinY2 = 0D;
-            this.zedGraphControl3.Size = new System.Drawing.Size(786, 213);
-            this.zedGraphControl3.TabIndex = 7;
-            // 
             // groupPanel1
             // 
             this.groupPanel1.CanvasColor = System.Drawing.SystemColors.Control;
@@ -494,7 +450,7 @@
             this.groupPanel1.Controls.Add(this.zedGraphControl3);
             this.groupPanel1.Controls.Add(this.zedGraphControl2);
             this.groupPanel1.DisabledBackColor = System.Drawing.Color.Empty;
-            this.groupPanel1.Location = new System.Drawing.Point(2, 56);
+            this.groupPanel1.Location = new System.Drawing.Point(3, 29);
             this.groupPanel1.Name = "groupPanel1";
             this.groupPanel1.Size = new System.Drawing.Size(796, 660);
             // 
@@ -525,14 +481,58 @@
             // 
             // 
             this.groupPanel1.StyleMouseOver.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.groupPanel1.TabIndex = 8;
+            this.groupPanel1.TabIndex = 9;
+            // 
+            // zedGraphControl1
+            // 
+            this.zedGraphControl1.Location = new System.Drawing.Point(3, 3);
+            this.zedGraphControl1.Name = "zedGraphControl1";
+            this.zedGraphControl1.PanModifierKeys = System.Windows.Forms.Keys.None;
+            this.zedGraphControl1.ScrollGrace = 0D;
+            this.zedGraphControl1.ScrollMaxX = 0D;
+            this.zedGraphControl1.ScrollMaxY = 0D;
+            this.zedGraphControl1.ScrollMaxY2 = 0D;
+            this.zedGraphControl1.ScrollMinX = 0D;
+            this.zedGraphControl1.ScrollMinY = 0D;
+            this.zedGraphControl1.ScrollMinY2 = 0D;
+            this.zedGraphControl1.Size = new System.Drawing.Size(786, 213);
+            this.zedGraphControl1.TabIndex = 3;
+            // 
+            // zedGraphControl3
+            // 
+            this.zedGraphControl3.Location = new System.Drawing.Point(1, 441);
+            this.zedGraphControl3.Name = "zedGraphControl3";
+            this.zedGraphControl3.PanModifierKeys = System.Windows.Forms.Keys.None;
+            this.zedGraphControl3.ScrollGrace = 0D;
+            this.zedGraphControl3.ScrollMaxX = 0D;
+            this.zedGraphControl3.ScrollMaxY = 0D;
+            this.zedGraphControl3.ScrollMaxY2 = 0D;
+            this.zedGraphControl3.ScrollMinX = 0D;
+            this.zedGraphControl3.ScrollMinY = 0D;
+            this.zedGraphControl3.ScrollMinY2 = 0D;
+            this.zedGraphControl3.Size = new System.Drawing.Size(786, 213);
+            this.zedGraphControl3.TabIndex = 7;
+            // 
+            // zedGraphControl2
+            // 
+            this.zedGraphControl2.Location = new System.Drawing.Point(3, 222);
+            this.zedGraphControl2.Name = "zedGraphControl2";
+            this.zedGraphControl2.PanModifierKeys = System.Windows.Forms.Keys.None;
+            this.zedGraphControl2.ScrollGrace = 0D;
+            this.zedGraphControl2.ScrollMaxX = 0D;
+            this.zedGraphControl2.ScrollMaxY = 0D;
+            this.zedGraphControl2.ScrollMaxY2 = 0D;
+            this.zedGraphControl2.ScrollMinX = 0D;
+            this.zedGraphControl2.ScrollMinY = 0D;
+            this.zedGraphControl2.ScrollMinY2 = 0D;
+            this.zedGraphControl2.Size = new System.Drawing.Size(786, 213);
+            this.zedGraphControl2.TabIndex = 6;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1616, 800);
-            this.Controls.Add(this.groupPanel1);
+            this.ClientSize = new System.Drawing.Size(1480, 800);
             this.Controls.Add(this.tabControl1);
             this.DoubleBuffered = true;
             this.MainMenuStrip = this.menuStrip1;
@@ -586,15 +586,15 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column9;
         private DevComponents.DotNetBar.Controls.DataGridViewButtonXColumn Column10;
         private System.Windows.Forms.Button button1;
-        private ZedGraph.ZedGraphControl zedGraphControl1;
         private DevComponents.DotNetBar.ButtonX buttonX1;
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem 打印ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 开始ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 暂停ToolStripMenuItem;
-        private ZedGraph.ZedGraphControl zedGraphControl2;
-        private ZedGraph.ZedGraphControl zedGraphControl3;
         private DevComponents.DotNetBar.Controls.GroupPanel groupPanel1;
+        private ZedGraph.ZedGraphControl zedGraphControl1;
+        private ZedGraph.ZedGraphControl zedGraphControl3;
+        private ZedGraph.ZedGraphControl zedGraphControl2;
     }
 }
 

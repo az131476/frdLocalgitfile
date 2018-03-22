@@ -114,7 +114,7 @@ namespace WinformTest
         {
             int nReturnValue;
             string strText;
-            strText = "20";  //默认采样频率10
+            strText = "10";  //默认采样频率10
             float fltSampleFrequency = float.Parse(strText);
             sampleParam.m_fltSampleFrequency = fltSampleFrequency;
 
@@ -427,7 +427,7 @@ namespace WinformTest
                             pChanData[nCount] = pfltData[i * GroupChannel.m_nChannelNumber * nReceiveCount + j * nReceiveCount + nCount];
 
                             string strData = String.Format("{0:f3}", pChanData[nCount]);
-                            string time_ns = String.Format("{0:f4}", (double)nTotalDataPos / 20);
+                            string time_ns = String.Format("{0:f4}", (double)nTotalDataPos / 10);
                             AnlySampleData(strData,nTotalDataPos, time_ns.ToString(), nChannelGroupID, nSelGroupID, nSelChanID,nCount,nReceiveCount);
                         }
                     }
@@ -457,19 +457,45 @@ namespace WinformTest
             //strData:-164.1896  nTotalDataPos:3158  time_ns:315.0000
             //${123.00,7849,32.5432}
             //仪器ID，通道组ID，通道组对应通道ID
-            string sendData = "$SampleData"+"{"+nChannelGroupID+","+nSelGroupID+","+nSelChanID+","+nCount+ "," + nReceiveCount+","+data+","+ nTotalDataPos+","+time_ns+"}";
-            Log.Debug.Write("  "+sendData);
 
-            SendSampleData(sendData);
-            //string[] dataStr = new string[] { strData, nTotalDataPos.ToString(), time_ns.ToString(), nChannelGroupID.ToString(), nSelGroupID.ToString(), nSelChanID.ToString(), nCount.ToString(), nReceiveCount.ToString() };
-            //data_list.AddRange(dataStr);
+            List<ArraySegment<byte>> list = new List<ArraySegment<byte>>();
+            List<ArraySegment<byte>> len_list = new List<ArraySegment<byte>>();
+            //
+            string d1 = "{" + "d1" + nChannelGroupID.ToString().Length + nChannelGroupID.ToString();
+            string d2 = "d2" + nSelGroupID.ToString().Length + nSelGroupID.ToString();
+            string d3 = "d3" + nSelChanID.ToString().Length + nSelChanID.ToString();
+            string d4 = "d4" + nCount.ToString().Length + nCount.ToString();
+            string d5 = "d5" + nReceiveCount.ToString().Length + nReceiveCount.ToString();
+            string d6 = "d6" + data.ToString().Length + data.ToString();
+            string d7 = "d7" + nTotalDataPos.ToString().Length + nTotalDataPos.ToString();
+            string d8 = "d8" + time_ns.Length + time_ns.ToString() + "}";
+            string nd = d1 + d2 + d3 + d4 + d5 + d6 + d7 + d8;
+            string n_len = "L"+nd.Length.ToString()+"N";
+
+            #region
+            byte[] nblen = Encoding.UTF8.GetBytes(n_len);
+            ArraySegment<byte> array_len = new ArraySegment<byte>(nblen);
+            ArraySegment<byte>[] arrayL_len = new ArraySegment<byte>[] { array_len };
+            len_list.AddRange(arrayL_len);
+            Log.Debug.Write("len-"+n_len);
+            SendSampleData(len_list);
+            #endregion
+
+            #region
+            byte[] nbyte = Encoding.UTF8.GetBytes(nd);
+            ArraySegment<byte> arraySegment = new ArraySegment<byte>(nbyte);
+            ArraySegment<byte>[] arrayArr = new ArraySegment<byte>[] { arraySegment };
+            list.AddRange(arrayArr);
+            Log.Debug.Write(nd);
+            SendSampleData(list);
+            #endregion
         }
         /// <summary>
         /// 发送数据
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void SendSampleData(string data)
+        private void SendSampleData(List<ArraySegment<byte>> data)
         {
             if (socket.clientIP != null)
             {

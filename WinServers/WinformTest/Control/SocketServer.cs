@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Net;
 using System.Net.Sockets;
 using System.Threading;
+using System.Collections;
 
 namespace WinformTest.Control
 {
@@ -69,7 +70,7 @@ namespace WinformTest.Control
 
                     //client显示"连接成功的"  
                     string sendmsg = "连接服务端成功！\r\n" + "本地IP:" + clientIP + "，本地端口" + clientPort.ToString();
-                    sendMsg(sendmsg);
+                    //sendMsg(sendmsg);
 
                     //客户端网络结点号  
                     string remoteEndPoint = connection.RemoteEndPoint.ToString();
@@ -95,12 +96,14 @@ namespace WinformTest.Control
                 }
             }
         }
-        public int sendMsg(string sendmsg)
+        public int sendMsg(List<ArraySegment<byte>> sendmsg)
         {
             try
             {
-                byte[] arrSendMsg = Encoding.UTF8.GetBytes(sendmsg);
-                return connection.Send(arrSendMsg);
+                //byte[] arrSendMsg = Encoding.UTF8.GetBytes(sendmsg);
+               // List<ArraySegment<byte>> list = new List<ArraySegment<byte>>();
+
+                return connection.Send(sendmsg);
             }
             catch (Exception ex)
             {
