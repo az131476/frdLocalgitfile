@@ -8,10 +8,11 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Threading;
+using DevComponents.DotNetBar;
 
 namespace WinformTest
 {
-    public partial class Form1 : Form
+    public partial class Form1 : Office2007Form
     {
         public static HardWare hardWare = new HardWare();
         private static List<Control.GroupChannel> m_listGroupChannel = new List<Control.GroupChannel>();
@@ -27,10 +28,12 @@ namespace WinformTest
         public Form1()
         {
             InitializeComponent();
+            this.EnableGlass = false;
         }
 
         private void Form1_Load(object sender, EventArgs e)
         {
+
             #region 启动socket服务,监听客户端
             socket.server();
             #endregion
@@ -472,14 +475,14 @@ namespace WinformTest
             string nd = d1 + d2 + d3 + d4 + d5 + d6 + d7 + d8;
             string n_len = "L"+nd.Length.ToString()+"N";
 
-            #region
-            byte[] nblen = Encoding.UTF8.GetBytes(n_len);
-            ArraySegment<byte> array_len = new ArraySegment<byte>(nblen);
-            ArraySegment<byte>[] arrayL_len = new ArraySegment<byte>[] { array_len };
-            len_list.AddRange(arrayL_len);
-            Log.Debug.Write("len-"+n_len);
-            SendSampleData(len_list);
-            #endregion
+            //#region
+            //byte[] nblen = Encoding.UTF8.GetBytes(n_len);
+            //ArraySegment<byte> array_len = new ArraySegment<byte>(nblen);
+            //ArraySegment<byte>[] arrayL_len = new ArraySegment<byte>[] { array_len };
+            //len_list.AddRange(arrayL_len);
+            //Log.Debug.Write("len-"+n_len);
+            //SendSampleData(len_list);
+            //#endregion
 
             #region
             byte[] nbyte = Encoding.UTF8.GetBytes(nd);
@@ -488,6 +491,10 @@ namespace WinformTest
             list.AddRange(arrayArr);
             Log.Debug.Write(nd);
             SendSampleData(list);
+            #endregion
+
+            #region 
+            
             #endregion
         }
         /// <summary>
@@ -505,6 +512,14 @@ namespace WinformTest
             {
                 Log.Debug.Write("客户端未连接");
             }
+        }
+        /// <summary>
+        /// 收到SF0请求初始参数
+        /// </summary>
+        public void SendInitData()
+        {
+
+            //sendToclient
         }
 
         private void button1_Click(object sender, EventArgs e)

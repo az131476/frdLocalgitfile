@@ -29,7 +29,6 @@ D:\gitFile\frdLocalgitfile\WindowsFormsApplication1\WindowsFormsApplication1\obj
 D:\gitFile\frdLocalgitfile\WindowsFormsApplication1\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.Form1.resources
 D:\gitFile\frdLocalgitfile\WindowsFormsApplication1\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.Properties.Resources.resources
 D:\gitFile\frdLocalgitfile\WindowsFormsApplication1\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.csproj.GenerateResource.Cache
-D:\gitFile\frdLocalgitfile\WindowsFormsApplication1\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.InitDevice.resources
 D:\gitFile\frdLocalgitfile\WindowsFormsApplication1\WindowsFormsApplication1\bin\Debug\MySql.Data.dll
 D:\gitFile\frdLocalgitfile\WindowsFormsApplication1\WindowsFormsApplication1\bin\Debug\MySql.Data.xml
 D:\gitFile\frdLocalgitfile\WindowsFormsApplication1\WindowsFormsApplication1\bin\Debug\Microsoft.ReportViewer.WinForms.dll
@@ -45,3 +44,4 @@ D:\gitFile\frdLocalgitfile\WindowsFormsApplication1\WindowsFormsApplication1\bin
 D:\gitFile\frdLocalgitfile\WindowsFormsApplication1\WindowsFormsApplication1\bin\Debug\ru\Microsoft.SqlServer.Types.resources.dll
 D:\gitFile\frdLocalgitfile\WindowsFormsApplication1\WindowsFormsApplication1\bin\Debug\zh-Hans\Microsoft.SqlServer.Types.resources.dll
 D:\gitFile\frdLocalgitfile\WindowsFormsApplication1\WindowsFormsApplication1\bin\Debug\zh-Hant\Microsoft.SqlServer.Types.resources.dll
+D:\gitFile\frdLocalgitfile\WindowsFormsApplication1\WindowsFormsApplication1\bin\Debug\DevComponents.DotNetBar.Layout.dll

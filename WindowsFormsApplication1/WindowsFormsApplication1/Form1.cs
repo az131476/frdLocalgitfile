@@ -19,6 +19,7 @@ namespace WindowsFormsApplication1
     public partial class Form1 : Office2007Form
     {
         SocketClient client = new SocketClient();
+        bool flg;
         PointPairList list = new PointPairList();
         PointPairList list2 = new PointPairList();
         LineItem myCurve;
@@ -40,23 +41,38 @@ namespace WindowsFormsApplication1
             td_socket.IsBackground = true;
             td_socket.Start();
             #endregion
-            #region 请求获取服务器初始化设备参数，并加载界面参数列表
+            #region 请求获取服务器初始化设备参数，并加载界面参数列表并保存
+
             #endregion
+            if (!flg)
+            {
+                tabItem7.Visible = false;
+                tabItem.Visible = true;
+            }
             //zedgraph
             ZedgraphShapInit();
         }
+
         private void socketConnect()
         {
-            while(true)
+            while (true)
             {
                 if (client.socketConnect())
                 {
-                    Debug.Write("connection success!");
+                    pictureBox1.ImageLocation = @"pic\success.png";
+                    pictureBox1.Visible = true;
+                    client.ClientSendMsg("SF0");
+                    flg = true;
                     break;
                 }
-                Thread.Sleep(1000);
+                else
+                {
+                    pictureBox1.ImageLocation = @"pic\error1.ico";
+                    pictureBox1.Visible = true;
+                    flg = false;
+                }
+                Thread.Sleep(300);
             }
-            
         }
         private void initCompoents()
         {
@@ -64,6 +80,13 @@ namespace WindowsFormsApplication1
              */ 
             StyleManager sytleBackGround = new StyleManager();
             sytleBackGround.ManagerStyle = eStyle.Office2010Blue;
+            tabItem.Visible = false;
+            tabItem1.Visible = false;
+            tabItem2.Visible = false;
+            tabItem3.Visible = false;
+            tabItem4.Visible = false;
+            tabItem5.Visible = false;
+            tabItem7.Text = "初始化";
 
             /*控件初始化数据
              */
@@ -112,11 +135,6 @@ namespace WindowsFormsApplication1
                     }
                 }
             }
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-            LoadData();
         }
         /// <summary>
         /// 波形测试数据
@@ -227,7 +245,97 @@ namespace WindowsFormsApplication1
             PointPair pt = curve[iPt];
             string xypoint = "横坐标:" + pt.X.ToString() + " 纵坐标:" + pt.Y.ToString();
             MessageBox.Show(xypoint);
+            this.contextMenuStrip1.Show(this, 0, 0);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
             return xypoint;
         }
+        #region 界面设置
+        private void buttonX3_Click(object sender, EventArgs e)
+        {
+            tabControl1.SelectedTabIndex = 1;
+            tabItem.Text = "波形显示";
+        }
+
+        private void buttonX4_Click(object sender, EventArgs e)
+        {
+            tabControl1.SelectedTabIndex = 2;
+            tabItem.Text = "信号处理";
+        }
+
+        private void buttonX5_Click(object sender, EventArgs e)
+        {
+            tabControl1.SelectedTabIndex = 4;
+            tabItem.Text = "风险信息";
+        }
+
+        private void buttonX6_Click(object sender, EventArgs e)
+        {
+            tabControl1.SelectedTabIndex = 0;
+            tabItem.Text = "参数配置";
+        }
+
+        private void buttonX7_Click(object sender, EventArgs e)
+        {
+            tabControl1.SelectedTabIndex = 3;
+            tabItem.Text = "存储设置";
+        }
+
+        private void buttonX8_Click(object sender, EventArgs e)
+        {
+            LoadData();
+        }
+
+        private void buttonX9_Click(object sender, EventArgs e)
+        {
+            HomeBack();
+        }
+        private void HomeBack()
+        {
+            tabControl1.SelectedTabIndex = 5;
+        }
+
+        private void buttonX2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void buttonX10_Click(object sender, EventArgs e)
+        {
+            HomeBack();
+        }
+
+        private void buttonX11_Click(object sender, EventArgs e)
+        {
+            HomeBack();
+        }
+
+        private void buttonX12_Click(object sender, EventArgs e)
+        {
+            HomeBack();
+        }
+
+        private void buttonX13_Click(object sender, EventArgs e)
+        {
+            HomeBack();
+        }
+        #endregion
     }
 }

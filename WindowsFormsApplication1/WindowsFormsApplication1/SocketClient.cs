@@ -24,7 +24,6 @@ namespace WindowsFormsApplication1
             }
             catch (Exception)
             {
-                Debug.Write("连接失败");
                 return false;
             }
             threadclient = new Thread(recv);
@@ -42,10 +41,24 @@ namespace WindowsFormsApplication1
                     #region
                     byte[] bt = new byte[128];
                     ArraySegment<byte> array_nChannelGroupId = new ArraySegment<byte>(bt);
+                    ArraySegment<byte>[] array = new ArraySegment<byte>[] {  };
                     List<ArraySegment<byte>> list = new List<ArraySegment<byte>>();
-                    list.Add(array_nChannelGroupId);
+
                     int length = socketclient.Receive(list);
+                    for (int j=0;j<length;j++)
+                    {
+                        
+                    }
                     string strRece = Encoding.UTF8.GetString(bt, 0, length);
+
+                    List<byte> listB = new List<byte>();
+                    byte[] buffer = new byte[1024];
+                    int len = socketclient.Receive(buffer);
+                    for (int i=0;i<len;i++)
+                    {
+                        listB.Add(buffer[i]);
+                    }
+
                     Debug.Write("strRece:"+strRece);
                     #endregion
                 }
@@ -67,7 +80,6 @@ namespace WindowsFormsApplication1
         {
             byte[] arrClientSendMsg = Encoding.UTF8.GetBytes(sendMsg);   
             socketclient.Send(arrClientSendMsg);    
-            Debug.Write("打印： " + GetCurrentTime() + "\r\n" + sendMsg + "\r\n\n");
         }
     }
 }
