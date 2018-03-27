@@ -34,7 +34,9 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="DevComponents.DotNetBar2, Version=14.1.0.21, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04, processorArchitecture=MSIL" />
+    <Reference Include="MySql.Data, Version=6.9.9.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL" />
     <Reference Include="System" />
+    <Reference Include="System.configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -47,6 +49,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Arithmetic\AirthmeticData.cs" />
     <Compile Include="Control\Common.cs" />
     <Compile Include="Control\DeviceConnect.cs" />
     <Compile Include="Control\GroupChannel.cs" />
@@ -55,6 +58,11 @@
     <Compile Include="Control\ShowDataEventArgs.cs" />
     <Compile Include="Control\SocketServer.cs" />
     <Compile Include="Control\stuChannelParam.cs" />
+    <Compile Include="Data\DisposeData.cs" />
+    <Compile Include="Data\MySQLPool.cs" />
+    <Compile Include="Data\OperatData.cs" />
+    <Compile Include="Data\SendData.cs" />
+    <Compile Include="Data\StorageData.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -67,6 +75,7 @@
     <Compile Include="HardWare.Designer.cs">
       <DependentUpon>HardWare.cs</DependentUpon>
     </Compile>
+    <Compile Include="Log\Biwriter.cs" />
     <Compile Include="Log\Debug.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -118,9 +127,7 @@
     </COMReference>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Arithmetic\" />
     <Folder Include="Config\" />
-    <Folder Include="Data\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

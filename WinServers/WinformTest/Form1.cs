@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Threading;
 using DevComponents.DotNetBar;
+using MySql.Data.MySqlClient;
 
 namespace WinformTest
 {
@@ -40,13 +41,14 @@ namespace WinformTest
             #region////初始化仪器
             if (!InitInterface())
             {
-                MessageBox.Show("初始化失败");
-                Log.Debug.Write("初始化失败");
+                //失败
+                pictureBox1.BackColor = Color.Red;
+                Log.Debug.WriteErr("初始化失败");
                 return;
             }
             else
             {
-                MessageBox.Show("初始化成功");
+                pictureBox1.BackColor = Color.Blue;
                 Log.Debug.Write("初始化成功");
             }
             #endregion
@@ -57,17 +59,19 @@ namespace WinformTest
             //axDHTestHardWare.WireLessChange(13124007);
             if (!Control.DeviceConnect.ConAllDevice())
             {
-                MessageBox.Show("仪器未连接!");
+
+                Log.Debug.WriteErr("仪器连接失败");
+                pictureBox2.BackColor = Color.Red;
                 return;
             }
             else
             {
-                MessageBox.Show("连接成功");
+                Log.Debug.Write("仪器连接成功");
+                pictureBox2.BackColor = Color.Blue;
             }
             #endregion
 
             #region 初始化设备参数：获取通道组数据
-            GetAllGroupMsg();//保存通道组信息
             //设置默认初始参数
             GetInitParams();
             #endregion
@@ -117,7 +121,7 @@ namespace WinformTest
         {
             int nReturnValue;
             string strText;
-            strText = "10";  //默认采样频率10
+            strText = "10"; //comboBoxEx1.SelectedItem.ToString();  //默认采样频率10
             float fltSampleFrequency = float.Parse(strText);
             sampleParam.m_fltSampleFrequency = fltSampleFrequency;
 
@@ -142,42 +146,37 @@ namespace WinformTest
         /// <summary>
         /// 获取所有通道组信息
         /// </summary>
-        public static void GetAllGroupMsg()
+        public  void GetAllGroupMsg()
         {
             ClearAllGroupChannel();
             int i = 0, j = 0;
             int nGroupCount;//Form1.GroupCount();//通道组数量-即仪器连接的数量
             hardWare.GetHardWare().GetChannelGroupCount(out nGroupCount);
-            Log.Debug.Write("nGroupCount1:" + nGroupCount);
             int nGroupChannelID, nChannelFirst, nChannelNumber, nDataType;
             string strMachineIP;
             int nReturnValue = 0;
             for (i = 0; i < nGroupCount; i++)
             {
                 Control.GroupChannel stuGroupChannel = new Control.GroupChannel();
-                Log.Debug.Write("nGroupCount-for:" + nGroupCount);
                 // 获取通道组信息
                 hardWare.GetHardWare().GetChannelGroup(i, out nGroupChannelID, out strMachineIP, out nReturnValue);
                 stuGroupChannel.m_GroupID = nGroupChannelID; //组ID
                 stuGroupChannel.m_strMachineIP = strMachineIP;//仪器IP
-                Log.Debug.Write("nGroupChannelID:" + nGroupChannelID); //0
-                Log.Debug.Write("strMachineIP:" + strMachineIP);
-                Log.Debug.Write("nReturnValue:" + nReturnValue);
 
+                textBox2.Clear();
+                textBox2.Enabled = false;
+                textBox2.Text += nGroupCount+"号机："+strMachineIP+"\r\n";
                 // 获取某台仪器的起始通道ID 0-15
                 hardWare.GetHardWare().GetChannelFirstID(nGroupChannelID, strMachineIP, out nChannelFirst);
                 stuGroupChannel.m_nChannelFirst = nChannelFirst;//0
-                Log.Debug.Write("nChannelFirst:" + nChannelFirst);//0
 
                 // 获取某台仪器的总的通道数
                 hardWare.GetHardWare().GetChannelCount(nGroupChannelID, strMachineIP, out nChannelNumber);
                 stuGroupChannel.m_nChannelNumber = nChannelNumber;
-                Log.Debug.Write("nChannelNumber:" + nChannelNumber);//16
 
                 // 获取某台仪器的数据类型
                 hardWare.GetHardWare().GetChannelGroupDataType(nGroupChannelID, strMachineIP, out nDataType);
                 stuGroupChannel.m_nDataType = nDataType; //0
-                Log.Debug.Write("nDataType:" + nDataType);
 
                 m_listGroupChannel.Add(stuGroupChannel);
 
@@ -198,10 +197,18 @@ namespace WinformTest
                     HardChannel.m_strMachineIP = strMachineIP;
                     m_listHardChannel.Add(HardChannel);
 
-                    Log.Debug.Write("nGroupChannelID:" + nGroupChannelID);//0-0
-                    Log.Debug.Write("nChannelID:" + nChannelID);//0-15
-                    Log.Debug.Write("bOnLine:" + bOnLine);//1
-                    Log.Debug.Write("nMeasureType:" + nMeasureType);//0
+                    if (bOnLine == 0)
+                    {
+                        textBox1.Clear();
+                        textBox1.Enabled = false;
+                        textBox1.Text += nChannelID + "号通道" + "\r\n"; 
+
+                        //保存到数据库
+                        string sql = "insert into all_channelgroup_message(machineID,`online`, machineIP, groupCount, returnValue, channelFirst, datatype, channelNumber, channelID, channelgroupID, measuretype,flg)";
+                        sql += "VALUES('" + nGroupCount + "', '" + bOnLine + "', '" + strMachineIP + "', '" + nGroupCount + "', '" + nReturnValue + "', '" + nChannelFirst + "', '" + nDataType + "', '" + nChannelNumber + "', '" + nChannelID + "', '" + nGroupChannelID + "', '" + nMeasureType + "','N')";
+                        Data.OperatData opear = new Data.OperatData();
+                        opear.paramsSave(sql);
+                    }
                 }
             }
             GetBufferIndex();
@@ -322,7 +329,7 @@ namespace WinformTest
         private void GetInitParams()
         {
             ///获取所有通道组信息
-            GetAllGroupMsg();
+            GetAllGroupMsg(); 
             ///通道列表
             GetChannelCombo();
             ///频率列表
@@ -359,6 +366,44 @@ namespace WinformTest
             string strFrepList = "";
             hardWare.GetHardWare().GetSampleFreqList(2, out strFrepList);
             int nFreqCount = BreakString(strFrepList, out m_listFreq, "|"); //个数
+            /// <summary>
+            /// 初始化采样频率选择列表
+            /// </summary>
+            this.comboBoxEx1.Items.Clear();
+
+            float fltCurFreq = sampleParam.m_fltSampleFrequency;
+
+            int nCount = 0;
+            int nCurSel = -1;
+            string strFreq;
+
+            //RemoveAllEvent();
+            foreach (var val in m_listFreq)
+            {
+                GetValidFloatString(val, out strFreq);//去点号
+
+                comboBoxEx1.Items.Add(strFreq);
+
+                float flt = float.Parse(strFreq);
+                if (fltCurFreq == flt)
+                {
+                    nCurSel = nCount;
+                }
+                nCount++;
+            }
+            if (nCurSel >= 0)
+            {
+                comboBoxEx1.SelectedIndex = nCurSel;
+            }
+            //ResetAllEvent();
+        }
+        public static void GetValidFloatString(string strText, out string strFloat)
+        {
+            strFloat = "";
+            if (strText.Contains('.'))
+                strFloat = strText.Substring(0, strText.LastIndexOf('.'));
+            else
+                strFloat = strText;
         }
         ///<summary>
         ///将获取的设备参数提供给客户端
@@ -432,6 +477,10 @@ namespace WinformTest
                             string strData = String.Format("{0:f3}", pChanData[nCount]);
                             string time_ns = String.Format("{0:f4}", (double)nTotalDataPos / 10);
                             AnlySampleData(strData,nTotalDataPos, time_ns.ToString(), nChannelGroupID, nSelGroupID, nSelChanID,nCount,nReceiveCount);
+
+                            string sql = "INSERT into t_base_data(equip_id,channel_id,base_datax,time,base_datay,base_dataz,totaldatapos,count) VALUES('',)";
+                            Data.OperatData opear = new Data.OperatData();
+                            opear.paramsSave(sql);
                         }
                     }
                 }
@@ -531,5 +580,16 @@ namespace WinformTest
         {
             
         }
+
+        private void labelX6_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void pictureBox2_Click(object sender, EventArgs e)
+        {
+
+        }
+        
     }
 }

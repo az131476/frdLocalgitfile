@@ -245,7 +245,7 @@ namespace WindowsFormsApplication1
             PointPair pt = curve[iPt];
             string xypoint = "横坐标:" + pt.X.ToString() + " 纵坐标:" + pt.Y.ToString();
             MessageBox.Show(xypoint);
-            this.contextMenuStrip1.Show(this, 0, 0);
+            this.contextMenuStrip1.Show(this, 1, 0);
 
 
 

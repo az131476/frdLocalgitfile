@@ -45,3 +45,4 @@ D:\gitFile\frdLocalgitfile\WindowsFormsApplication1\WindowsFormsApplication1\bin
 D:\gitFile\frdLocalgitfile\WindowsFormsApplication1\WindowsFormsApplication1\bin\Debug\zh-Hans\Microsoft.SqlServer.Types.resources.dll
 D:\gitFile\frdLocalgitfile\WindowsFormsApplication1\WindowsFormsApplication1\bin\Debug\zh-Hant\Microsoft.SqlServer.Types.resources.dll
 D:\gitFile\frdLocalgitfile\WindowsFormsApplication1\WindowsFormsApplication1\bin\Debug\DevComponents.DotNetBar.Layout.dll
+D:\gitFile\frdLocalgitfile\WindowsFormsApplication1\WindowsFormsApplication1\bin\Debug\DevComponents.TreeGX.dll

@@ -12,33 +12,24 @@ namespace WinformTest.Control
 {
     public class SocketServer
     {
-        // 创建一个和客户端通信的套接字
+
         public static Socket socketwatch = null;
         public static Socket connection = null;
         public IPAddress clientIP;
-        //定义一个集合，存储客户端信息
+
         static Dictionary<string, Socket> clientConnectionItems = new Dictionary<string, Socket> { };
 
         public void server()
         {
-            //定义一个套接字用于监听客户端发来的消息，包含三个参数（IP4寻址协议，流式连接，Tcp协议）  
-            socketwatch = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
-            //服务端发送信息需要一个IP地址和端口号  
-            IPAddress address = IPAddress.Parse("127.0.0.1");
-            //将IP地址和端口号绑定到网络节点point上  
-            IPEndPoint point = new IPEndPoint(address, 8098);
-            //此端口专门用来监听的  
-
-            //监听绑定的网络节点  
+            socketwatch = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp); 
+            IPAddress address = IPAddress.Parse("127.0.0.1");  
+            IPEndPoint point = new IPEndPoint(address, 8098);  
             socketwatch.Bind(point);
 
-            //将套接字的监听队列长度限制为20  
             socketwatch.Listen(20);
-
-            //负责监听客户端的线程:创建一个监听线程  
+ 
             Thread threadwatch = new Thread(watchconnecting);
-
-            //将窗体线程设置为与后台同步，随着主线程结束而结束  
+ 
             threadwatch.IsBackground = true;
 
             //启动线程     
@@ -48,8 +39,7 @@ namespace WinformTest.Control
         }
         //监听客户端发来的请求  
         public void watchconnecting()
-        {
-            //监听客户端发来的请求     
+        {     
             while (true)
             {
                 try
@@ -57,35 +47,27 @@ namespace WinformTest.Control
                     connection = socketwatch.Accept();
                 }
                 catch (Exception ex)
-                {
-                    //提示套接字监听异常     
+                {    
                     Log.Debug.Write("异常");
                     break;
                 }
                 try
-                {
-                    //获取客户端的IP和端口号  
+                { 
                     clientIP = (connection.RemoteEndPoint as IPEndPoint).Address;
                     int clientPort = (connection.RemoteEndPoint as IPEndPoint).Port;
-
-                    //client显示"连接成功的"  
+ 
                     string sendmsg = "连接服务端成功！\r\n" + "本地IP:" + clientIP + "，本地端口" + clientPort.ToString();
                     //sendMsg(sendmsg);
 
-                    //客户端网络结点号  
                     string remoteEndPoint = connection.RemoteEndPoint.ToString();
-                    //显示与客户端连接情况
                     Log.Debug.Write("成功与" + remoteEndPoint + "客户端建立连接！\t\n");
-                    //添加客户端信息  
                     clientConnectionItems.Add(remoteEndPoint, connection);
 
                     //IPEndPoint netpoint = new IPEndPoint(clientIP,clientPort); 
                     IPEndPoint netpoint = connection.RemoteEndPoint as IPEndPoint;
-
-                    //创建一个通信线程      
+ 
                     ParameterizedThreadStart pts = new ParameterizedThreadStart(recv);
                     Thread thread = new Thread(pts);
-                    //设置为后台线程，随着主线程退出而退出 
                     thread.IsBackground = true;
                     //启动线程     
                     thread.Start(connection);
@@ -120,15 +102,11 @@ namespace WinformTest.Control
             Socket socketServer = socketclientpara as Socket;
 
             while (true)
-            {
-                //创建一个内存缓冲区，其大小为1024*1024字节  即1M     
-                byte[] arrServerRecMsg = new byte[1024 * 1024];
-                //将接收到的信息存入到内存缓冲区，并返回其字节数组的长度    
+            {    
+                byte[] arrServerRecMsg = new byte[1024 * 1024]; 
                 try
                 {
-                    int length = socketServer.Receive(arrServerRecMsg);
-
-                    //将机器接受到的字节数组转换为字符串     
+                    int length = socketServer.Receive(arrServerRecMsg);    
                     string strSRecMsg = Encoding.UTF8.GetString(arrServerRecMsg, 0, length);
 
                     if (strSRecMsg.Substring(0, 4).Equals("$100"))

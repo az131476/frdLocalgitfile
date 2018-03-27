@@ -15,3 +15,5 @@ D:\gitFile\frdLocalgitfile\WinServers\WinformTest\obj\Debug\WinformTest.exe
 D:\gitFile\frdLocalgitfile\WinServers\WinformTest\obj\Debug\WinformTest.pdb
 D:\gitFile\frdLocalgitfile\WinServers\WinformTest\bin\Debug\DevComponents.DotNetBar2.dll
 D:\gitFile\frdLocalgitfile\WinServers\WinformTest\bin\Debug\DevComponents.DotNetBar2.xml
+D:\gitFile\frdLocalgitfile\WinServers\WinformTest\bin\Debug\MySql.Data.dll
+D:\gitFile\frdLocalgitfile\WinServers\WinformTest\bin\Debug\MySql.Data.xml
