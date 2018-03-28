@@ -78,14 +78,14 @@ namespace WinformTest.Control
                 }
             }
         }
-        public int sendMsg(List<ArraySegment<byte>> sendmsg)
+        public int sendMsg(string sendmsg)
         {
             try
             {
-                //byte[] arrSendMsg = Encoding.UTF8.GetBytes(sendmsg);
+                byte[] arrSendMsg = Encoding.UTF8.GetBytes(sendmsg);
                // List<ArraySegment<byte>> list = new List<ArraySegment<byte>>();
 
-                return connection.Send(sendmsg);
+                return connection.Send(arrSendMsg);
             }
             catch (Exception ex)
             {

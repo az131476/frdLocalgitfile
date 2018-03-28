@@ -31,5 +31,24 @@ namespace WinformTest.Data
             }
         }
         #endregion
+        public void delete(string sql)
+        {
+            MySqlConnection con = null;
+            try
+            {
+                con = new MySqlConnection(ConfigurationManager.ConnectionStrings["myStr"].ToString());
+                con.Open();
+                MySqlCommand cmd = new MySqlCommand(sql, con);
+                cmd.ExecuteNonQuery();
+            }
+            catch (Exception ex)
+            {
+                Log.Debug.WriteErr("保存数据失败，" + ex.Message);
+            }
+            finally
+            {
+                con.Close();
+            }
+        }
     }
 }

@@ -128,7 +128,7 @@ namespace ZedgraphTest
         }
         private void LoadData()
         {
-            string sql = "SELECT s,x,y,z FROM datatest limit 20";
+            string sql = "SELECT s,x,y,z FROM datatest limit 100";
             MySqlConnection con = null;
             MySqlDataReader reader = null;
             try

@@ -13,6 +13,7 @@ using DevComponents.DotNetBar.Rendering;
 using System.Threading;
 using MySql.Data.MySqlClient;
 using ZedGraph;
+using System.IO;
 
 namespace WindowsFormsApplication1
 {
@@ -20,15 +21,19 @@ namespace WindowsFormsApplication1
     {
         SocketClient client = new SocketClient();
         bool flg;
-        PointPairList list = new PointPairList();
-        PointPairList list2 = new PointPairList();
+        public PointPairList list = new PointPairList();
+        public PointPairList list2 = new PointPairList();
+        public PointPairList list3 = new PointPairList();
         LineItem myCurve;
         LineItem myCurve2;
+        LineItem myCurve3;
+        bool pflg = true;
         public Form1()
         {
             this.EnableGlass = false;
             
             InitializeComponent();
+            
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -49,7 +54,6 @@ namespace WindowsFormsApplication1
                 tabItem7.Visible = false;
                 tabItem.Visible = true;
             }
-            //zedgraph
             ZedgraphShapInit();
         }
 
@@ -59,16 +63,14 @@ namespace WindowsFormsApplication1
             {
                 if (client.socketConnect())
                 {
-                    pictureBox1.ImageLocation = @"pic\success.png";
-                    pictureBox1.Visible = true;
-                    client.ClientSendMsg("SF0");
+                    //pictureBox1.ImageLocation = @"pic\success.png";
+                    //client.ClientSendMsg("SF0");
                     flg = true;
                     break;
                 }
                 else
                 {
-                    pictureBox1.ImageLocation = @"pic\error1.ico";
-                    pictureBox1.Visible = true;
+                    //pictureBox1.ImageLocation = @"pic\error1.ico";
                     flg = false;
                 }
                 Thread.Sleep(300);
@@ -141,7 +143,8 @@ namespace WindowsFormsApplication1
         /// </summary>
         private void LoadData()
         {
-            string sql = "SELECT s,x,y,z FROM datatest limit 20";
+
+            string sql = "SELECT s,x,y,z FROM datatest limit 50";
             MySqlConnection con = null;
             MySqlDataReader reader = null;
             try
@@ -157,17 +160,19 @@ namespace WindowsFormsApplication1
                     string x0 = reader[1].ToString();
                     string y0 = reader[2].ToString();
                     string z0 = reader[3].ToString();
-                    Debug.Write("s0:" + s0);
-                    Debug.Write("x0:" + x0);
+                    
 
                     list.Add(Double.Parse(s0), double.Parse(x0));
                     list2.Add(double.Parse(s0), double.Parse(y0));
+                    list3.Add(double.Parse(s0), double.Parse(z0));
+
                     this.zedGraphControl1.AxisChange();
                     this.zedGraphControl1.Refresh();
                     this.zedGraphControl2.AxisChange();
                     this.zedGraphControl2.Refresh();
-
-                    Thread.Sleep(200);
+                    this.zedGraphControl3.AxisChange();
+                    this.zedGraphControl3.Refresh();
+                    Thread.Sleep(100);
                 }
                 #endregion
             }
@@ -183,7 +188,7 @@ namespace WindowsFormsApplication1
         ///<summary>
         ///zedgraph init 
         /// </summary>
-        private void ZedgraphShapInit()
+        public void ZedgraphShapInit()
         {
             GraphPane myPane = zedGraphControl1.GraphPane;
             myPane.Title.Text = "波形图";
@@ -212,11 +217,16 @@ namespace WindowsFormsApplication1
             zedGraphControl1.PanModifierKeys = Keys.None;//鼠标左键，随意拖动
                                                          // Move the legend location
             myPane.Legend.Position = ZedGraph.LegendPos.Top;
-            myCurve = zedGraphControl1.GraphPane.AddCurve("x", list, Color.Blue, SymbolType.Circle);
+            myCurve = zedGraphControl1.GraphPane.AddCurve("x", list, Color.Blue, SymbolType.None);
+            this.zedGraphControl1.AxisChange();
+            this.zedGraphControl1.Refresh();
+
+            zedGraphControl1.IsShowPointValues = true;
+            zedGraphControl1.PointValueEvent += new ZedGraphControl.PointValueHandler(MyPointValueHandler);
 
             GraphPane myPane2 = zedGraphControl2.GraphPane;
             myPane2.Title.Text = "";
-            myPane2.XAxis.Title.Text = "时间";
+            myPane2.XAxis.Title.Text = "";
             myPane2.YAxis.Title.Text = "采集值";
             myPane2.XAxis.Type = ZedGraph.AxisType.Linear;
 
@@ -225,12 +235,60 @@ namespace WindowsFormsApplication1
             myPane2.YAxis.MajorGrid.IsVisible = true;
             myPane2.XAxis.MajorGrid.Color = Color.LightGray;
             myPane2.YAxis.MajorGrid.Color = Color.LightGray;
+
+            //1.禁用右键菜单：
+            zedGraphControl1.IsShowContextMenu = false;
+            // 2.禁用鼠标滚轴移动：
+            zedGraphControl1.IsEnableHPan = true;//横向移动;
+            zedGraphControl1.IsEnableVPan = true; //纵向移动;
+
+            //2.禁用鼠标滚轴缩放：
+
+            zedGraphControl1.IsEnableHZoom = true; //横向缩放;
+            zedGraphControl1.IsEnableVZoom = true; //纵向缩放;
+            zedGraphControl1.ZoomStepFraction = 0.2;
+
             // Move the legend location
             myPane2.Legend.Position = ZedGraph.LegendPos.Top;
             myCurve2 = zedGraphControl2.GraphPane.AddCurve("y", list2, Color.Red, SymbolType.Circle);
+            this.zedGraphControl2.AxisChange();
+            this.zedGraphControl2.Refresh();
 
-            zedGraphControl1.IsShowPointValues = true;
-            zedGraphControl1.PointValueEvent += new ZedGraphControl.PointValueHandler(MyPointValueHandler);
+            zedGraphControl2.IsShowPointValues = true;
+            zedGraphControl2.PointValueEvent += new ZedGraphControl.PointValueHandler(MyPointValueHandler);
+
+            GraphPane myPane3 = zedGraphControl3.GraphPane;
+            myPane3.Title.Text = "";
+            myPane3.XAxis.Title.Text = "";
+            myPane3.YAxis.Title.Text = "采集值";
+            myPane3.XAxis.Type = ZedGraph.AxisType.Linear;
+
+            // Add gridlines to the plot, and make them gray
+            myPane3.XAxis.MajorGrid.IsVisible = true;
+            myPane3.YAxis.MajorGrid.IsVisible = true;
+            myPane3.XAxis.MajorGrid.Color = Color.LightGray;
+            myPane3.YAxis.MajorGrid.Color = Color.LightGray;
+
+            //1.禁用右键菜单：
+            zedGraphControl3.IsShowContextMenu = false;
+            // 2.禁用鼠标滚轴移动：
+            zedGraphControl3.IsEnableHPan = true;//横向移动;
+            zedGraphControl3.IsEnableVPan = true; //纵向移动;
+
+            //2.禁用鼠标滚轴缩放：
+
+            zedGraphControl3.IsEnableHZoom = true; //横向缩放;
+            zedGraphControl3.IsEnableVZoom = true; //纵向缩放;
+            zedGraphControl3.ZoomStepFraction = 0.2;
+            ///设置鼠标拖动
+            zedGraphControl3.PanModifierKeys = Keys.None;//鼠标左键，随意拖动
+                                                         // Move the legend location
+            myPane3.Legend.Position = ZedGraph.LegendPos.Top;
+            myCurve3 = zedGraphControl3.GraphPane.AddCurve("z", list3, Color.Blue, SymbolType.Circle);
+            this.zedGraphControl3.AxisChange();
+            this.zedGraphControl3.Refresh();
+            zedGraphControl3.IsShowPointValues = true;
+            zedGraphControl3.PointValueEvent += new ZedGraphControl.PointValueHandler(MyPointValueHandler);
         }
         /// <summary>
         /// 鼠标显示点坐标
@@ -245,26 +303,6 @@ namespace WindowsFormsApplication1
             PointPair pt = curve[iPt];
             string xypoint = "横坐标:" + pt.X.ToString() + " 纵坐标:" + pt.Y.ToString();
             MessageBox.Show(xypoint);
-            this.contextMenuStrip1.Show(this, 1, 0);
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
             return xypoint;
         }
         #region 界面设置
@@ -300,7 +338,128 @@ namespace WindowsFormsApplication1
 
         private void buttonX8_Click(object sender, EventArgs e)
         {
-            LoadData();
+            //LoadData();
+            Thread td1 = new Thread(xgraph);
+            td1.IsBackground = true;
+            td1.Start();
+
+            Thread td2 = new Thread(ygraph);
+            td2.IsBackground = true;
+            td2.Start();
+
+            Thread td3 = new Thread(zgraph);
+            td3.IsBackground = true;
+            td3.Start();
+        }
+        private void xgraph()
+        {
+            //x
+            string path = AppDomain.CurrentDomain.BaseDirectory + "\\log";
+            string filePath = path + "\\" + "d1" + ".txt";
+            if (File.Exists(filePath))
+            {
+                FileStream fs = new FileStream(filePath, FileMode.Open);
+                StreamReader sr = new StreamReader(fs, ASCIIEncoding.Default);
+                string str = string.Empty;
+                while (true)
+                {
+                    str = sr.ReadLine();
+                    if (!string.IsNullOrEmpty(str))
+                    {
+                        double s = double.Parse(str.Substring(0, str.IndexOf(',')));
+                        int len = str.IndexOf(',');
+                        str = str.Substring(len + 1, str.Length - len - 1);
+                        double y = double.Parse(str.Substring(0, str.Length));
+                        list.Add(s, y);
+                        this.zedGraphControl1.AxisChange();
+                        this.zedGraphControl1.Refresh();
+                    }
+                    else
+                    {
+                        sr.Close();
+                        fs.Close();
+                        break;
+                    }
+                    Thread.Sleep(100);
+                }
+            }
+            else
+            {
+
+            }
+        }
+        private void ygraph() {
+            //y
+
+            string path2 = AppDomain.CurrentDomain.BaseDirectory + "\\log";
+            string filePath2 = path2 + "\\" + "d2" + ".txt";
+            if (File.Exists(filePath2))
+            {
+                FileStream fs = new FileStream(filePath2, FileMode.Open);
+                StreamReader sr = new StreamReader(fs, ASCIIEncoding.Default);
+                string str = string.Empty;
+                while (true)
+                {
+                    str = sr.ReadLine();
+                    if (!string.IsNullOrEmpty(str))
+                    {
+                        double s = double.Parse(str.Substring(0, str.IndexOf(',')));
+                        int len = str.IndexOf(',');
+                        str = str.Substring(len + 1, str.Length - len - 1);
+                        double y = double.Parse(str.Substring(0, str.Length));
+                        list2.Add(s, y);
+                        this.zedGraphControl2.AxisChange();
+                        this.zedGraphControl2.Refresh();
+                    }
+                    else
+                    {
+                        sr.Close();
+                        fs.Close();
+                        break;
+                    }
+                    Thread.Sleep(100);
+                }
+            }
+            else
+            {
+
+            }
+        }
+        private void zgraph() {
+            //z
+            string path3 = AppDomain.CurrentDomain.BaseDirectory + "\\log";
+            string filePath3 = path3 + "\\" + "d3" + ".txt";
+            if (File.Exists(filePath3))
+            {
+                FileStream fs = new FileStream(filePath3, FileMode.Open);
+                StreamReader sr = new StreamReader(fs, ASCIIEncoding.Default);
+                string str = string.Empty;
+                while (true)
+                {
+                    str = sr.ReadLine();
+                    if (!string.IsNullOrEmpty(str))
+                    {
+                        double s = double.Parse(str.Substring(0, str.IndexOf(',')));
+                        int len = str.IndexOf(',');
+                        str = str.Substring(len + 1, str.Length - len - 1);
+                        double y = double.Parse(str.Substring(0, str.Length));
+                        list3.Add(s, y);
+                        this.zedGraphControl3.AxisChange();
+                        this.zedGraphControl3.Refresh();
+                    }
+                    else
+                    {
+                        sr.Close();
+                        fs.Close();
+                        break;
+                    }
+                    Thread.Sleep(100);
+                }
+            }
+            else
+            {
+
+            }
         }
 
         private void buttonX9_Click(object sender, EventArgs e)
@@ -337,5 +496,20 @@ namespace WindowsFormsApplication1
             HomeBack();
         }
         #endregion
+
+        private void pToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            pflg = false;
+        }
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            this.zedGraphControl1.AxisChange();
+            this.zedGraphControl1.Refresh();
+            this.zedGraphControl2.AxisChange();
+            this.zedGraphControl2.Refresh();
+            this.zedGraphControl3.AxisChange();
+            this.zedGraphControl3.Refresh();
+        }
     }
 }

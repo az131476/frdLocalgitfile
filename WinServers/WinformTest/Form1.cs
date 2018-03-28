@@ -26,6 +26,9 @@ namespace WinformTest
         private List<string> data_list = new List<string>();
         Control.SampleParam sampleParam = new Control.SampleParam();
         Control.SocketServer socket = new Control.SocketServer();
+        string time_ns;
+        double temp;
+        double time_last;
         public Form1()
         {
             InitializeComponent();
@@ -42,13 +45,13 @@ namespace WinformTest
             if (!InitInterface())
             {
                 //失败
-                pictureBox1.BackColor = Color.Red;
+                //pictureBox1.BackColor = Color.Red;
                 Log.Debug.WriteErr("初始化失败");
                 return;
             }
             else
             {
-                pictureBox1.BackColor = Color.Blue;
+                //pictureBox1.BackColor = Color.Blue;
                 Log.Debug.Write("初始化成功");
             }
             #endregion
@@ -61,13 +64,13 @@ namespace WinformTest
             {
 
                 Log.Debug.WriteErr("仪器连接失败");
-                pictureBox2.BackColor = Color.Red;
+                //pictureBox2.BackColor = Color.Red;
                 return;
             }
             else
             {
                 Log.Debug.Write("仪器连接成功");
-                pictureBox2.BackColor = Color.Blue;
+                //pictureBox2.BackColor = Color.Blue;
             }
             #endregion
 
@@ -98,7 +101,8 @@ namespace WinformTest
             hardWare.GetHardWare().StartSample("DH5902", 0, 1024, out nSample);
             if (nSample == 1)
             {
-                MessageBox.Show("开始采样");
+               // MessageBox.Show("开始采样");
+                
             }
             else
             {
@@ -121,7 +125,7 @@ namespace WinformTest
         {
             int nReturnValue;
             string strText;
-            strText = "10"; //comboBoxEx1.SelectedItem.ToString();  //默认采样频率10
+            strText = "20"; //comboBoxEx1.SelectedItem.ToString();  //默认采样频率10
             float fltSampleFrequency = float.Parse(strText);
             sampleParam.m_fltSampleFrequency = fltSampleFrequency;
 
@@ -207,6 +211,8 @@ namespace WinformTest
                         string sql = "insert into all_channelgroup_message(machineID,`online`, machineIP, groupCount, returnValue, channelFirst, datatype, channelNumber, channelID, channelgroupID, measuretype,flg)";
                         sql += "VALUES('" + nGroupCount + "', '" + bOnLine + "', '" + strMachineIP + "', '" + nGroupCount + "', '" + nReturnValue + "', '" + nChannelFirst + "', '" + nDataType + "', '" + nChannelNumber + "', '" + nChannelID + "', '" + nGroupChannelID + "', '" + nMeasureType + "','N')";
                         Data.OperatData opear = new Data.OperatData();
+                        string sqldel = "DELETE from all_channelgroup_message";
+                        opear.delete(sqldel);
                         opear.paramsSave(sql);
                     }
                 }
@@ -422,6 +428,7 @@ namespace WinformTest
         /// </summary>
         private void GetDataThread(object o)
         {
+           
             Form1 main = (Form1)o;
             string strChannel = "";
             int nSelGroupID, nSelChanID;
@@ -434,6 +441,9 @@ namespace WinformTest
                 int nTotalDataPos, nReceiveCount, nChnCount, nReturnValue;
                 object oChnData;
                 hardWare.GetHardWare().GetAllChnDataEx(out oChnData, out nTotalDataPos, out nReceiveCount, out nChnCount, out nReturnValue);
+                
+                
+
                 if (nReceiveCount <= 0)
                     continue;
                 float[] pfltData;
@@ -475,13 +485,16 @@ namespace WinformTest
                             pChanData[nCount] = pfltData[i * GroupChannel.m_nChannelNumber * nReceiveCount + j * nReceiveCount + nCount];
 
                             string strData = String.Format("{0:f3}", pChanData[nCount]);
-                            string time_ns = String.Format("{0:f4}", (double)nTotalDataPos / 10);
+                            time_ns = String.Format("{0:f4}", ((double)nTotalDataPos / 20)/nReceiveCount);
+                            time_ns = temp+double.Parse(time_ns) * (nCount+1)+"";
                             AnlySampleData(strData,nTotalDataPos, time_ns.ToString(), nChannelGroupID, nSelGroupID, nSelChanID,nCount,nReceiveCount);
 
-                            string sql = "INSERT into t_base_data(equip_id,channel_id,base_datax,time,base_datay,base_dataz,totaldatapos,count) VALUES('',)";
-                            Data.OperatData opear = new Data.OperatData();
-                            opear.paramsSave(sql);
+                            Log.Debug.WriteErr("channelid:"+nSelChanID+" nreceive:"+nReceiveCount+"time_ns:" +time_ns+" strdata:"+strData+" ntotal:"+nTotalDataPos);
+                            //string sql = "INSERT into t_base_data//(equip_id,channel_id,base_datax,time,base_datay,base_dataz,totaldatapos,count) VALUES('"+ //nChannelGroupID + "','"++"',)";
+                            //Data.OperatData opear = new Data.OperatData();
+                            //opear.paramsSave(sql);
                         }
+                        temp = double.Parse(time_ns) ;
                     }
                 }
                 #region 获取GPS信息
@@ -521,7 +534,7 @@ namespace WinformTest
             string d6 = "d6" + data.ToString().Length + data.ToString();
             string d7 = "d7" + nTotalDataPos.ToString().Length + nTotalDataPos.ToString();
             string d8 = "d8" + time_ns.Length + time_ns.ToString() + "}";
-            string nd = d1 + d2 + d3 + d4 + d5 + d6 + d7 + d8;
+            string nd = d1 + d3 + d6 + d8;
             string n_len = "L"+nd.Length.ToString()+"N";
 
             //#region
@@ -534,16 +547,13 @@ namespace WinformTest
             //#endregion
 
             #region
-            byte[] nbyte = Encoding.UTF8.GetBytes(nd);
-            ArraySegment<byte> arraySegment = new ArraySegment<byte>(nbyte);
-            ArraySegment<byte>[] arrayArr = new ArraySegment<byte>[] { arraySegment };
-            list.AddRange(arrayArr);
+            
             Log.Debug.Write(nd);
-            SendSampleData(list);
+            SendSampleData(nd);
             #endregion
 
             #region 
-            
+
             #endregion
         }
         /// <summary>
@@ -551,7 +561,7 @@ namespace WinformTest
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void SendSampleData(List<ArraySegment<byte>> data)
+        private void SendSampleData(string data)
         {
             if (socket.clientIP != null)
             {

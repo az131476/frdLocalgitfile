@@ -37,36 +37,37 @@
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.labelX4 = new DevComponents.DotNetBar.LabelX();
             this.groupPanel1 = new DevComponents.DotNetBar.Controls.GroupPanel();
-            this.groupPanel2 = new DevComponents.DotNetBar.Controls.GroupPanel();
-            this.progressBarX1 = new DevComponents.DotNetBar.Controls.ProgressBarX();
-            this.labelX1 = new DevComponents.DotNetBar.LabelX();
-            this.labelX5 = new DevComponents.DotNetBar.LabelX();
-            this.labelX6 = new DevComponents.DotNetBar.LabelX();
             this.buttonX1 = new DevComponents.DotNetBar.ButtonX();
-            this.comboBoxEx1 = new DevComponents.DotNetBar.Controls.ComboBoxEx();
-            this.labelX7 = new DevComponents.DotNetBar.LabelX();
-            this.labelX8 = new DevComponents.DotNetBar.LabelX();
-            this.comboBoxEx2 = new DevComponents.DotNetBar.Controls.ComboBoxEx();
-            this.comboBoxEx3 = new DevComponents.DotNetBar.Controls.ComboBoxEx();
-            this.labelX9 = new DevComponents.DotNetBar.LabelX();
-            this.labelX10 = new DevComponents.DotNetBar.LabelX();
-            this.comboBoxEx4 = new DevComponents.DotNetBar.Controls.ComboBoxEx();
-            this.labelX11 = new DevComponents.DotNetBar.LabelX();
-            this.comboBoxEx5 = new DevComponents.DotNetBar.Controls.ComboBoxEx();
-            this.labelX12 = new DevComponents.DotNetBar.LabelX();
-            this.comboBoxEx6 = new DevComponents.DotNetBar.Controls.ComboBoxEx();
-            this.richTextBoxEx3 = new DevComponents.DotNetBar.Controls.RichTextBoxEx();
-            this.richTextBoxEx4 = new DevComponents.DotNetBar.Controls.RichTextBoxEx();
-            this.richTextBoxEx5 = new DevComponents.DotNetBar.Controls.RichTextBoxEx();
-            this.richTextBoxEx6 = new DevComponents.DotNetBar.Controls.RichTextBoxEx();
-            this.richTextBoxEx7 = new DevComponents.DotNetBar.Controls.RichTextBoxEx();
-            this.labelX13 = new DevComponents.DotNetBar.LabelX();
-            this.labelX14 = new DevComponents.DotNetBar.LabelX();
-            this.labelX15 = new DevComponents.DotNetBar.LabelX();
-            this.labelX16 = new DevComponents.DotNetBar.LabelX();
-            this.labelX17 = new DevComponents.DotNetBar.LabelX();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.groupPanel2 = new DevComponents.DotNetBar.Controls.GroupPanel();
             this.textBox2 = new System.Windows.Forms.TextBox();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.labelX17 = new DevComponents.DotNetBar.LabelX();
+            this.labelX16 = new DevComponents.DotNetBar.LabelX();
+            this.labelX15 = new DevComponents.DotNetBar.LabelX();
+            this.labelX14 = new DevComponents.DotNetBar.LabelX();
+            this.labelX13 = new DevComponents.DotNetBar.LabelX();
+            this.comboBoxEx6 = new DevComponents.DotNetBar.Controls.ComboBoxEx();
+            this.labelX12 = new DevComponents.DotNetBar.LabelX();
+            this.comboBoxEx5 = new DevComponents.DotNetBar.Controls.ComboBoxEx();
+            this.labelX11 = new DevComponents.DotNetBar.LabelX();
+            this.comboBoxEx4 = new DevComponents.DotNetBar.Controls.ComboBoxEx();
+            this.labelX10 = new DevComponents.DotNetBar.LabelX();
+            this.labelX9 = new DevComponents.DotNetBar.LabelX();
+            this.comboBoxEx3 = new DevComponents.DotNetBar.Controls.ComboBoxEx();
+            this.comboBoxEx2 = new DevComponents.DotNetBar.Controls.ComboBoxEx();
+            this.labelX8 = new DevComponents.DotNetBar.LabelX();
+            this.labelX7 = new DevComponents.DotNetBar.LabelX();
+            this.comboBoxEx1 = new DevComponents.DotNetBar.Controls.ComboBoxEx();
+            this.labelX6 = new DevComponents.DotNetBar.LabelX();
+            this.labelX5 = new DevComponents.DotNetBar.LabelX();
+            this.labelX1 = new DevComponents.DotNetBar.LabelX();
+            this.progressBarX1 = new DevComponents.DotNetBar.Controls.ProgressBarX();
+            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.textBox4 = new System.Windows.Forms.TextBox();
+            this.textBox5 = new System.Windows.Forms.TextBox();
+            this.textBox6 = new System.Windows.Forms.TextBox();
+            this.textBox7 = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
@@ -190,6 +191,17 @@
             this.groupPanel1.TabIndex = 12;
             this.groupPanel1.Text = "仪器运行状态";
             // 
+            // buttonX1
+            // 
+            this.buttonX1.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.buttonX1.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
+            this.buttonX1.Location = new System.Drawing.Point(398, 148);
+            this.buttonX1.Name = "buttonX1";
+            this.buttonX1.Size = new System.Drawing.Size(67, 52);
+            this.buttonX1.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.buttonX1.TabIndex = 8;
+            this.buttonX1.Text = "刷新连接";
+            // 
             // groupPanel2
             // 
             this.groupPanel2.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
@@ -202,11 +214,6 @@
             this.groupPanel2.Controls.Add(this.labelX15);
             this.groupPanel2.Controls.Add(this.labelX14);
             this.groupPanel2.Controls.Add(this.labelX13);
-            this.groupPanel2.Controls.Add(this.richTextBoxEx7);
-            this.groupPanel2.Controls.Add(this.richTextBoxEx6);
-            this.groupPanel2.Controls.Add(this.richTextBoxEx5);
-            this.groupPanel2.Controls.Add(this.richTextBoxEx4);
-            this.groupPanel2.Controls.Add(this.richTextBoxEx3);
             this.groupPanel2.Controls.Add(this.comboBoxEx6);
             this.groupPanel2.Controls.Add(this.labelX12);
             this.groupPanel2.Controls.Add(this.comboBoxEx5);
@@ -258,41 +265,229 @@
             this.groupPanel2.TabIndex = 13;
             this.groupPanel2.Text = "1号仪器当前参数";
             // 
-            // progressBarX1
+            // textBox2
+            // 
+            this.textBox2.Location = new System.Drawing.Point(3, 32);
+            this.textBox2.Multiline = true;
+            this.textBox2.Name = "textBox2";
+            this.textBox2.Size = new System.Drawing.Size(135, 299);
+            this.textBox2.TabIndex = 30;
+            // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(243, 185);
+            this.textBox1.Multiline = true;
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(121, 146);
+            this.textBox1.TabIndex = 29;
+            // 
+            // labelX17
             // 
             // 
             // 
             // 
-            this.progressBarX1.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.progressBarX1.Location = new System.Drawing.Point(243, 98);
-            this.progressBarX1.Name = "progressBarX1";
-            this.progressBarX1.Size = new System.Drawing.Size(121, 23);
-            this.progressBarX1.TabIndex = 1;
-            this.progressBarX1.Text = "progressBarX1";
+            this.labelX17.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.labelX17.Location = new System.Drawing.Point(555, 211);
+            this.labelX17.Name = "labelX17";
+            this.labelX17.Size = new System.Drawing.Size(88, 20);
+            this.labelX17.TabIndex = 28;
+            this.labelX17.Text = "弹性模量";
             // 
-            // labelX1
-            // 
-            // 
-            // 
-            // 
-            this.labelX1.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX1.Location = new System.Drawing.Point(144, 98);
-            this.labelX1.Name = "labelX1";
-            this.labelX1.Size = new System.Drawing.Size(75, 23);
-            this.labelX1.TabIndex = 2;
-            this.labelX1.Text = "电池电量";
-            // 
-            // labelX5
+            // labelX16
             // 
             // 
             // 
             // 
-            this.labelX5.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX5.Location = new System.Drawing.Point(144, 51);
-            this.labelX5.Name = "labelX5";
-            this.labelX5.Size = new System.Drawing.Size(75, 23);
-            this.labelX5.TabIndex = 3;
-            this.labelX5.Text = "当前频率";
+            this.labelX16.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.labelX16.Location = new System.Drawing.Point(555, 185);
+            this.labelX16.Name = "labelX16";
+            this.labelX16.Size = new System.Drawing.Size(88, 20);
+            this.labelX16.TabIndex = 27;
+            this.labelX16.Text = "泊松比";
+            // 
+            // labelX15
+            // 
+            // 
+            // 
+            // 
+            this.labelX15.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.labelX15.Location = new System.Drawing.Point(555, 154);
+            this.labelX15.Name = "labelX15";
+            this.labelX15.Size = new System.Drawing.Size(88, 20);
+            this.labelX15.TabIndex = 26;
+            this.labelX15.Text = "灵敏度系数";
+            // 
+            // labelX14
+            // 
+            // 
+            // 
+            // 
+            this.labelX14.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.labelX14.Location = new System.Drawing.Point(555, 123);
+            this.labelX14.Name = "labelX14";
+            this.labelX14.Size = new System.Drawing.Size(88, 20);
+            this.labelX14.TabIndex = 25;
+            this.labelX14.Text = "导线电阻";
+            // 
+            // labelX13
+            // 
+            // 
+            // 
+            // 
+            this.labelX13.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.labelX13.Location = new System.Drawing.Point(555, 92);
+            this.labelX13.Name = "labelX13";
+            this.labelX13.Size = new System.Drawing.Size(88, 20);
+            this.labelX13.TabIndex = 24;
+            this.labelX13.Text = "应变计阻值";
+            // 
+            // comboBoxEx6
+            // 
+            this.comboBoxEx6.DisplayMember = "Text";
+            this.comboBoxEx6.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.comboBoxEx6.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.comboBoxEx6.FormattingEnabled = true;
+            this.comboBoxEx6.ItemHeight = 15;
+            this.comboBoxEx6.Location = new System.Drawing.Point(670, 59);
+            this.comboBoxEx6.Name = "comboBoxEx6";
+            this.comboBoxEx6.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.comboBoxEx6.TabIndex = 18;
+            // 
+            // labelX12
+            // 
+            // 
+            // 
+            // 
+            this.labelX12.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.labelX12.Location = new System.Drawing.Point(555, 60);
+            this.labelX12.Name = "labelX12";
+            this.labelX12.Size = new System.Drawing.Size(88, 20);
+            this.labelX12.TabIndex = 17;
+            this.labelX12.Text = "桥路方式";
+            // 
+            // comboBoxEx5
+            // 
+            this.comboBoxEx5.DisplayMember = "Text";
+            this.comboBoxEx5.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.comboBoxEx5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.comboBoxEx5.FormattingEnabled = true;
+            this.comboBoxEx5.ItemHeight = 15;
+            this.comboBoxEx5.Location = new System.Drawing.Point(670, 32);
+            this.comboBoxEx5.Name = "comboBoxEx5";
+            this.comboBoxEx5.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.comboBoxEx5.TabIndex = 16;
+            // 
+            // labelX11
+            // 
+            // 
+            // 
+            // 
+            this.labelX11.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.labelX11.Location = new System.Drawing.Point(555, 32);
+            this.labelX11.Name = "labelX11";
+            this.labelX11.Size = new System.Drawing.Size(88, 22);
+            this.labelX11.TabIndex = 15;
+            this.labelX11.Text = "应变应力类型";
+            // 
+            // comboBoxEx4
+            // 
+            this.comboBoxEx4.DisplayMember = "Text";
+            this.comboBoxEx4.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.comboBoxEx4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.comboBoxEx4.FormattingEnabled = true;
+            this.comboBoxEx4.ItemHeight = 15;
+            this.comboBoxEx4.Location = new System.Drawing.Point(670, 5);
+            this.comboBoxEx4.Name = "comboBoxEx4";
+            this.comboBoxEx4.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.comboBoxEx4.TabIndex = 14;
+            // 
+            // labelX10
+            // 
+            // 
+            // 
+            // 
+            this.labelX10.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.labelX10.Location = new System.Drawing.Point(555, 5);
+            this.labelX10.Name = "labelX10";
+            this.labelX10.Size = new System.Drawing.Size(88, 23);
+            this.labelX10.TabIndex = 13;
+            this.labelX10.Text = "测量类型";
+            // 
+            // labelX9
+            // 
+            // 
+            // 
+            // 
+            this.labelX9.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.labelX9.Location = new System.Drawing.Point(144, 200);
+            this.labelX9.Name = "labelX9";
+            this.labelX9.Size = new System.Drawing.Size(75, 23);
+            this.labelX9.TabIndex = 12;
+            this.labelX9.Text = "在线通道";
+            // 
+            // comboBoxEx3
+            // 
+            this.comboBoxEx3.DisplayMember = "Text";
+            this.comboBoxEx3.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.comboBoxEx3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.comboBoxEx3.FormattingEnabled = true;
+            this.comboBoxEx3.ItemHeight = 15;
+            this.comboBoxEx3.Location = new System.Drawing.Point(243, 149);
+            this.comboBoxEx3.Name = "comboBoxEx3";
+            this.comboBoxEx3.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.comboBoxEx3.TabIndex = 11;
+            // 
+            // comboBoxEx2
+            // 
+            this.comboBoxEx2.AutoCompleteCustomSource.AddRange(new string[] {
+            "1号机 192.168.0.102",
+            "2号机 192.168.0.103",
+            "3号机"});
+            this.comboBoxEx2.DisplayMember = "Text";
+            this.comboBoxEx2.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.comboBoxEx2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.comboBoxEx2.FormattingEnabled = true;
+            this.comboBoxEx2.ItemHeight = 15;
+            this.comboBoxEx2.Location = new System.Drawing.Point(243, 3);
+            this.comboBoxEx2.Name = "comboBoxEx2";
+            this.comboBoxEx2.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.comboBoxEx2.TabIndex = 10;
+            // 
+            // labelX8
+            // 
+            // 
+            // 
+            // 
+            this.labelX8.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.labelX8.Location = new System.Drawing.Point(144, 3);
+            this.labelX8.Name = "labelX8";
+            this.labelX8.Size = new System.Drawing.Size(75, 23);
+            this.labelX8.TabIndex = 9;
+            this.labelX8.Text = "选择仪器";
+            // 
+            // labelX7
+            // 
+            // 
+            // 
+            // 
+            this.labelX7.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.labelX7.Location = new System.Drawing.Point(144, 147);
+            this.labelX7.Name = "labelX7";
+            this.labelX7.Size = new System.Drawing.Size(75, 23);
+            this.labelX7.TabIndex = 7;
+            this.labelX7.Text = "通道列表";
+            // 
+            // comboBoxEx1
+            // 
+            this.comboBoxEx1.DisplayMember = "Text";
+            this.comboBoxEx1.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.comboBoxEx1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.comboBoxEx1.FormattingEnabled = true;
+            this.comboBoxEx1.ItemHeight = 15;
+            this.comboBoxEx1.Location = new System.Drawing.Point(243, 53);
+            this.comboBoxEx1.Name = "comboBoxEx1";
+            this.comboBoxEx1.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.comboBoxEx1.TabIndex = 6;
             // 
             // labelX6
             // 
@@ -307,321 +502,92 @@
             this.labelX6.Text = "已连接仪器";
             this.labelX6.Click += new System.EventHandler(this.labelX6_Click);
             // 
-            // buttonX1
+            // labelX5
             // 
-            this.buttonX1.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
-            this.buttonX1.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.buttonX1.Location = new System.Drawing.Point(398, 148);
-            this.buttonX1.Name = "buttonX1";
-            this.buttonX1.Size = new System.Drawing.Size(67, 52);
-            this.buttonX1.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.buttonX1.TabIndex = 8;
-            this.buttonX1.Text = "刷新连接";
             // 
-            // comboBoxEx1
             // 
-            this.comboBoxEx1.DisplayMember = "Text";
-            this.comboBoxEx1.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
-            this.comboBoxEx1.FormattingEnabled = true;
-            this.comboBoxEx1.ItemHeight = 15;
-            this.comboBoxEx1.Location = new System.Drawing.Point(243, 53);
-            this.comboBoxEx1.Name = "comboBoxEx1";
-            this.comboBoxEx1.Size = new System.Drawing.Size(121, 21);
-            this.comboBoxEx1.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.comboBoxEx1.TabIndex = 6;
             // 
-            // labelX7
+            this.labelX5.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.labelX5.Location = new System.Drawing.Point(144, 51);
+            this.labelX5.Name = "labelX5";
+            this.labelX5.Size = new System.Drawing.Size(75, 23);
+            this.labelX5.TabIndex = 3;
+            this.labelX5.Text = "当前频率";
             // 
+            // labelX1
             // 
             // 
             // 
-            this.labelX7.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX7.Location = new System.Drawing.Point(144, 147);
-            this.labelX7.Name = "labelX7";
-            this.labelX7.Size = new System.Drawing.Size(75, 23);
-            this.labelX7.TabIndex = 7;
-            this.labelX7.Text = "通道列表";
             // 
-            // labelX8
+            this.labelX1.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.labelX1.Location = new System.Drawing.Point(144, 98);
+            this.labelX1.Name = "labelX1";
+            this.labelX1.Size = new System.Drawing.Size(75, 23);
+            this.labelX1.TabIndex = 2;
+            this.labelX1.Text = "电池电量";
             // 
+            // progressBarX1
             // 
             // 
             // 
-            this.labelX8.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX8.Location = new System.Drawing.Point(144, 3);
-            this.labelX8.Name = "labelX8";
-            this.labelX8.Size = new System.Drawing.Size(75, 23);
-            this.labelX8.TabIndex = 9;
-            this.labelX8.Text = "选择仪器";
             // 
-            // comboBoxEx2
+            this.progressBarX1.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.progressBarX1.Location = new System.Drawing.Point(243, 98);
+            this.progressBarX1.Name = "progressBarX1";
+            this.progressBarX1.Size = new System.Drawing.Size(121, 23);
+            this.progressBarX1.TabIndex = 1;
+            this.progressBarX1.Text = "progressBarX1";
             // 
-            this.comboBoxEx2.AutoCompleteCustomSource.AddRange(new string[] {
-            "1号机 192.168.0.102",
-            "2号机 192.168.0.103",
-            "3号机"});
-            this.comboBoxEx2.DisplayMember = "Text";
-            this.comboBoxEx2.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
-            this.comboBoxEx2.FormattingEnabled = true;
-            this.comboBoxEx2.ItemHeight = 15;
-            this.comboBoxEx2.Location = new System.Drawing.Point(243, 3);
-            this.comboBoxEx2.Name = "comboBoxEx2";
-            this.comboBoxEx2.Size = new System.Drawing.Size(121, 21);
-            this.comboBoxEx2.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.comboBoxEx2.TabIndex = 10;
+            // textBox3
             // 
-            // comboBoxEx3
+            this.textBox3.Location = new System.Drawing.Point(672, 341);
+            this.textBox3.Name = "textBox3";
+            this.textBox3.Size = new System.Drawing.Size(118, 21);
+            this.textBox3.TabIndex = 14;
             // 
-            this.comboBoxEx3.DisplayMember = "Text";
-            this.comboBoxEx3.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
-            this.comboBoxEx3.FormattingEnabled = true;
-            this.comboBoxEx3.ItemHeight = 15;
-            this.comboBoxEx3.Location = new System.Drawing.Point(243, 149);
-            this.comboBoxEx3.Name = "comboBoxEx3";
-            this.comboBoxEx3.Size = new System.Drawing.Size(121, 21);
-            this.comboBoxEx3.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.comboBoxEx3.TabIndex = 11;
+            // contextMenuStrip1
             // 
-            // labelX9
+            this.contextMenuStrip1.Name = "contextMenuStrip1";
+            this.contextMenuStrip1.Size = new System.Drawing.Size(61, 4);
             // 
+            // textBox4
             // 
+            this.textBox4.Location = new System.Drawing.Point(672, 377);
+            this.textBox4.Name = "textBox4";
+            this.textBox4.Size = new System.Drawing.Size(118, 21);
+            this.textBox4.TabIndex = 16;
             // 
+            // textBox5
             // 
-            this.labelX9.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX9.Location = new System.Drawing.Point(144, 200);
-            this.labelX9.Name = "labelX9";
-            this.labelX9.Size = new System.Drawing.Size(75, 23);
-            this.labelX9.TabIndex = 12;
-            this.labelX9.Text = "在线通道";
+            this.textBox5.Location = new System.Drawing.Point(672, 464);
+            this.textBox5.Name = "textBox5";
+            this.textBox5.Size = new System.Drawing.Size(118, 21);
+            this.textBox5.TabIndex = 17;
             // 
-            // labelX10
+            // textBox6
             // 
+            this.textBox6.Location = new System.Drawing.Point(672, 437);
+            this.textBox6.Name = "textBox6";
+            this.textBox6.Size = new System.Drawing.Size(118, 21);
+            this.textBox6.TabIndex = 18;
             // 
+            // textBox7
             // 
-            // 
-            this.labelX10.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX10.Location = new System.Drawing.Point(555, 5);
-            this.labelX10.Name = "labelX10";
-            this.labelX10.Size = new System.Drawing.Size(88, 23);
-            this.labelX10.TabIndex = 13;
-            this.labelX10.Text = "测量类型";
-            // 
-            // comboBoxEx4
-            // 
-            this.comboBoxEx4.DisplayMember = "Text";
-            this.comboBoxEx4.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
-            this.comboBoxEx4.FormattingEnabled = true;
-            this.comboBoxEx4.ItemHeight = 15;
-            this.comboBoxEx4.Location = new System.Drawing.Point(670, 5);
-            this.comboBoxEx4.Name = "comboBoxEx4";
-            this.comboBoxEx4.Size = new System.Drawing.Size(121, 21);
-            this.comboBoxEx4.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.comboBoxEx4.TabIndex = 14;
-            // 
-            // labelX11
-            // 
-            // 
-            // 
-            // 
-            this.labelX11.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX11.Location = new System.Drawing.Point(555, 32);
-            this.labelX11.Name = "labelX11";
-            this.labelX11.Size = new System.Drawing.Size(88, 22);
-            this.labelX11.TabIndex = 15;
-            this.labelX11.Text = "应变应力类型";
-            // 
-            // comboBoxEx5
-            // 
-            this.comboBoxEx5.DisplayMember = "Text";
-            this.comboBoxEx5.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
-            this.comboBoxEx5.FormattingEnabled = true;
-            this.comboBoxEx5.ItemHeight = 15;
-            this.comboBoxEx5.Location = new System.Drawing.Point(670, 32);
-            this.comboBoxEx5.Name = "comboBoxEx5";
-            this.comboBoxEx5.Size = new System.Drawing.Size(121, 21);
-            this.comboBoxEx5.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.comboBoxEx5.TabIndex = 16;
-            // 
-            // labelX12
-            // 
-            // 
-            // 
-            // 
-            this.labelX12.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX12.Location = new System.Drawing.Point(555, 60);
-            this.labelX12.Name = "labelX12";
-            this.labelX12.Size = new System.Drawing.Size(88, 20);
-            this.labelX12.TabIndex = 17;
-            this.labelX12.Text = "桥路方式";
-            // 
-            // comboBoxEx6
-            // 
-            this.comboBoxEx6.DisplayMember = "Text";
-            this.comboBoxEx6.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
-            this.comboBoxEx6.FormattingEnabled = true;
-            this.comboBoxEx6.ItemHeight = 15;
-            this.comboBoxEx6.Location = new System.Drawing.Point(670, 59);
-            this.comboBoxEx6.Name = "comboBoxEx6";
-            this.comboBoxEx6.Size = new System.Drawing.Size(121, 21);
-            this.comboBoxEx6.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.comboBoxEx6.TabIndex = 18;
-            // 
-            // richTextBoxEx3
-            // 
-            // 
-            // 
-            // 
-            this.richTextBoxEx3.BackgroundStyle.Class = "RichTextBoxBorder";
-            this.richTextBoxEx3.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.richTextBoxEx3.Location = new System.Drawing.Point(670, 87);
-            this.richTextBoxEx3.Name = "richTextBoxEx3";
-            this.richTextBoxEx3.Rtf = "{\\rtf1\\ansi\\deff0{\\fonttbl{\\f0\\fnil\\fcharset134 \\\'cb\\\'ce\\\'cc\\\'e5;}}\r\n\\viewkind4\\u" +
-    "c1\\pard\\lang2052\\f0\\fs18 richTextBoxEx3\\par\r\n}\r\n";
-            this.richTextBoxEx3.Size = new System.Drawing.Size(121, 25);
-            this.richTextBoxEx3.TabIndex = 19;
-            this.richTextBoxEx3.Text = "richTextBoxEx3";
-            // 
-            // richTextBoxEx4
-            // 
-            // 
-            // 
-            // 
-            this.richTextBoxEx4.BackgroundStyle.Class = "RichTextBoxBorder";
-            this.richTextBoxEx4.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.richTextBoxEx4.Location = new System.Drawing.Point(670, 118);
-            this.richTextBoxEx4.Name = "richTextBoxEx4";
-            this.richTextBoxEx4.Rtf = "{\\rtf1\\ansi\\deff0{\\fonttbl{\\f0\\fnil\\fcharset134 \\\'cb\\\'ce\\\'cc\\\'e5;}}\r\n\\viewkind4\\u" +
-    "c1\\pard\\lang2052\\f0\\fs18 richTextBoxEx4\\par\r\n}\r\n";
-            this.richTextBoxEx4.Size = new System.Drawing.Size(121, 25);
-            this.richTextBoxEx4.TabIndex = 20;
-            this.richTextBoxEx4.Text = "richTextBoxEx4";
-            // 
-            // richTextBoxEx5
-            // 
-            // 
-            // 
-            // 
-            this.richTextBoxEx5.BackgroundStyle.Class = "RichTextBoxBorder";
-            this.richTextBoxEx5.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.richTextBoxEx5.Location = new System.Drawing.Point(670, 149);
-            this.richTextBoxEx5.Name = "richTextBoxEx5";
-            this.richTextBoxEx5.Rtf = "{\\rtf1\\ansi\\deff0{\\fonttbl{\\f0\\fnil\\fcharset134 \\\'cb\\\'ce\\\'cc\\\'e5;}}\r\n\\viewkind4\\u" +
-    "c1\\pard\\lang2052\\f0\\fs18 richTextBoxEx5\\par\r\n}\r\n";
-            this.richTextBoxEx5.Size = new System.Drawing.Size(121, 25);
-            this.richTextBoxEx5.TabIndex = 21;
-            this.richTextBoxEx5.Text = "richTextBoxEx5";
-            // 
-            // richTextBoxEx6
-            // 
-            // 
-            // 
-            // 
-            this.richTextBoxEx6.BackgroundStyle.Class = "RichTextBoxBorder";
-            this.richTextBoxEx6.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.richTextBoxEx6.Location = new System.Drawing.Point(670, 180);
-            this.richTextBoxEx6.Name = "richTextBoxEx6";
-            this.richTextBoxEx6.Rtf = "{\\rtf1\\ansi\\deff0{\\fonttbl{\\f0\\fnil\\fcharset134 \\\'cb\\\'ce\\\'cc\\\'e5;}}\r\n\\viewkind4\\u" +
-    "c1\\pard\\lang2052\\f0\\fs18 richTextBoxEx6\\par\r\n}\r\n";
-            this.richTextBoxEx6.Size = new System.Drawing.Size(121, 25);
-            this.richTextBoxEx6.TabIndex = 22;
-            this.richTextBoxEx6.Text = "richTextBoxEx6";
-            // 
-            // richTextBoxEx7
-            // 
-            // 
-            // 
-            // 
-            this.richTextBoxEx7.BackgroundStyle.Class = "RichTextBoxBorder";
-            this.richTextBoxEx7.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.richTextBoxEx7.Location = new System.Drawing.Point(670, 211);
-            this.richTextBoxEx7.Name = "richTextBoxEx7";
-            this.richTextBoxEx7.Rtf = "{\\rtf1\\ansi\\deff0{\\fonttbl{\\f0\\fnil\\fcharset134 \\\'cb\\\'ce\\\'cc\\\'e5;}}\r\n\\viewkind4\\u" +
-    "c1\\pard\\lang2052\\f0\\fs18 richTextBoxEx7\\par\r\n}\r\n";
-            this.richTextBoxEx7.Size = new System.Drawing.Size(121, 25);
-            this.richTextBoxEx7.TabIndex = 23;
-            this.richTextBoxEx7.Text = "richTextBoxEx7";
-            // 
-            // labelX13
-            // 
-            // 
-            // 
-            // 
-            this.labelX13.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX13.Location = new System.Drawing.Point(555, 92);
-            this.labelX13.Name = "labelX13";
-            this.labelX13.Size = new System.Drawing.Size(88, 20);
-            this.labelX13.TabIndex = 24;
-            this.labelX13.Text = "应变计阻值";
-            // 
-            // labelX14
-            // 
-            // 
-            // 
-            // 
-            this.labelX14.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX14.Location = new System.Drawing.Point(555, 123);
-            this.labelX14.Name = "labelX14";
-            this.labelX14.Size = new System.Drawing.Size(88, 20);
-            this.labelX14.TabIndex = 25;
-            this.labelX14.Text = "导线电阻";
-            // 
-            // labelX15
-            // 
-            // 
-            // 
-            // 
-            this.labelX15.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX15.Location = new System.Drawing.Point(555, 154);
-            this.labelX15.Name = "labelX15";
-            this.labelX15.Size = new System.Drawing.Size(88, 20);
-            this.labelX15.TabIndex = 26;
-            this.labelX15.Text = "灵敏度系数";
-            // 
-            // labelX16
-            // 
-            // 
-            // 
-            // 
-            this.labelX16.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX16.Location = new System.Drawing.Point(555, 185);
-            this.labelX16.Name = "labelX16";
-            this.labelX16.Size = new System.Drawing.Size(88, 20);
-            this.labelX16.TabIndex = 27;
-            this.labelX16.Text = "泊松比";
-            // 
-            // labelX17
-            // 
-            // 
-            // 
-            // 
-            this.labelX17.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX17.Location = new System.Drawing.Point(555, 211);
-            this.labelX17.Name = "labelX17";
-            this.labelX17.Size = new System.Drawing.Size(88, 20);
-            this.labelX17.TabIndex = 28;
-            this.labelX17.Text = "弹性模量";
-            // 
-            // textBox1
-            // 
-            this.textBox1.Location = new System.Drawing.Point(243, 185);
-            this.textBox1.Multiline = true;
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(121, 146);
-            this.textBox1.TabIndex = 29;
-            // 
-            // textBox2
-            // 
-            this.textBox2.Location = new System.Drawing.Point(3, 32);
-            this.textBox2.Multiline = true;
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(135, 299);
-            this.textBox2.TabIndex = 30;
+            this.textBox7.Location = new System.Drawing.Point(672, 404);
+            this.textBox7.Name = "textBox7";
+            this.textBox7.Size = new System.Drawing.Size(118, 21);
+            this.textBox7.TabIndex = 19;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(934, 624);
+            this.Controls.Add(this.textBox7);
+            this.Controls.Add(this.textBox6);
+            this.Controls.Add(this.textBox5);
+            this.Controls.Add(this.textBox4);
+            this.Controls.Add(this.textBox3);
             this.Controls.Add(this.groupPanel2);
             this.Controls.Add(this.groupPanel1);
             this.DoubleBuffered = true;
@@ -635,6 +601,7 @@
             this.groupPanel2.ResumeLayout(false);
             this.groupPanel2.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -666,17 +633,18 @@
         private DevComponents.DotNetBar.LabelX labelX15;
         private DevComponents.DotNetBar.LabelX labelX14;
         private DevComponents.DotNetBar.LabelX labelX13;
-        private DevComponents.DotNetBar.Controls.RichTextBoxEx richTextBoxEx7;
-        private DevComponents.DotNetBar.Controls.RichTextBoxEx richTextBoxEx6;
-        private DevComponents.DotNetBar.Controls.RichTextBoxEx richTextBoxEx5;
-        private DevComponents.DotNetBar.Controls.RichTextBoxEx richTextBoxEx4;
-        private DevComponents.DotNetBar.Controls.RichTextBoxEx richTextBoxEx3;
         private DevComponents.DotNetBar.Controls.ComboBoxEx comboBoxEx6;
         private DevComponents.DotNetBar.LabelX labelX12;
         private DevComponents.DotNetBar.Controls.ComboBoxEx comboBoxEx5;
         private DevComponents.DotNetBar.LabelX labelX11;
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
+        private System.Windows.Forms.TextBox textBox4;
+        private System.Windows.Forms.TextBox textBox5;
+        private System.Windows.Forms.TextBox textBox6;
+        private System.Windows.Forms.TextBox textBox7;
     }
 }
 

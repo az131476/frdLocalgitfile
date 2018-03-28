@@ -46,3 +46,16 @@ D:\gitFile\frdLocalgitfile\WindowsFormsApplication1\WindowsFormsApplication1\bin
 D:\gitFile\frdLocalgitfile\WindowsFormsApplication1\WindowsFormsApplication1\bin\Debug\zh-Hant\Microsoft.SqlServer.Types.resources.dll
 D:\gitFile\frdLocalgitfile\WindowsFormsApplication1\WindowsFormsApplication1\bin\Debug\DevComponents.DotNetBar.Layout.dll
 D:\gitFile\frdLocalgitfile\WindowsFormsApplication1\WindowsFormsApplication1\bin\Debug\DevComponents.TreeGX.dll
+F:\GitFile\frdLocalgitfile\WindowsFormsApplication1\WindowsFormsApplication1\bin\Debug\WindowsFormsApplication1.exe.config
+F:\GitFile\frdLocalgitfile\WindowsFormsApplication1\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.exe
+F:\GitFile\frdLocalgitfile\WindowsFormsApplication1\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.pdb
+F:\GitFile\frdLocalgitfile\WindowsFormsApplication1\WindowsFormsApplication1\bin\Debug\WindowsFormsApplication1.exe
+F:\GitFile\frdLocalgitfile\WindowsFormsApplication1\WindowsFormsApplication1\bin\Debug\WindowsFormsApplication1.pdb
+F:\GitFile\frdLocalgitfile\WindowsFormsApplication1\WindowsFormsApplication1\bin\Debug\MySql.Data.xml
+F:\GitFile\frdLocalgitfile\WindowsFormsApplication1\WindowsFormsApplication1\bin\Debug\zh-CHS\Microsoft.ReportViewer.WinForms.resources.dll
+F:\GitFile\frdLocalgitfile\WindowsFormsApplication1\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.csprojResolveAssemblyReference.cache
+F:\GitFile\frdLocalgitfile\WindowsFormsApplication1\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.AccessSet.resources
+F:\GitFile\frdLocalgitfile\WindowsFormsApplication1\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.ConnectSet.resources
+F:\GitFile\frdLocalgitfile\WindowsFormsApplication1\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.Form1.resources
+F:\GitFile\frdLocalgitfile\WindowsFormsApplication1\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.Properties.Resources.resources
+F:\GitFile\frdLocalgitfile\WindowsFormsApplication1\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.csproj.GenerateResource.Cache

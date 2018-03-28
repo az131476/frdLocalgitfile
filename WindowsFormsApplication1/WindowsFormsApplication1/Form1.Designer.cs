@@ -34,14 +34,48 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.tabControl1 = new DevComponents.DotNetBar.TabControl();
+            this.tabControlPanel2 = new DevComponents.DotNetBar.TabControlPanel();
+            this.panelEx3 = new DevComponents.DotNetBar.PanelEx();
+            this.buttonX11 = new DevComponents.DotNetBar.ButtonX();
+            this.buttonX8 = new DevComponents.DotNetBar.ButtonX();
+            this.zedGraphControl3 = new ZedGraph.ZedGraphControl();
+            this.zedGraphControl1 = new ZedGraph.ZedGraphControl();
+            this.zedGraphControl2 = new ZedGraph.ZedGraphControl();
+            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.printToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.pToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.playToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.setToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.replayToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.tabItem2 = new DevComponents.DotNetBar.TabItem(this.components);
+            this.tabControlPanel7 = new DevComponents.DotNetBar.TabControlPanel();
+            this.layoutControl1 = new DevComponents.DotNetBar.Layout.LayoutControl();
+            this.buttonX3 = new DevComponents.DotNetBar.ButtonX();
+            this.buttonX4 = new DevComponents.DotNetBar.ButtonX();
+            this.buttonX5 = new DevComponents.DotNetBar.ButtonX();
+            this.buttonX6 = new DevComponents.DotNetBar.ButtonX();
+            this.buttonX7 = new DevComponents.DotNetBar.ButtonX();
+            this.buttonX2 = new DevComponents.DotNetBar.ButtonX();
+            this.layoutControlItem2 = new DevComponents.DotNetBar.Layout.LayoutControlItem();
+            this.layoutControlItem3 = new DevComponents.DotNetBar.Layout.LayoutControlItem();
+            this.layoutControlItem4 = new DevComponents.DotNetBar.Layout.LayoutControlItem();
+            this.layoutControlItem5 = new DevComponents.DotNetBar.Layout.LayoutControlItem();
+            this.layoutControlItem6 = new DevComponents.DotNetBar.Layout.LayoutControlItem();
+            this.layoutControlItem1 = new DevComponents.DotNetBar.Layout.LayoutControlItem();
+            this.tabItem = new DevComponents.DotNetBar.TabItem(this.components);
+            this.tabControlPanel5 = new DevComponents.DotNetBar.TabControlPanel();
+            this.buttonX12 = new DevComponents.DotNetBar.ButtonX();
+            this.tabItem5 = new DevComponents.DotNetBar.TabItem(this.components);
             this.tabControlPanel4 = new DevComponents.DotNetBar.TabControlPanel();
-            this.richTextBoxEx1 = new DevComponents.DotNetBar.Controls.RichTextBoxEx();
             this.buttonX10 = new DevComponents.DotNetBar.ButtonX();
             this.menuStrip2 = new System.Windows.Forms.MenuStrip();
             this.保存ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.保存到当前路径ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.另存为ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tabItem4 = new DevComponents.DotNetBar.TabItem(this.components);
+            this.tabControlPanel3 = new DevComponents.DotNetBar.TabControlPanel();
+            this.buttonX9 = new DevComponents.DotNetBar.ButtonX();
+            this.tabItem3 = new DevComponents.DotNetBar.TabItem(this.components);
             this.tabControlPanel1 = new DevComponents.DotNetBar.TabControlPanel();
             this.panelEx1 = new DevComponents.DotNetBar.PanelEx();
             this.buttonX13 = new DevComponents.DotNetBar.ButtonX();
@@ -70,48 +104,21 @@
             this.labelX6 = new DevComponents.DotNetBar.LabelX();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.tabItem7 = new DevComponents.DotNetBar.TabItem(this.components);
-            this.tabControlPanel7 = new DevComponents.DotNetBar.TabControlPanel();
-            this.layoutControl1 = new DevComponents.DotNetBar.Layout.LayoutControl();
-            this.buttonX3 = new DevComponents.DotNetBar.ButtonX();
-            this.buttonX4 = new DevComponents.DotNetBar.ButtonX();
-            this.buttonX5 = new DevComponents.DotNetBar.ButtonX();
-            this.buttonX6 = new DevComponents.DotNetBar.ButtonX();
-            this.buttonX7 = new DevComponents.DotNetBar.ButtonX();
-            this.buttonX2 = new DevComponents.DotNetBar.ButtonX();
-            this.layoutControlItem2 = new DevComponents.DotNetBar.Layout.LayoutControlItem();
-            this.layoutControlItem3 = new DevComponents.DotNetBar.Layout.LayoutControlItem();
-            this.layoutControlItem4 = new DevComponents.DotNetBar.Layout.LayoutControlItem();
-            this.layoutControlItem5 = new DevComponents.DotNetBar.Layout.LayoutControlItem();
-            this.layoutControlItem6 = new DevComponents.DotNetBar.Layout.LayoutControlItem();
-            this.layoutControlItem1 = new DevComponents.DotNetBar.Layout.LayoutControlItem();
-            this.tabItem = new DevComponents.DotNetBar.TabItem(this.components);
-            this.tabControlPanel5 = new DevComponents.DotNetBar.TabControlPanel();
-            this.buttonX12 = new DevComponents.DotNetBar.ButtonX();
-            this.tabItem5 = new DevComponents.DotNetBar.TabItem(this.components);
-            this.tabControlPanel3 = new DevComponents.DotNetBar.TabControlPanel();
-            this.buttonX9 = new DevComponents.DotNetBar.ButtonX();
-            this.tabItem3 = new DevComponents.DotNetBar.TabItem(this.components);
-            this.tabControlPanel2 = new DevComponents.DotNetBar.TabControlPanel();
-            this.panelEx3 = new DevComponents.DotNetBar.PanelEx();
-            this.buttonX11 = new DevComponents.DotNetBar.ButtonX();
-            this.buttonX8 = new DevComponents.DotNetBar.ButtonX();
-            this.zedGraphControl3 = new ZedGraph.ZedGraphControl();
-            this.zedGraphControl1 = new ZedGraph.ZedGraphControl();
-            this.zedGraphControl2 = new ZedGraph.ZedGraphControl();
-            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
-            this.printToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.pToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.playToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.setToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.tabItem2 = new DevComponents.DotNetBar.TabItem(this.components);
             this.buttonX1 = new DevComponents.DotNetBar.ButtonX();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.ddToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.replayToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.tabControl1)).BeginInit();
             this.tabControl1.SuspendLayout();
+            this.tabControlPanel2.SuspendLayout();
+            this.panelEx3.SuspendLayout();
+            this.menuStrip1.SuspendLayout();
+            this.tabControlPanel7.SuspendLayout();
+            this.layoutControl1.SuspendLayout();
+            this.tabControlPanel5.SuspendLayout();
             this.tabControlPanel4.SuspendLayout();
             this.menuStrip2.SuspendLayout();
+            this.tabControlPanel3.SuspendLayout();
             this.tabControlPanel1.SuspendLayout();
             this.panelEx1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewX1)).BeginInit();
@@ -120,13 +127,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
-            this.tabControlPanel7.SuspendLayout();
-            this.layoutControl1.SuspendLayout();
-            this.tabControlPanel5.SuspendLayout();
-            this.tabControlPanel3.SuspendLayout();
-            this.tabControlPanel2.SuspendLayout();
-            this.panelEx3.SuspendLayout();
-            this.menuStrip1.SuspendLayout();
             this.contextMenuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -135,12 +135,12 @@
             this.tabControl1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(194)))), ((int)(((byte)(217)))), ((int)(((byte)(247)))));
             this.tabControl1.CanReorderTabs = true;
             this.tabControl1.Controls.Add(this.tabControlPanel2);
-            this.tabControl1.Controls.Add(this.tabControlPanel4);
+            this.tabControl1.Controls.Add(this.tabControlPanel3);
+            this.tabControl1.Controls.Add(this.tabControlPanel1);
             this.tabControl1.Controls.Add(this.tabControlPanel7);
             this.tabControl1.Controls.Add(this.tabControlPanel5);
+            this.tabControl1.Controls.Add(this.tabControlPanel4);
             this.tabControl1.Controls.Add(this.tabControlPanel8);
-            this.tabControl1.Controls.Add(this.tabControlPanel1);
-            this.tabControl1.Controls.Add(this.tabControlPanel3);
             this.tabControl1.Location = new System.Drawing.Point(2, 1);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedTabFont = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Bold);
@@ -157,9 +157,393 @@
             this.tabControl1.Tabs.Add(this.tabItem7);
             this.tabControl1.Text = "tabControl1";
             // 
+            // tabControlPanel2
+            // 
+            this.tabControlPanel2.Controls.Add(this.panelEx3);
+            this.tabControlPanel2.DisabledBackColor = System.Drawing.Color.Empty;
+            this.tabControlPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tabControlPanel2.Location = new System.Drawing.Point(0, 26);
+            this.tabControlPanel2.Name = "tabControlPanel2";
+            this.tabControlPanel2.Padding = new System.Windows.Forms.Padding(1);
+            this.tabControlPanel2.Size = new System.Drawing.Size(1251, 683);
+            this.tabControlPanel2.Style.BackColor1.Color = System.Drawing.Color.FromArgb(((int)(((byte)(142)))), ((int)(((byte)(179)))), ((int)(((byte)(231)))));
+            this.tabControlPanel2.Style.BackColor2.Color = System.Drawing.Color.FromArgb(((int)(((byte)(223)))), ((int)(((byte)(237)))), ((int)(((byte)(254)))));
+            this.tabControlPanel2.Style.Border = DevComponents.DotNetBar.eBorderType.SingleLine;
+            this.tabControlPanel2.Style.BorderColor.Color = System.Drawing.Color.FromArgb(((int)(((byte)(59)))), ((int)(((byte)(97)))), ((int)(((byte)(156)))));
+            this.tabControlPanel2.Style.BorderSide = ((DevComponents.DotNetBar.eBorderSide)(((DevComponents.DotNetBar.eBorderSide.Left | DevComponents.DotNetBar.eBorderSide.Right) 
+            | DevComponents.DotNetBar.eBorderSide.Bottom)));
+            this.tabControlPanel2.Style.GradientAngle = 90;
+            this.tabControlPanel2.TabIndex = 5;
+            this.tabControlPanel2.TabItem = this.tabItem2;
+            // 
+            // panelEx3
+            // 
+            this.panelEx3.CanvasColor = System.Drawing.SystemColors.Control;
+            this.panelEx3.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.panelEx3.Controls.Add(this.buttonX11);
+            this.panelEx3.Controls.Add(this.buttonX8);
+            this.panelEx3.Controls.Add(this.zedGraphControl3);
+            this.panelEx3.Controls.Add(this.zedGraphControl1);
+            this.panelEx3.Controls.Add(this.zedGraphControl2);
+            this.panelEx3.Controls.Add(this.menuStrip1);
+            this.panelEx3.DisabledBackColor = System.Drawing.Color.Empty;
+            this.panelEx3.Location = new System.Drawing.Point(4, 0);
+            this.panelEx3.Name = "panelEx3";
+            this.panelEx3.Size = new System.Drawing.Size(1237, 679);
+            this.panelEx3.Style.Alignment = System.Drawing.StringAlignment.Center;
+            this.panelEx3.Style.BackColor1.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground;
+            this.panelEx3.Style.BackColor2.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground2;
+            this.panelEx3.Style.Border = DevComponents.DotNetBar.eBorderType.SingleLine;
+            this.panelEx3.Style.BorderColor.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBorder;
+            this.panelEx3.Style.ForeColor.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelText;
+            this.panelEx3.Style.GradientAngle = 90;
+            this.panelEx3.TabIndex = 11;
+            // 
+            // buttonX11
+            // 
+            this.buttonX11.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.buttonX11.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
+            this.buttonX11.Location = new System.Drawing.Point(1140, 625);
+            this.buttonX11.Name = "buttonX11";
+            this.buttonX11.Size = new System.Drawing.Size(75, 45);
+            this.buttonX11.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.buttonX11.TabIndex = 10;
+            this.buttonX11.Text = "back";
+            this.buttonX11.Click += new System.EventHandler(this.buttonX11_Click);
+            // 
+            // buttonX8
+            // 
+            this.buttonX8.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.buttonX8.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
+            this.buttonX8.Location = new System.Drawing.Point(1140, 574);
+            this.buttonX8.Name = "buttonX8";
+            this.buttonX8.Size = new System.Drawing.Size(75, 45);
+            this.buttonX8.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.buttonX8.TabIndex = 8;
+            this.buttonX8.Text = "load";
+            this.buttonX8.Click += new System.EventHandler(this.buttonX8_Click);
+            // 
+            // zedGraphControl3
+            // 
+            this.zedGraphControl3.Location = new System.Drawing.Point(6, 457);
+            this.zedGraphControl3.Name = "zedGraphControl3";
+            this.zedGraphControl3.PanModifierKeys = System.Windows.Forms.Keys.None;
+            this.zedGraphControl3.ScrollGrace = 0D;
+            this.zedGraphControl3.ScrollMaxX = 0D;
+            this.zedGraphControl3.ScrollMaxY = 0D;
+            this.zedGraphControl3.ScrollMaxY2 = 0D;
+            this.zedGraphControl3.ScrollMinX = 0D;
+            this.zedGraphControl3.ScrollMinY = 0D;
+            this.zedGraphControl3.ScrollMinY2 = 0D;
+            this.zedGraphControl3.Size = new System.Drawing.Size(1111, 219);
+            this.zedGraphControl3.TabIndex = 7;
+            // 
+            // zedGraphControl1
+            // 
+            this.zedGraphControl1.Location = new System.Drawing.Point(6, 28);
+            this.zedGraphControl1.Name = "zedGraphControl1";
+            this.zedGraphControl1.PanModifierKeys = System.Windows.Forms.Keys.None;
+            this.zedGraphControl1.ScrollGrace = 0D;
+            this.zedGraphControl1.ScrollMaxX = 0D;
+            this.zedGraphControl1.ScrollMaxY = 0D;
+            this.zedGraphControl1.ScrollMaxY2 = 0D;
+            this.zedGraphControl1.ScrollMinX = 0D;
+            this.zedGraphControl1.ScrollMinY = 0D;
+            this.zedGraphControl1.ScrollMinY2 = 0D;
+            this.zedGraphControl1.Size = new System.Drawing.Size(1111, 213);
+            this.zedGraphControl1.TabIndex = 3;
+            // 
+            // zedGraphControl2
+            // 
+            this.zedGraphControl2.Location = new System.Drawing.Point(6, 237);
+            this.zedGraphControl2.Name = "zedGraphControl2";
+            this.zedGraphControl2.PanModifierKeys = System.Windows.Forms.Keys.None;
+            this.zedGraphControl2.ScrollGrace = 0D;
+            this.zedGraphControl2.ScrollMaxX = 0D;
+            this.zedGraphControl2.ScrollMaxY = 0D;
+            this.zedGraphControl2.ScrollMaxY2 = 0D;
+            this.zedGraphControl2.ScrollMinX = 0D;
+            this.zedGraphControl2.ScrollMinY = 0D;
+            this.zedGraphControl2.ScrollMinY2 = 0D;
+            this.zedGraphControl2.Size = new System.Drawing.Size(1111, 223);
+            this.zedGraphControl2.TabIndex = 6;
+            // 
+            // menuStrip1
+            // 
+            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.printToolStripMenuItem,
+            this.pToolStripMenuItem,
+            this.playToolStripMenuItem,
+            this.setToolStripMenuItem,
+            this.replayToolStripMenuItem});
+            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
+            this.menuStrip1.Name = "menuStrip1";
+            this.menuStrip1.Size = new System.Drawing.Size(1237, 25);
+            this.menuStrip1.TabIndex = 9;
+            this.menuStrip1.Text = "menuStrip1";
+            // 
+            // printToolStripMenuItem
+            // 
+            this.printToolStripMenuItem.Name = "printToolStripMenuItem";
+            this.printToolStripMenuItem.Size = new System.Drawing.Size(47, 21);
+            this.printToolStripMenuItem.Text = "print";
+            // 
+            // pToolStripMenuItem
+            // 
+            this.pToolStripMenuItem.Name = "pToolStripMenuItem";
+            this.pToolStripMenuItem.Size = new System.Drawing.Size(55, 21);
+            this.pToolStripMenuItem.Text = "pause";
+            this.pToolStripMenuItem.Click += new System.EventHandler(this.pToolStripMenuItem_Click);
+            // 
+            // playToolStripMenuItem
+            // 
+            this.playToolStripMenuItem.Name = "playToolStripMenuItem";
+            this.playToolStripMenuItem.Size = new System.Drawing.Size(44, 21);
+            this.playToolStripMenuItem.Text = "play";
+            // 
+            // setToolStripMenuItem
+            // 
+            this.setToolStripMenuItem.Name = "setToolStripMenuItem";
+            this.setToolStripMenuItem.Size = new System.Drawing.Size(37, 21);
+            this.setToolStripMenuItem.Text = "set";
+            // 
+            // replayToolStripMenuItem
+            // 
+            this.replayToolStripMenuItem.Name = "replayToolStripMenuItem";
+            this.replayToolStripMenuItem.Size = new System.Drawing.Size(56, 21);
+            this.replayToolStripMenuItem.Text = "replay";
+            // 
+            // tabItem2
+            // 
+            this.tabItem2.AttachedControl = this.tabControlPanel2;
+            this.tabItem2.Name = "tabItem2";
+            this.tabItem2.Text = "波形显示";
+            // 
+            // tabControlPanel7
+            // 
+            this.tabControlPanel7.Controls.Add(this.layoutControl1);
+            this.tabControlPanel7.DisabledBackColor = System.Drawing.Color.Empty;
+            this.tabControlPanel7.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tabControlPanel7.Location = new System.Drawing.Point(0, 26);
+            this.tabControlPanel7.Name = "tabControlPanel7";
+            this.tabControlPanel7.Padding = new System.Windows.Forms.Padding(1);
+            this.tabControlPanel7.Size = new System.Drawing.Size(1251, 683);
+            this.tabControlPanel7.Style.BackColor1.Color = System.Drawing.Color.FromArgb(((int)(((byte)(142)))), ((int)(((byte)(179)))), ((int)(((byte)(231)))));
+            this.tabControlPanel7.Style.BackColor2.Color = System.Drawing.Color.FromArgb(((int)(((byte)(223)))), ((int)(((byte)(237)))), ((int)(((byte)(254)))));
+            this.tabControlPanel7.Style.Border = DevComponents.DotNetBar.eBorderType.SingleLine;
+            this.tabControlPanel7.Style.BorderColor.Color = System.Drawing.Color.FromArgb(((int)(((byte)(59)))), ((int)(((byte)(97)))), ((int)(((byte)(156)))));
+            this.tabControlPanel7.Style.BorderSide = ((DevComponents.DotNetBar.eBorderSide)(((DevComponents.DotNetBar.eBorderSide.Left | DevComponents.DotNetBar.eBorderSide.Right) 
+            | DevComponents.DotNetBar.eBorderSide.Bottom)));
+            this.tabControlPanel7.Style.GradientAngle = 90;
+            this.tabControlPanel7.TabIndex = 24;
+            this.tabControlPanel7.TabItem = this.tabItem;
+            // 
+            // layoutControl1
+            // 
+            this.layoutControl1.Controls.Add(this.buttonX3);
+            this.layoutControl1.Controls.Add(this.buttonX4);
+            this.layoutControl1.Controls.Add(this.buttonX5);
+            this.layoutControl1.Controls.Add(this.buttonX6);
+            this.layoutControl1.Controls.Add(this.buttonX7);
+            this.layoutControl1.Controls.Add(this.buttonX2);
+            this.layoutControl1.Location = new System.Drawing.Point(4, 0);
+            this.layoutControl1.Name = "layoutControl1";
+            // 
+            // 
+            // 
+            this.layoutControl1.RootGroup.Items.AddRange(new DevComponents.DotNetBar.Layout.LayoutItemBase[] {
+            this.layoutControlItem2,
+            this.layoutControlItem3,
+            this.layoutControlItem4,
+            this.layoutControlItem5,
+            this.layoutControlItem6,
+            this.layoutControlItem1});
+            this.layoutControl1.Size = new System.Drawing.Size(1233, 652);
+            this.layoutControl1.TabIndex = 2;
+            // 
+            // buttonX3
+            // 
+            this.buttonX3.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.buttonX3.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.buttonX3.ColorTable = DevComponents.DotNetBar.eButtonColor.Flat;
+            this.buttonX3.Font = new System.Drawing.Font("宋体", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.buttonX3.Location = new System.Drawing.Point(4, 4);
+            this.buttonX3.Margin = new System.Windows.Forms.Padding(0);
+            this.buttonX3.Name = "buttonX3";
+            this.buttonX3.Size = new System.Drawing.Size(403, 316);
+            this.buttonX3.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.buttonX3.TabIndex = 0;
+            this.buttonX3.Text = "波形展示";
+            this.buttonX3.Click += new System.EventHandler(this.buttonX3_Click);
+            // 
+            // buttonX4
+            // 
+            this.buttonX4.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.buttonX4.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.buttonX4.ColorTable = DevComponents.DotNetBar.eButtonColor.Flat;
+            this.buttonX4.Font = new System.Drawing.Font("宋体", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.buttonX4.Location = new System.Drawing.Point(415, 4);
+            this.buttonX4.Margin = new System.Windows.Forms.Padding(0);
+            this.buttonX4.Name = "buttonX4";
+            this.buttonX4.Size = new System.Drawing.Size(403, 316);
+            this.buttonX4.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.buttonX4.TabIndex = 1;
+            this.buttonX4.Text = "信号处理";
+            this.buttonX4.Click += new System.EventHandler(this.buttonX4_Click);
+            // 
+            // buttonX5
+            // 
+            this.buttonX5.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.buttonX5.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.buttonX5.ColorTable = DevComponents.DotNetBar.eButtonColor.Flat;
+            this.buttonX5.Font = new System.Drawing.Font("宋体", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.buttonX5.Location = new System.Drawing.Point(826, 4);
+            this.buttonX5.Margin = new System.Windows.Forms.Padding(0);
+            this.buttonX5.Name = "buttonX5";
+            this.buttonX5.Size = new System.Drawing.Size(403, 316);
+            this.buttonX5.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.buttonX5.TabIndex = 2;
+            this.buttonX5.Text = "风险信息";
+            this.buttonX5.Click += new System.EventHandler(this.buttonX5_Click);
+            // 
+            // buttonX6
+            // 
+            this.buttonX6.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.buttonX6.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.buttonX6.ColorTable = DevComponents.DotNetBar.eButtonColor.Flat;
+            this.buttonX6.Font = new System.Drawing.Font("宋体", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.buttonX6.Location = new System.Drawing.Point(4, 328);
+            this.buttonX6.Margin = new System.Windows.Forms.Padding(0);
+            this.buttonX6.Name = "buttonX6";
+            this.buttonX6.Size = new System.Drawing.Size(403, 316);
+            this.buttonX6.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.buttonX6.TabIndex = 3;
+            this.buttonX6.Text = "配置参数";
+            this.buttonX6.Click += new System.EventHandler(this.buttonX6_Click);
+            // 
+            // buttonX7
+            // 
+            this.buttonX7.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.buttonX7.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.buttonX7.ColorTable = DevComponents.DotNetBar.eButtonColor.Flat;
+            this.buttonX7.Font = new System.Drawing.Font("宋体", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.buttonX7.Location = new System.Drawing.Point(415, 328);
+            this.buttonX7.Margin = new System.Windows.Forms.Padding(0);
+            this.buttonX7.Name = "buttonX7";
+            this.buttonX7.Size = new System.Drawing.Size(403, 316);
+            this.buttonX7.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.buttonX7.TabIndex = 4;
+            this.buttonX7.Text = "存储设置";
+            this.buttonX7.Click += new System.EventHandler(this.buttonX7_Click);
+            // 
+            // buttonX2
+            // 
+            this.buttonX2.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.buttonX2.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.buttonX2.ColorTable = DevComponents.DotNetBar.eButtonColor.Flat;
+            this.buttonX2.Font = new System.Drawing.Font("宋体", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.buttonX2.Location = new System.Drawing.Point(826, 328);
+            this.buttonX2.Margin = new System.Windows.Forms.Padding(0);
+            this.buttonX2.Name = "buttonX2";
+            this.buttonX2.Size = new System.Drawing.Size(403, 316);
+            this.buttonX2.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.buttonX2.TabIndex = 5;
+            this.buttonX2.Text = "风格";
+            this.buttonX2.Click += new System.EventHandler(this.buttonX2_Click);
+            // 
+            // layoutControlItem2
+            // 
+            this.layoutControlItem2.Control = this.buttonX3;
+            this.layoutControlItem2.Height = 324;
+            this.layoutControlItem2.MinSize = new System.Drawing.Size(32, 20);
+            this.layoutControlItem2.Name = "layoutControlItem2";
+            this.layoutControlItem2.Width = 411;
+            // 
+            // layoutControlItem3
+            // 
+            this.layoutControlItem3.Control = this.buttonX4;
+            this.layoutControlItem3.Height = 324;
+            this.layoutControlItem3.MinSize = new System.Drawing.Size(32, 20);
+            this.layoutControlItem3.Name = "layoutControlItem3";
+            this.layoutControlItem3.Width = 411;
+            // 
+            // layoutControlItem4
+            // 
+            this.layoutControlItem4.Control = this.buttonX5;
+            this.layoutControlItem4.Height = 324;
+            this.layoutControlItem4.MinSize = new System.Drawing.Size(32, 20);
+            this.layoutControlItem4.Name = "layoutControlItem4";
+            this.layoutControlItem4.Width = 411;
+            // 
+            // layoutControlItem5
+            // 
+            this.layoutControlItem5.Control = this.buttonX6;
+            this.layoutControlItem5.Height = 324;
+            this.layoutControlItem5.MinSize = new System.Drawing.Size(32, 20);
+            this.layoutControlItem5.Name = "layoutControlItem5";
+            this.layoutControlItem5.Width = 411;
+            // 
+            // layoutControlItem6
+            // 
+            this.layoutControlItem6.Control = this.buttonX7;
+            this.layoutControlItem6.Height = 324;
+            this.layoutControlItem6.MinSize = new System.Drawing.Size(32, 20);
+            this.layoutControlItem6.Name = "layoutControlItem6";
+            this.layoutControlItem6.Width = 411;
+            // 
+            // layoutControlItem1
+            // 
+            this.layoutControlItem1.Control = this.buttonX2;
+            this.layoutControlItem1.Height = 324;
+            this.layoutControlItem1.MinSize = new System.Drawing.Size(32, 20);
+            this.layoutControlItem1.Name = "layoutControlItem1";
+            this.layoutControlItem1.Width = 411;
+            // 
+            // tabItem
+            // 
+            this.tabItem.AttachedControl = this.tabControlPanel7;
+            this.tabItem.Name = "tabItem";
+            this.tabItem.Text = "仪器管理系统";
+            // 
+            // tabControlPanel5
+            // 
+            this.tabControlPanel5.Controls.Add(this.buttonX12);
+            this.tabControlPanel5.DisabledBackColor = System.Drawing.Color.Empty;
+            this.tabControlPanel5.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tabControlPanel5.Location = new System.Drawing.Point(0, 26);
+            this.tabControlPanel5.Name = "tabControlPanel5";
+            this.tabControlPanel5.Padding = new System.Windows.Forms.Padding(1);
+            this.tabControlPanel5.Size = new System.Drawing.Size(1251, 683);
+            this.tabControlPanel5.Style.BackColor1.Color = System.Drawing.Color.FromArgb(((int)(((byte)(142)))), ((int)(((byte)(179)))), ((int)(((byte)(231)))));
+            this.tabControlPanel5.Style.BackColor2.Color = System.Drawing.Color.FromArgb(((int)(((byte)(223)))), ((int)(((byte)(237)))), ((int)(((byte)(254)))));
+            this.tabControlPanel5.Style.Border = DevComponents.DotNetBar.eBorderType.SingleLine;
+            this.tabControlPanel5.Style.BorderColor.Color = System.Drawing.Color.FromArgb(((int)(((byte)(59)))), ((int)(((byte)(97)))), ((int)(((byte)(156)))));
+            this.tabControlPanel5.Style.BorderSide = ((DevComponents.DotNetBar.eBorderSide)(((DevComponents.DotNetBar.eBorderSide.Left | DevComponents.DotNetBar.eBorderSide.Right) 
+            | DevComponents.DotNetBar.eBorderSide.Bottom)));
+            this.tabControlPanel5.Style.GradientAngle = 90;
+            this.tabControlPanel5.TabIndex = 17;
+            this.tabControlPanel5.TabItem = this.tabItem5;
+            // 
+            // buttonX12
+            // 
+            this.buttonX12.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.buttonX12.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
+            this.buttonX12.Location = new System.Drawing.Point(10, 4);
+            this.buttonX12.Name = "buttonX12";
+            this.buttonX12.Size = new System.Drawing.Size(108, 45);
+            this.buttonX12.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.buttonX12.TabIndex = 5;
+            this.buttonX12.Text = "back";
+            this.buttonX12.Click += new System.EventHandler(this.buttonX12_Click);
+            // 
+            // tabItem5
+            // 
+            this.tabItem5.AttachedControl = this.tabControlPanel5;
+            this.tabItem5.Name = "tabItem5";
+            this.tabItem5.Text = "风险信息";
+            // 
             // tabControlPanel4
             // 
-            this.tabControlPanel4.Controls.Add(this.richTextBoxEx1);
             this.tabControlPanel4.Controls.Add(this.buttonX10);
             this.tabControlPanel4.Controls.Add(this.menuStrip2);
             this.tabControlPanel4.DisabledBackColor = System.Drawing.Color.Empty;
@@ -177,21 +561,6 @@
             this.tabControlPanel4.Style.GradientAngle = 90;
             this.tabControlPanel4.TabIndex = 13;
             this.tabControlPanel4.TabItem = this.tabItem4;
-            // 
-            // richTextBoxEx1
-            // 
-            // 
-            // 
-            // 
-            this.richTextBoxEx1.BackgroundStyle.Class = "RichTextBoxBorder";
-            this.richTextBoxEx1.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.richTextBoxEx1.Location = new System.Drawing.Point(10, 103);
-            this.richTextBoxEx1.Name = "richTextBoxEx1";
-            this.richTextBoxEx1.Rtf = "{\\rtf1\\ansi\\deff0{\\fonttbl{\\f0\\fnil\\fcharset134 \\\'cb\\\'ce\\\'cc\\\'e5;}}\r\n\\viewkind4\\u" +
-    "c1\\pard\\lang2052\\f0\\fs18 richTextBoxEx1\\par\r\n}\r\n";
-            this.richTextBoxEx1.Size = new System.Drawing.Size(412, 41);
-            this.richTextBoxEx1.TabIndex = 8;
-            this.richTextBoxEx1.Text = "richTextBoxEx1";
             // 
             // buttonX10
             // 
@@ -241,6 +610,43 @@
             this.tabItem4.AttachedControl = this.tabControlPanel4;
             this.tabItem4.Name = "tabItem4";
             this.tabItem4.Text = "存储规则";
+            // 
+            // tabControlPanel3
+            // 
+            this.tabControlPanel3.Controls.Add(this.buttonX9);
+            this.tabControlPanel3.DisabledBackColor = System.Drawing.Color.Empty;
+            this.tabControlPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tabControlPanel3.Location = new System.Drawing.Point(0, 26);
+            this.tabControlPanel3.Name = "tabControlPanel3";
+            this.tabControlPanel3.Padding = new System.Windows.Forms.Padding(1);
+            this.tabControlPanel3.Size = new System.Drawing.Size(1251, 683);
+            this.tabControlPanel3.Style.BackColor1.Color = System.Drawing.Color.FromArgb(((int)(((byte)(142)))), ((int)(((byte)(179)))), ((int)(((byte)(231)))));
+            this.tabControlPanel3.Style.BackColor2.Color = System.Drawing.Color.FromArgb(((int)(((byte)(223)))), ((int)(((byte)(237)))), ((int)(((byte)(254)))));
+            this.tabControlPanel3.Style.Border = DevComponents.DotNetBar.eBorderType.SingleLine;
+            this.tabControlPanel3.Style.BorderColor.Color = System.Drawing.Color.FromArgb(((int)(((byte)(59)))), ((int)(((byte)(97)))), ((int)(((byte)(156)))));
+            this.tabControlPanel3.Style.BorderSide = ((DevComponents.DotNetBar.eBorderSide)(((DevComponents.DotNetBar.eBorderSide.Left | DevComponents.DotNetBar.eBorderSide.Right) 
+            | DevComponents.DotNetBar.eBorderSide.Bottom)));
+            this.tabControlPanel3.Style.GradientAngle = 90;
+            this.tabControlPanel3.TabIndex = 9;
+            this.tabControlPanel3.TabItem = this.tabItem3;
+            // 
+            // buttonX9
+            // 
+            this.buttonX9.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.buttonX9.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
+            this.buttonX9.Location = new System.Drawing.Point(10, 14);
+            this.buttonX9.Name = "buttonX9";
+            this.buttonX9.Size = new System.Drawing.Size(108, 45);
+            this.buttonX9.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.buttonX9.TabIndex = 4;
+            this.buttonX9.Text = "back";
+            this.buttonX9.Click += new System.EventHandler(this.buttonX9_Click);
+            // 
+            // tabItem3
+            // 
+            this.tabItem3.AttachedControl = this.tabControlPanel3;
+            this.tabItem3.Name = "tabItem3";
+            this.tabItem3.Text = "信号处理";
             // 
             // tabControlPanel1
             // 
@@ -567,421 +973,6 @@
             this.tabItem7.Name = "tabItem7";
             this.tabItem7.Text = "init";
             // 
-            // tabControlPanel7
-            // 
-            this.tabControlPanel7.Controls.Add(this.layoutControl1);
-            this.tabControlPanel7.DisabledBackColor = System.Drawing.Color.Empty;
-            this.tabControlPanel7.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tabControlPanel7.Location = new System.Drawing.Point(0, 26);
-            this.tabControlPanel7.Name = "tabControlPanel7";
-            this.tabControlPanel7.Padding = new System.Windows.Forms.Padding(1);
-            this.tabControlPanel7.Size = new System.Drawing.Size(1251, 683);
-            this.tabControlPanel7.Style.BackColor1.Color = System.Drawing.Color.FromArgb(((int)(((byte)(142)))), ((int)(((byte)(179)))), ((int)(((byte)(231)))));
-            this.tabControlPanel7.Style.BackColor2.Color = System.Drawing.Color.FromArgb(((int)(((byte)(223)))), ((int)(((byte)(237)))), ((int)(((byte)(254)))));
-            this.tabControlPanel7.Style.Border = DevComponents.DotNetBar.eBorderType.SingleLine;
-            this.tabControlPanel7.Style.BorderColor.Color = System.Drawing.Color.FromArgb(((int)(((byte)(59)))), ((int)(((byte)(97)))), ((int)(((byte)(156)))));
-            this.tabControlPanel7.Style.BorderSide = ((DevComponents.DotNetBar.eBorderSide)(((DevComponents.DotNetBar.eBorderSide.Left | DevComponents.DotNetBar.eBorderSide.Right) 
-            | DevComponents.DotNetBar.eBorderSide.Bottom)));
-            this.tabControlPanel7.Style.GradientAngle = 90;
-            this.tabControlPanel7.TabIndex = 24;
-            this.tabControlPanel7.TabItem = this.tabItem;
-            // 
-            // layoutControl1
-            // 
-            this.layoutControl1.Controls.Add(this.buttonX3);
-            this.layoutControl1.Controls.Add(this.buttonX4);
-            this.layoutControl1.Controls.Add(this.buttonX5);
-            this.layoutControl1.Controls.Add(this.buttonX6);
-            this.layoutControl1.Controls.Add(this.buttonX7);
-            this.layoutControl1.Controls.Add(this.buttonX2);
-            this.layoutControl1.Location = new System.Drawing.Point(4, 0);
-            this.layoutControl1.Name = "layoutControl1";
-            // 
-            // 
-            // 
-            this.layoutControl1.RootGroup.Items.AddRange(new DevComponents.DotNetBar.Layout.LayoutItemBase[] {
-            this.layoutControlItem2,
-            this.layoutControlItem3,
-            this.layoutControlItem4,
-            this.layoutControlItem5,
-            this.layoutControlItem6,
-            this.layoutControlItem1});
-            this.layoutControl1.Size = new System.Drawing.Size(1233, 652);
-            this.layoutControl1.TabIndex = 2;
-            // 
-            // buttonX3
-            // 
-            this.buttonX3.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
-            this.buttonX3.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.buttonX3.ColorTable = DevComponents.DotNetBar.eButtonColor.Flat;
-            this.buttonX3.Font = new System.Drawing.Font("宋体", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.buttonX3.Location = new System.Drawing.Point(4, 4);
-            this.buttonX3.Margin = new System.Windows.Forms.Padding(0);
-            this.buttonX3.Name = "buttonX3";
-            this.buttonX3.Size = new System.Drawing.Size(403, 316);
-            this.buttonX3.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.buttonX3.TabIndex = 0;
-            this.buttonX3.Text = "波形展示";
-            this.buttonX3.Click += new System.EventHandler(this.buttonX3_Click);
-            // 
-            // buttonX4
-            // 
-            this.buttonX4.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
-            this.buttonX4.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.buttonX4.ColorTable = DevComponents.DotNetBar.eButtonColor.Flat;
-            this.buttonX4.Font = new System.Drawing.Font("宋体", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.buttonX4.Location = new System.Drawing.Point(415, 4);
-            this.buttonX4.Margin = new System.Windows.Forms.Padding(0);
-            this.buttonX4.Name = "buttonX4";
-            this.buttonX4.Size = new System.Drawing.Size(403, 316);
-            this.buttonX4.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.buttonX4.TabIndex = 1;
-            this.buttonX4.Text = "信号处理";
-            this.buttonX4.Click += new System.EventHandler(this.buttonX4_Click);
-            // 
-            // buttonX5
-            // 
-            this.buttonX5.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
-            this.buttonX5.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.buttonX5.ColorTable = DevComponents.DotNetBar.eButtonColor.Flat;
-            this.buttonX5.Font = new System.Drawing.Font("宋体", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.buttonX5.Location = new System.Drawing.Point(826, 4);
-            this.buttonX5.Margin = new System.Windows.Forms.Padding(0);
-            this.buttonX5.Name = "buttonX5";
-            this.buttonX5.Size = new System.Drawing.Size(403, 316);
-            this.buttonX5.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.buttonX5.TabIndex = 2;
-            this.buttonX5.Text = "风险信息";
-            this.buttonX5.Click += new System.EventHandler(this.buttonX5_Click);
-            // 
-            // buttonX6
-            // 
-            this.buttonX6.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
-            this.buttonX6.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.buttonX6.ColorTable = DevComponents.DotNetBar.eButtonColor.Flat;
-            this.buttonX6.Font = new System.Drawing.Font("宋体", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.buttonX6.Location = new System.Drawing.Point(4, 328);
-            this.buttonX6.Margin = new System.Windows.Forms.Padding(0);
-            this.buttonX6.Name = "buttonX6";
-            this.buttonX6.Size = new System.Drawing.Size(403, 316);
-            this.buttonX6.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.buttonX6.TabIndex = 3;
-            this.buttonX6.Text = "配置参数";
-            this.buttonX6.Click += new System.EventHandler(this.buttonX6_Click);
-            // 
-            // buttonX7
-            // 
-            this.buttonX7.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
-            this.buttonX7.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.buttonX7.ColorTable = DevComponents.DotNetBar.eButtonColor.Flat;
-            this.buttonX7.Font = new System.Drawing.Font("宋体", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.buttonX7.Location = new System.Drawing.Point(415, 328);
-            this.buttonX7.Margin = new System.Windows.Forms.Padding(0);
-            this.buttonX7.Name = "buttonX7";
-            this.buttonX7.Size = new System.Drawing.Size(403, 316);
-            this.buttonX7.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.buttonX7.TabIndex = 4;
-            this.buttonX7.Text = "存储设置";
-            this.buttonX7.Click += new System.EventHandler(this.buttonX7_Click);
-            // 
-            // buttonX2
-            // 
-            this.buttonX2.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
-            this.buttonX2.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.buttonX2.ColorTable = DevComponents.DotNetBar.eButtonColor.Flat;
-            this.buttonX2.Font = new System.Drawing.Font("宋体", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.buttonX2.Location = new System.Drawing.Point(826, 328);
-            this.buttonX2.Margin = new System.Windows.Forms.Padding(0);
-            this.buttonX2.Name = "buttonX2";
-            this.buttonX2.Size = new System.Drawing.Size(403, 316);
-            this.buttonX2.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.buttonX2.TabIndex = 5;
-            this.buttonX2.Text = "风格";
-            this.buttonX2.Click += new System.EventHandler(this.buttonX2_Click);
-            // 
-            // layoutControlItem2
-            // 
-            this.layoutControlItem2.Control = this.buttonX3;
-            this.layoutControlItem2.Height = 324;
-            this.layoutControlItem2.MinSize = new System.Drawing.Size(32, 20);
-            this.layoutControlItem2.Name = "layoutControlItem2";
-            this.layoutControlItem2.Width = 411;
-            // 
-            // layoutControlItem3
-            // 
-            this.layoutControlItem3.Control = this.buttonX4;
-            this.layoutControlItem3.Height = 324;
-            this.layoutControlItem3.MinSize = new System.Drawing.Size(32, 20);
-            this.layoutControlItem3.Name = "layoutControlItem3";
-            this.layoutControlItem3.Width = 411;
-            // 
-            // layoutControlItem4
-            // 
-            this.layoutControlItem4.Control = this.buttonX5;
-            this.layoutControlItem4.Height = 324;
-            this.layoutControlItem4.MinSize = new System.Drawing.Size(32, 20);
-            this.layoutControlItem4.Name = "layoutControlItem4";
-            this.layoutControlItem4.Width = 411;
-            // 
-            // layoutControlItem5
-            // 
-            this.layoutControlItem5.Control = this.buttonX6;
-            this.layoutControlItem5.Height = 324;
-            this.layoutControlItem5.MinSize = new System.Drawing.Size(32, 20);
-            this.layoutControlItem5.Name = "layoutControlItem5";
-            this.layoutControlItem5.Width = 411;
-            // 
-            // layoutControlItem6
-            // 
-            this.layoutControlItem6.Control = this.buttonX7;
-            this.layoutControlItem6.Height = 324;
-            this.layoutControlItem6.MinSize = new System.Drawing.Size(32, 20);
-            this.layoutControlItem6.Name = "layoutControlItem6";
-            this.layoutControlItem6.Width = 411;
-            // 
-            // layoutControlItem1
-            // 
-            this.layoutControlItem1.Control = this.buttonX2;
-            this.layoutControlItem1.Height = 324;
-            this.layoutControlItem1.MinSize = new System.Drawing.Size(32, 20);
-            this.layoutControlItem1.Name = "layoutControlItem1";
-            this.layoutControlItem1.Width = 411;
-            // 
-            // tabItem
-            // 
-            this.tabItem.AttachedControl = this.tabControlPanel7;
-            this.tabItem.Name = "tabItem";
-            this.tabItem.Text = "仪器管理系统";
-            // 
-            // tabControlPanel5
-            // 
-            this.tabControlPanel5.Controls.Add(this.buttonX12);
-            this.tabControlPanel5.DisabledBackColor = System.Drawing.Color.Empty;
-            this.tabControlPanel5.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tabControlPanel5.Location = new System.Drawing.Point(0, 26);
-            this.tabControlPanel5.Name = "tabControlPanel5";
-            this.tabControlPanel5.Padding = new System.Windows.Forms.Padding(1);
-            this.tabControlPanel5.Size = new System.Drawing.Size(1251, 683);
-            this.tabControlPanel5.Style.BackColor1.Color = System.Drawing.Color.FromArgb(((int)(((byte)(142)))), ((int)(((byte)(179)))), ((int)(((byte)(231)))));
-            this.tabControlPanel5.Style.BackColor2.Color = System.Drawing.Color.FromArgb(((int)(((byte)(223)))), ((int)(((byte)(237)))), ((int)(((byte)(254)))));
-            this.tabControlPanel5.Style.Border = DevComponents.DotNetBar.eBorderType.SingleLine;
-            this.tabControlPanel5.Style.BorderColor.Color = System.Drawing.Color.FromArgb(((int)(((byte)(59)))), ((int)(((byte)(97)))), ((int)(((byte)(156)))));
-            this.tabControlPanel5.Style.BorderSide = ((DevComponents.DotNetBar.eBorderSide)(((DevComponents.DotNetBar.eBorderSide.Left | DevComponents.DotNetBar.eBorderSide.Right) 
-            | DevComponents.DotNetBar.eBorderSide.Bottom)));
-            this.tabControlPanel5.Style.GradientAngle = 90;
-            this.tabControlPanel5.TabIndex = 17;
-            this.tabControlPanel5.TabItem = this.tabItem5;
-            // 
-            // buttonX12
-            // 
-            this.buttonX12.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
-            this.buttonX12.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.buttonX12.Location = new System.Drawing.Point(10, 4);
-            this.buttonX12.Name = "buttonX12";
-            this.buttonX12.Size = new System.Drawing.Size(108, 45);
-            this.buttonX12.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.buttonX12.TabIndex = 5;
-            this.buttonX12.Text = "back";
-            this.buttonX12.Click += new System.EventHandler(this.buttonX12_Click);
-            // 
-            // tabItem5
-            // 
-            this.tabItem5.AttachedControl = this.tabControlPanel5;
-            this.tabItem5.Name = "tabItem5";
-            this.tabItem5.Text = "风险信息";
-            // 
-            // tabControlPanel3
-            // 
-            this.tabControlPanel3.Controls.Add(this.buttonX9);
-            this.tabControlPanel3.DisabledBackColor = System.Drawing.Color.Empty;
-            this.tabControlPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tabControlPanel3.Location = new System.Drawing.Point(0, 26);
-            this.tabControlPanel3.Name = "tabControlPanel3";
-            this.tabControlPanel3.Padding = new System.Windows.Forms.Padding(1);
-            this.tabControlPanel3.Size = new System.Drawing.Size(1251, 683);
-            this.tabControlPanel3.Style.BackColor1.Color = System.Drawing.Color.FromArgb(((int)(((byte)(142)))), ((int)(((byte)(179)))), ((int)(((byte)(231)))));
-            this.tabControlPanel3.Style.BackColor2.Color = System.Drawing.Color.FromArgb(((int)(((byte)(223)))), ((int)(((byte)(237)))), ((int)(((byte)(254)))));
-            this.tabControlPanel3.Style.Border = DevComponents.DotNetBar.eBorderType.SingleLine;
-            this.tabControlPanel3.Style.BorderColor.Color = System.Drawing.Color.FromArgb(((int)(((byte)(59)))), ((int)(((byte)(97)))), ((int)(((byte)(156)))));
-            this.tabControlPanel3.Style.BorderSide = ((DevComponents.DotNetBar.eBorderSide)(((DevComponents.DotNetBar.eBorderSide.Left | DevComponents.DotNetBar.eBorderSide.Right) 
-            | DevComponents.DotNetBar.eBorderSide.Bottom)));
-            this.tabControlPanel3.Style.GradientAngle = 90;
-            this.tabControlPanel3.TabIndex = 9;
-            this.tabControlPanel3.TabItem = this.tabItem3;
-            // 
-            // buttonX9
-            // 
-            this.buttonX9.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
-            this.buttonX9.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.buttonX9.Location = new System.Drawing.Point(10, 14);
-            this.buttonX9.Name = "buttonX9";
-            this.buttonX9.Size = new System.Drawing.Size(108, 45);
-            this.buttonX9.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.buttonX9.TabIndex = 4;
-            this.buttonX9.Text = "back";
-            this.buttonX9.Click += new System.EventHandler(this.buttonX9_Click);
-            // 
-            // tabItem3
-            // 
-            this.tabItem3.AttachedControl = this.tabControlPanel3;
-            this.tabItem3.Name = "tabItem3";
-            this.tabItem3.Text = "信号处理";
-            // 
-            // tabControlPanel2
-            // 
-            this.tabControlPanel2.Controls.Add(this.panelEx3);
-            this.tabControlPanel2.DisabledBackColor = System.Drawing.Color.Empty;
-            this.tabControlPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tabControlPanel2.Location = new System.Drawing.Point(0, 26);
-            this.tabControlPanel2.Name = "tabControlPanel2";
-            this.tabControlPanel2.Padding = new System.Windows.Forms.Padding(1);
-            this.tabControlPanel2.Size = new System.Drawing.Size(1251, 683);
-            this.tabControlPanel2.Style.BackColor1.Color = System.Drawing.Color.FromArgb(((int)(((byte)(142)))), ((int)(((byte)(179)))), ((int)(((byte)(231)))));
-            this.tabControlPanel2.Style.BackColor2.Color = System.Drawing.Color.FromArgb(((int)(((byte)(223)))), ((int)(((byte)(237)))), ((int)(((byte)(254)))));
-            this.tabControlPanel2.Style.Border = DevComponents.DotNetBar.eBorderType.SingleLine;
-            this.tabControlPanel2.Style.BorderColor.Color = System.Drawing.Color.FromArgb(((int)(((byte)(59)))), ((int)(((byte)(97)))), ((int)(((byte)(156)))));
-            this.tabControlPanel2.Style.BorderSide = ((DevComponents.DotNetBar.eBorderSide)(((DevComponents.DotNetBar.eBorderSide.Left | DevComponents.DotNetBar.eBorderSide.Right) 
-            | DevComponents.DotNetBar.eBorderSide.Bottom)));
-            this.tabControlPanel2.Style.GradientAngle = 90;
-            this.tabControlPanel2.TabIndex = 5;
-            this.tabControlPanel2.TabItem = this.tabItem2;
-            // 
-            // panelEx3
-            // 
-            this.panelEx3.CanvasColor = System.Drawing.SystemColors.Control;
-            this.panelEx3.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.panelEx3.Controls.Add(this.buttonX11);
-            this.panelEx3.Controls.Add(this.buttonX8);
-            this.panelEx3.Controls.Add(this.zedGraphControl3);
-            this.panelEx3.Controls.Add(this.zedGraphControl1);
-            this.panelEx3.Controls.Add(this.zedGraphControl2);
-            this.panelEx3.Controls.Add(this.menuStrip1);
-            this.panelEx3.DisabledBackColor = System.Drawing.Color.Empty;
-            this.panelEx3.Location = new System.Drawing.Point(4, 0);
-            this.panelEx3.Name = "panelEx3";
-            this.panelEx3.Size = new System.Drawing.Size(1237, 679);
-            this.panelEx3.Style.Alignment = System.Drawing.StringAlignment.Center;
-            this.panelEx3.Style.BackColor1.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground;
-            this.panelEx3.Style.BackColor2.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground2;
-            this.panelEx3.Style.Border = DevComponents.DotNetBar.eBorderType.SingleLine;
-            this.panelEx3.Style.BorderColor.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBorder;
-            this.panelEx3.Style.ForeColor.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelText;
-            this.panelEx3.Style.GradientAngle = 90;
-            this.panelEx3.TabIndex = 11;
-            // 
-            // buttonX11
-            // 
-            this.buttonX11.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
-            this.buttonX11.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.buttonX11.Location = new System.Drawing.Point(1126, 28);
-            this.buttonX11.Name = "buttonX11";
-            this.buttonX11.Size = new System.Drawing.Size(108, 45);
-            this.buttonX11.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.buttonX11.TabIndex = 10;
-            this.buttonX11.Text = "back";
-            this.buttonX11.Click += new System.EventHandler(this.buttonX11_Click);
-            // 
-            // buttonX8
-            // 
-            this.buttonX8.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
-            this.buttonX8.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.buttonX8.Location = new System.Drawing.Point(840, 28);
-            this.buttonX8.Name = "buttonX8";
-            this.buttonX8.Size = new System.Drawing.Size(75, 45);
-            this.buttonX8.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.buttonX8.TabIndex = 8;
-            this.buttonX8.Text = "load";
-            this.buttonX8.Click += new System.EventHandler(this.buttonX8_Click);
-            // 
-            // zedGraphControl3
-            // 
-            this.zedGraphControl3.Location = new System.Drawing.Point(6, 457);
-            this.zedGraphControl3.Name = "zedGraphControl3";
-            this.zedGraphControl3.PanModifierKeys = System.Windows.Forms.Keys.None;
-            this.zedGraphControl3.ScrollGrace = 0D;
-            this.zedGraphControl3.ScrollMaxX = 0D;
-            this.zedGraphControl3.ScrollMaxY = 0D;
-            this.zedGraphControl3.ScrollMaxY2 = 0D;
-            this.zedGraphControl3.ScrollMinX = 0D;
-            this.zedGraphControl3.ScrollMinY = 0D;
-            this.zedGraphControl3.ScrollMinY2 = 0D;
-            this.zedGraphControl3.Size = new System.Drawing.Size(828, 219);
-            this.zedGraphControl3.TabIndex = 7;
-            // 
-            // zedGraphControl1
-            // 
-            this.zedGraphControl1.Location = new System.Drawing.Point(6, 28);
-            this.zedGraphControl1.Name = "zedGraphControl1";
-            this.zedGraphControl1.PanModifierKeys = System.Windows.Forms.Keys.None;
-            this.zedGraphControl1.ScrollGrace = 0D;
-            this.zedGraphControl1.ScrollMaxX = 0D;
-            this.zedGraphControl1.ScrollMaxY = 0D;
-            this.zedGraphControl1.ScrollMaxY2 = 0D;
-            this.zedGraphControl1.ScrollMinX = 0D;
-            this.zedGraphControl1.ScrollMinY = 0D;
-            this.zedGraphControl1.ScrollMinY2 = 0D;
-            this.zedGraphControl1.Size = new System.Drawing.Size(828, 213);
-            this.zedGraphControl1.TabIndex = 3;
-            // 
-            // zedGraphControl2
-            // 
-            this.zedGraphControl2.Location = new System.Drawing.Point(6, 237);
-            this.zedGraphControl2.Name = "zedGraphControl2";
-            this.zedGraphControl2.PanModifierKeys = System.Windows.Forms.Keys.None;
-            this.zedGraphControl2.ScrollGrace = 0D;
-            this.zedGraphControl2.ScrollMaxX = 0D;
-            this.zedGraphControl2.ScrollMaxY = 0D;
-            this.zedGraphControl2.ScrollMaxY2 = 0D;
-            this.zedGraphControl2.ScrollMinX = 0D;
-            this.zedGraphControl2.ScrollMinY = 0D;
-            this.zedGraphControl2.ScrollMinY2 = 0D;
-            this.zedGraphControl2.Size = new System.Drawing.Size(828, 223);
-            this.zedGraphControl2.TabIndex = 6;
-            // 
-            // menuStrip1
-            // 
-            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.printToolStripMenuItem,
-            this.pToolStripMenuItem,
-            this.playToolStripMenuItem,
-            this.setToolStripMenuItem,
-            this.replayToolStripMenuItem});
-            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
-            this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(1237, 25);
-            this.menuStrip1.TabIndex = 9;
-            this.menuStrip1.Text = "menuStrip1";
-            // 
-            // printToolStripMenuItem
-            // 
-            this.printToolStripMenuItem.Name = "printToolStripMenuItem";
-            this.printToolStripMenuItem.Size = new System.Drawing.Size(47, 21);
-            this.printToolStripMenuItem.Text = "print";
-            // 
-            // pToolStripMenuItem
-            // 
-            this.pToolStripMenuItem.Name = "pToolStripMenuItem";
-            this.pToolStripMenuItem.Size = new System.Drawing.Size(55, 21);
-            this.pToolStripMenuItem.Text = "pause";
-            // 
-            // playToolStripMenuItem
-            // 
-            this.playToolStripMenuItem.Name = "playToolStripMenuItem";
-            this.playToolStripMenuItem.Size = new System.Drawing.Size(44, 21);
-            this.playToolStripMenuItem.Text = "play";
-            // 
-            // setToolStripMenuItem
-            // 
-            this.setToolStripMenuItem.Name = "setToolStripMenuItem";
-            this.setToolStripMenuItem.Size = new System.Drawing.Size(37, 21);
-            this.setToolStripMenuItem.Text = "set";
-            // 
-            // tabItem2
-            // 
-            this.tabItem2.AttachedControl = this.tabControlPanel2;
-            this.tabItem2.Name = "tabItem2";
-            this.tabItem2.Text = "波形显示";
-            // 
             // buttonX1
             // 
             this.buttonX1.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
@@ -1006,11 +997,9 @@
             this.ddToolStripMenuItem.Size = new System.Drawing.Size(92, 22);
             this.ddToolStripMenuItem.Text = "dd";
             // 
-            // replayToolStripMenuItem
+            // timer1
             // 
-            this.replayToolStripMenuItem.Name = "replayToolStripMenuItem";
-            this.replayToolStripMenuItem.Size = new System.Drawing.Size(56, 21);
-            this.replayToolStripMenuItem.Text = "replay";
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
             // Form1
             // 
@@ -1024,10 +1013,19 @@
             this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.tabControl1)).EndInit();
             this.tabControl1.ResumeLayout(false);
+            this.tabControlPanel2.ResumeLayout(false);
+            this.panelEx3.ResumeLayout(false);
+            this.panelEx3.PerformLayout();
+            this.menuStrip1.ResumeLayout(false);
+            this.menuStrip1.PerformLayout();
+            this.tabControlPanel7.ResumeLayout(false);
+            this.layoutControl1.ResumeLayout(false);
+            this.tabControlPanel5.ResumeLayout(false);
             this.tabControlPanel4.ResumeLayout(false);
             this.tabControlPanel4.PerformLayout();
             this.menuStrip2.ResumeLayout(false);
             this.menuStrip2.PerformLayout();
+            this.tabControlPanel3.ResumeLayout(false);
             this.tabControlPanel1.ResumeLayout(false);
             this.panelEx1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewX1)).EndInit();
@@ -1036,15 +1034,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
-            this.tabControlPanel7.ResumeLayout(false);
-            this.layoutControl1.ResumeLayout(false);
-            this.tabControlPanel5.ResumeLayout(false);
-            this.tabControlPanel3.ResumeLayout(false);
-            this.tabControlPanel2.ResumeLayout(false);
-            this.panelEx3.ResumeLayout(false);
-            this.panelEx3.PerformLayout();
-            this.menuStrip1.ResumeLayout(false);
-            this.menuStrip1.PerformLayout();
             this.contextMenuStrip1.ResumeLayout(false);
             this.ResumeLayout(false);
 
@@ -1125,8 +1114,8 @@
         private System.Windows.Forms.ToolStripMenuItem 保存ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 保存到当前路径ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 另存为ToolStripMenuItem;
-        private DevComponents.DotNetBar.Controls.RichTextBoxEx richTextBoxEx1;
         private System.Windows.Forms.ToolStripMenuItem replayToolStripMenuItem;
+        private System.Windows.Forms.Timer timer1;
     }
 }
 
