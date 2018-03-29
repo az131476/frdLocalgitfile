@@ -7,9 +7,9 @@ using System.IO;
 
 namespace WinformTest.Log
 {
-    public class Biwriter
+    public static class Biwriter
     {
-        public int  BinaryFile(string name,string content)
+        public static int  BinaryFile(string name,string content)
         {
             try
             {
@@ -32,7 +32,7 @@ namespace WinformTest.Log
                 return 0;
             }
         }
-        public static byte[] HexToByte(string hexString)
+        private static byte[] HexToByte(string hexString)
         {
             byte[] returnBytes = new byte[hexString.Length / 2];
             try

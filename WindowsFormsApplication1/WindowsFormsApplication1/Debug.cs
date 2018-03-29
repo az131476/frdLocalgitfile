@@ -44,7 +44,9 @@ namespace WindowsFormsApplication1
             string filePath = path + "\\" + "d1" + ".txt";
             if (File.Exists(filePath))
             {
+                //FileStream fs = new FileStream(path, FileMode.Open, FileAccess.Read, FileShare.ReadWrite);
                 FileStream fs = new FileStream(filePath, FileMode.Append);
+                
                 StreamWriter sw = new StreamWriter(fs);
                 sw.WriteLine(str);
                 sw.Close();

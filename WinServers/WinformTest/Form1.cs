@@ -485,14 +485,12 @@ namespace WinformTest
                             pChanData[nCount] = pfltData[i * GroupChannel.m_nChannelNumber * nReceiveCount + j * nReceiveCount + nCount];
 
                             string strData = String.Format("{0:f3}", pChanData[nCount]);
-                            time_ns = String.Format("{0:f4}", ((double)nTotalDataPos / 20)/nReceiveCount);
-                            time_ns = temp+double.Parse(time_ns) * (nCount+1)+"";
+                            time_ns = String.Format("{0:f4}", ((double)nTotalDataPos / 20));
+                            //time_ns = temp+double.Parse(time_ns) * (nCount+1)+"";
                             AnlySampleData(strData,nTotalDataPos, time_ns.ToString(), nChannelGroupID, nSelGroupID, nSelChanID,nCount,nReceiveCount);
 
                             Log.Debug.WriteErr("channelid:"+nSelChanID+" nreceive:"+nReceiveCount+"time_ns:" +time_ns+" strdata:"+strData+" ntotal:"+nTotalDataPos);
-                            //string sql = "INSERT into t_base_data//(equip_id,channel_id,base_datax,time,base_datay,base_dataz,totaldatapos,count) VALUES('"+ //nChannelGroupID + "','"++"',)";
-                            //Data.OperatData opear = new Data.OperatData();
-                            //opear.paramsSave(sql);
+                            
                         }
                         temp = double.Parse(time_ns) ;
                     }
@@ -536,18 +534,20 @@ namespace WinformTest
             string d8 = "d8" + time_ns.Length + time_ns.ToString() + "}";
             string nd = d1 + d3 + d6 + d8;
             string n_len = "L"+nd.Length.ToString()+"N";
-
-            //#region
-            //byte[] nblen = Encoding.UTF8.GetBytes(n_len);
-            //ArraySegment<byte> array_len = new ArraySegment<byte>(nblen);
-            //ArraySegment<byte>[] arrayL_len = new ArraySegment<byte>[] { array_len };
-            //len_list.AddRange(arrayL_len);
-            //Log.Debug.Write("len-"+n_len);
-            //SendSampleData(len_list);
-            //#endregion
+            string allData = d1 + d2 + d3 + d4 + d5 + d6 + d7 + d8;
+            string currTime = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
+            string sql = "insert into datatest (channel_id,data,dtime,currTime) values('" + nSelChanID + "','"+data+"','"+time_ns+"','"+currTime+"')";
+            new Data.OperatData().paramsSave(sql);
 
             #region
-            
+            /// 二进制存储原始数据
+            /// <summary>
+            /// </summary>
+            string filename = DateTime.Now.ToString("yyyy-MM-dd");
+            Log.Biwriter.BinaryFile(filename,allData);
+            #endregion
+
+            #region
             Log.Debug.Write(nd);
             SendSampleData(nd);
             #endregion

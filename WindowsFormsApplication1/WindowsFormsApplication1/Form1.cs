@@ -14,6 +14,8 @@ using System.Threading;
 using MySql.Data.MySqlClient;
 using ZedGraph;
 using System.IO;
+using RedisHelper;
+using System.Configuration;
 
 namespace WindowsFormsApplication1
 {
@@ -55,6 +57,14 @@ namespace WindowsFormsApplication1
                 tabItem.Visible = true;
             }
             ZedgraphShapInit();
+            string key = "Users";
+            //RedisBase.Core.FlushAll();
+            //RedisBase.Core.AddItemToList(key, "cuiyanwei");
+            //RedisBase.Core.AddItemToList(key, "xiaoming");
+            //RedisBase.Core.Add<string>("mykey", "123456");
+            //RedisString.Set("mykey1", "abcdef");
+            //string str3 = RedisString.Get("mykey1");
+            //Debug.Write("str3:" + str3);
         }
 
         private void socketConnect()
@@ -347,82 +357,88 @@ namespace WindowsFormsApplication1
             td2.IsBackground = true;
             td2.Start();
 
-            Thread td3 = new Thread(zgraph);
-            td3.IsBackground = true;
-            td3.Start();
+            //Thread td3 = new Thread(zgraph);
+            //td3.IsBackground = true;
+            //td3.Start();
         }
         private void xgraph()
         {
-            //x
-            string path = AppDomain.CurrentDomain.BaseDirectory + "\\log";
-            string filePath = path + "\\" + "d1" + ".txt";
-            if (File.Exists(filePath))
+            while (true)
             {
-                FileStream fs = new FileStream(filePath, FileMode.Open);
-                StreamReader sr = new StreamReader(fs, ASCIIEncoding.Default);
-                string str = string.Empty;
-                while (true)
+                MySqlConnection con = new MySqlConnection(ConfigurationManager.ConnectionStrings["myStr"].ToString());
+                //UNIX_TIMESTAMP(NOW())-UNIX_TIMESTAMP(currTime)=2
+                string sql = "select channel_id,`data`,dtime,currTime,id,MICROSECOND(DATE_FORMAT(NOW(),'%Y-%m-%d %T.%f')),MICROSECOND(DATE_FORMAT(currTime,'%Y-%m-%d %T.%f')) from datatest where MICROSECOND(DATE_FORMAT(NOW(),'%Y-%m-%d %T.%f'))-MICROSECOND(DATE_FORMAT(currTime,'%Y-%m-%d %T.%f'))<2000 and channel_id='0' and state = '0' ORDER BY  id asc limit 1";
+                MySqlDataReader reader = null;
+                try
                 {
-                    str = sr.ReadLine();
-                    if (!string.IsNullOrEmpty(str))
+                    con.Open();
+                    MySqlCommand cmd = new MySqlCommand(sql, con);
+                    reader = cmd.ExecuteReader();
+                    while (reader.Read())
                     {
-                        double s = double.Parse(str.Substring(0, str.IndexOf(',')));
-                        int len = str.IndexOf(',');
-                        str = str.Substring(len + 1, str.Length - len - 1);
-                        double y = double.Parse(str.Substring(0, str.Length));
-                        list.Add(s, y);
-                        this.zedGraphControl1.AxisChange();
-                        this.zedGraphControl1.Refresh();
+                        string channel_id = reader[0].ToString();
+                        string data = reader[1].ToString();
+                        string dtime = reader[2].ToString();
+                        string currtime = reader[3].ToString();
+                        string id = reader[4].ToString();
+                        string t1 = reader[5].ToString();
+                        string t2 = reader[6].ToString();
+                        if (channel_id.Equals("0"))
+                        {
+                            list.Add(double.Parse(dtime), double.Parse(data));
+                            this.zedGraphControl1.AxisChange();
+                            this.zedGraphControl1.Refresh();
+                            Debug.Write1(dtime+","+data+","+currtime+","+DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss")+","+t1+","+t2);
+                            string sql_update = "UPDATE datatest set state='1' where id='"+id+"'";
+                            new Data.DBHelper().updateDB(sql_update);
+                        }
                     }
-                    else
-                    {
-                        sr.Close();
-                        fs.Close();
-                        break;
-                    }
-                    Thread.Sleep(100);
                 }
-            }
-            else
-            {
-
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+                finally
+                {
+                    con.Close();
+                }
             }
         }
         private void ygraph() {
-            //y
-
-            string path2 = AppDomain.CurrentDomain.BaseDirectory + "\\log";
-            string filePath2 = path2 + "\\" + "d2" + ".txt";
-            if (File.Exists(filePath2))
+            while (true)
             {
-                FileStream fs = new FileStream(filePath2, FileMode.Open);
-                StreamReader sr = new StreamReader(fs, ASCIIEncoding.Default);
-                string str = string.Empty;
-                while (true)
+                MySqlConnection con = new MySqlConnection(ConfigurationManager.ConnectionStrings["myStr"].ToString());
+                string sql = "select channel_id,`data`,dtime,currTime from datatest ";// where UNIX_TIMESTAMP(NOW())-UNIX_TIMESTAMP(currTime)=2 ORDER BY  id asc";
+                MySqlDataReader reader = null;
+                try
                 {
-                    str = sr.ReadLine();
-                    if (!string.IsNullOrEmpty(str))
+                    con.Open();
+                    MySqlCommand cmd = new MySqlCommand(sql, con);
+                    reader = cmd.ExecuteReader();
+                    while (reader.Read())
                     {
-                        double s = double.Parse(str.Substring(0, str.IndexOf(',')));
-                        int len = str.IndexOf(',');
-                        str = str.Substring(len + 1, str.Length - len - 1);
-                        double y = double.Parse(str.Substring(0, str.Length));
-                        list2.Add(s, y);
-                        this.zedGraphControl2.AxisChange();
-                        this.zedGraphControl2.Refresh();
-                    }
-                    else
-                    {
-                        sr.Close();
-                        fs.Close();
-                        break;
-                    }
-                    Thread.Sleep(100);
-                }
-            }
-            else
-            {
+                        string channel_id = reader[0].ToString();
+                        string data = reader[1].ToString();
+                        string dtime = reader[2].ToString();
 
+                        if (channel_id.Equals("0"))
+                        {
+                            list2.Add(double.Parse(dtime), double.Parse(data));
+                            this.zedGraphControl2.AxisChange();
+                            this.zedGraphControl2.Refresh();
+                        }
+
+                        Thread.Sleep(100);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+                finally
+                {
+                    con.Close();
+                }
             }
         }
         private void zgraph() {
@@ -431,7 +447,8 @@ namespace WindowsFormsApplication1
             string filePath3 = path3 + "\\" + "d3" + ".txt";
             if (File.Exists(filePath3))
             {
-                FileStream fs = new FileStream(filePath3, FileMode.Open);
+                FileStream fs = new FileStream(filePath3, FileMode.Open, FileAccess.Read, FileShare.ReadWrite);
+                //FileStream fs = new FileStream(filePath3, FileMode.Open);
                 StreamReader sr = new StreamReader(fs, ASCIIEncoding.Default);
                 string str = string.Empty;
                 while (true)

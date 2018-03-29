@@ -59,3 +59,11 @@ F:\GitFile\frdLocalgitfile\WindowsFormsApplication1\WindowsFormsApplication1\obj
 F:\GitFile\frdLocalgitfile\WindowsFormsApplication1\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.Form1.resources
 F:\GitFile\frdLocalgitfile\WindowsFormsApplication1\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.Properties.Resources.resources
 F:\GitFile\frdLocalgitfile\WindowsFormsApplication1\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.csproj.GenerateResource.Cache
+D:\gitFile\frdLocalgitfile\WindowsFormsApplication1\WindowsFormsApplication1\bin\Debug\ServiceStack.Common.dll
+D:\gitFile\frdLocalgitfile\WindowsFormsApplication1\WindowsFormsApplication1\bin\Debug\ServiceStack.Interfaces.dll
+D:\gitFile\frdLocalgitfile\WindowsFormsApplication1\WindowsFormsApplication1\bin\Debug\ServiceStack.Redis.dll
+D:\gitFile\frdLocalgitfile\WindowsFormsApplication1\WindowsFormsApplication1\bin\Debug\ServiceStack.Text.dll
+D:\gitFile\frdLocalgitfile\WindowsFormsApplication1\WindowsFormsApplication1\bin\Debug\ServiceStack.Common.xml
+D:\gitFile\frdLocalgitfile\WindowsFormsApplication1\WindowsFormsApplication1\bin\Debug\ServiceStack.Interfaces.xml
+D:\gitFile\frdLocalgitfile\WindowsFormsApplication1\WindowsFormsApplication1\bin\Debug\ServiceStack.Redis.xml
+D:\gitFile\frdLocalgitfile\WindowsFormsApplication1\WindowsFormsApplication1\bin\Debug\ServiceStack.Text.xml
