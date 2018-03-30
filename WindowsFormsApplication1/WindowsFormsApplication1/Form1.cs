@@ -26,6 +26,9 @@ namespace WindowsFormsApplication1
         public PointPairList list = new PointPairList();
         public PointPairList list2 = new PointPairList();
         public PointPairList list3 = new PointPairList();
+        //RollingPointPairList list = new RollingPointPairList(2000);
+        //RollingPointPairList list2 = new RollingPointPairList(2000);
+        //RollingPointPairList list3 = new RollingPointPairList(2000);
         LineItem myCurve;
         LineItem myCurve2;
         LineItem myCurve3;
@@ -49,7 +52,7 @@ namespace WindowsFormsApplication1
             td_socket.Start();
             #endregion
             #region 请求获取服务器初始化设备参数，并加载界面参数列表并保存
-
+            LoadOrderData();
             #endregion
             if (!flg)
             {
@@ -57,14 +60,6 @@ namespace WindowsFormsApplication1
                 tabItem.Visible = true;
             }
             ZedgraphShapInit();
-            string key = "Users";
-            //RedisBase.Core.FlushAll();
-            //RedisBase.Core.AddItemToList(key, "cuiyanwei");
-            //RedisBase.Core.AddItemToList(key, "xiaoming");
-            //RedisBase.Core.Add<string>("mykey", "123456");
-            //RedisString.Set("mykey1", "abcdef");
-            //string str3 = RedisString.Get("mykey1");
-            //Debug.Write("str3:" + str3);
         }
 
         private void socketConnect()
@@ -117,7 +112,7 @@ namespace WindowsFormsApplication1
         /// </summary>
         private void LoadOrderData()
         {
-            
+            //client.ClientSendMsg("$001");
         }
         
 
@@ -200,17 +195,21 @@ namespace WindowsFormsApplication1
         /// </summary>
         public void ZedgraphShapInit()
         {
+            #region x
             GraphPane myPane = zedGraphControl1.GraphPane;
             myPane.Title.Text = "波形图";
             myPane.XAxis.Title.Text = "";
             myPane.YAxis.Title.Text = "采集值";
             myPane.XAxis.Type = ZedGraph.AxisType.Linear;
-
+            
             // Add gridlines to the plot, and make them gray
             myPane.XAxis.MajorGrid.IsVisible = true;
             myPane.YAxis.MajorGrid.IsVisible = true;
             myPane.XAxis.MajorGrid.Color = Color.LightGray;
             myPane.YAxis.MajorGrid.Color = Color.LightGray;
+
+            //myPane.XAxis.Scale.MinorStep = 1;//X轴小步长1,也就是小间隔
+            //myPane.XAxis.Scale.MajorStep = 5;//X轴大步长为5，也就是显示文字的大间隔	//改变轴的刻度
 
             //1.禁用右键菜单：
             zedGraphControl1.IsShowContextMenu = false;
@@ -233,7 +232,9 @@ namespace WindowsFormsApplication1
 
             zedGraphControl1.IsShowPointValues = true;
             zedGraphControl1.PointValueEvent += new ZedGraphControl.PointValueHandler(MyPointValueHandler);
+            #endregion
 
+            #region y
             GraphPane myPane2 = zedGraphControl2.GraphPane;
             myPane2.Title.Text = "";
             myPane2.XAxis.Title.Text = "";
@@ -260,13 +261,15 @@ namespace WindowsFormsApplication1
 
             // Move the legend location
             myPane2.Legend.Position = ZedGraph.LegendPos.Top;
-            myCurve2 = zedGraphControl2.GraphPane.AddCurve("y", list2, Color.Red, SymbolType.Circle);
+            myCurve2 = zedGraphControl2.GraphPane.AddCurve("y", list2, Color.Red, SymbolType.None);
             this.zedGraphControl2.AxisChange();
             this.zedGraphControl2.Refresh();
 
             zedGraphControl2.IsShowPointValues = true;
             zedGraphControl2.PointValueEvent += new ZedGraphControl.PointValueHandler(MyPointValueHandler);
+            #endregion
 
+            #region z
             GraphPane myPane3 = zedGraphControl3.GraphPane;
             myPane3.Title.Text = "";
             myPane3.XAxis.Title.Text = "";
@@ -290,15 +293,16 @@ namespace WindowsFormsApplication1
             zedGraphControl3.IsEnableHZoom = true; //横向缩放;
             zedGraphControl3.IsEnableVZoom = true; //纵向缩放;
             zedGraphControl3.ZoomStepFraction = 0.2;
-            ///设置鼠标拖动
-            zedGraphControl3.PanModifierKeys = Keys.None;//鼠标左键，随意拖动
-                                                         // Move the legend location
+
+            // Move the legend location
             myPane3.Legend.Position = ZedGraph.LegendPos.Top;
-            myCurve3 = zedGraphControl3.GraphPane.AddCurve("z", list3, Color.Blue, SymbolType.Circle);
+            myCurve3 = zedGraphControl3.GraphPane.AddCurve("y", list3, Color.Red, SymbolType.None);
             this.zedGraphControl3.AxisChange();
             this.zedGraphControl3.Refresh();
+
             zedGraphControl3.IsShowPointValues = true;
             zedGraphControl3.PointValueEvent += new ZedGraphControl.PointValueHandler(MyPointValueHandler);
+            #endregion
         }
         /// <summary>
         /// 鼠标显示点坐标
@@ -338,6 +342,11 @@ namespace WindowsFormsApplication1
         {
             tabControl1.SelectedTabIndex = 0;
             tabItem.Text = "参数配置";
+            ///load data
+            SyncParams();
+            InitFrequency();
+            comboBoxEx2.Items.Add("连续");
+            comboBoxEx2.Items.Add("瞬态");
         }
 
         private void buttonX7_Click(object sender, EventArgs e)
@@ -357,9 +366,9 @@ namespace WindowsFormsApplication1
             td2.IsBackground = true;
             td2.Start();
 
-            //Thread td3 = new Thread(zgraph);
-            //td3.IsBackground = true;
-            //td3.Start();
+            Thread td3 = new Thread(zgraph);
+            td3.IsBackground = true;
+            td3.Start();
         }
         private void xgraph()
         {
@@ -367,7 +376,7 @@ namespace WindowsFormsApplication1
             {
                 MySqlConnection con = new MySqlConnection(ConfigurationManager.ConnectionStrings["myStr"].ToString());
                 //UNIX_TIMESTAMP(NOW())-UNIX_TIMESTAMP(currTime)=2
-                string sql = "select channel_id,`data`,dtime,currTime,id,MICROSECOND(DATE_FORMAT(NOW(),'%Y-%m-%d %T.%f')),MICROSECOND(DATE_FORMAT(currTime,'%Y-%m-%d %T.%f')) from datatest where MICROSECOND(DATE_FORMAT(NOW(),'%Y-%m-%d %T.%f'))-MICROSECOND(DATE_FORMAT(currTime,'%Y-%m-%d %T.%f'))<2000 and channel_id='0' and state = '0' ORDER BY  id asc limit 1";
+                string sql = "select channel_id,`data`,dtime,currTime,id,now() from datatest where UNIX_TIMESTAMP(NOW())-UNIX_TIMESTAMP(currTime)=1 and channel_id='0' and state = '0' ORDER BY  id asc ";
                 MySqlDataReader reader = null;
                 try
                 {
@@ -382,13 +391,15 @@ namespace WindowsFormsApplication1
                         string currtime = reader[3].ToString();
                         string id = reader[4].ToString();
                         string t1 = reader[5].ToString();
-                        string t2 = reader[6].ToString();
+                        //string t2 = reader[6].ToString();
                         if (channel_id.Equals("0"))
                         {
                             list.Add(double.Parse(dtime), double.Parse(data));
                             this.zedGraphControl1.AxisChange();
                             this.zedGraphControl1.Refresh();
-                            Debug.Write1(dtime+","+data+","+currtime+","+DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss")+","+t1+","+t2);
+                            this.zedGraphControl1.Invalidate();
+                            
+                            Debug.Write1(dtime+","+data+","+currtime+","+DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss")+","+t1+",");
                             string sql_update = "UPDATE datatest set state='1' where id='"+id+"'";
                             new Data.DBHelper().updateDB(sql_update);
                         }
@@ -408,7 +419,8 @@ namespace WindowsFormsApplication1
             while (true)
             {
                 MySqlConnection con = new MySqlConnection(ConfigurationManager.ConnectionStrings["myStr"].ToString());
-                string sql = "select channel_id,`data`,dtime,currTime from datatest ";// where UNIX_TIMESTAMP(NOW())-UNIX_TIMESTAMP(currTime)=2 ORDER BY  id asc";
+                //UNIX_TIMESTAMP(NOW())-UNIX_TIMESTAMP(currTime)=2
+                string sql = "select channel_id,`data`,dtime,currTime,id,now() from datatest where UNIX_TIMESTAMP(NOW())-UNIX_TIMESTAMP(currTime)=1 and channel_id='1' and state = '0' ORDER BY  id asc ";
                 MySqlDataReader reader = null;
                 try
                 {
@@ -420,15 +432,19 @@ namespace WindowsFormsApplication1
                         string channel_id = reader[0].ToString();
                         string data = reader[1].ToString();
                         string dtime = reader[2].ToString();
-
-                        if (channel_id.Equals("0"))
+                        string currtime = reader[3].ToString();
+                        string id = reader[4].ToString();
+                        string t1 = reader[5].ToString();
+                        //string t2 = reader[6].ToString();
+                        if (channel_id.Equals("1"))
                         {
                             list2.Add(double.Parse(dtime), double.Parse(data));
                             this.zedGraphControl2.AxisChange();
                             this.zedGraphControl2.Refresh();
+                            Debug.Write2(dtime + "," + data + "," + currtime + "," + DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss") + "," + t1 + ",");
+                            string sql_update = "UPDATE datatest set state='1' where id='" + id + "'";
+                            new Data.DBHelper().updateDB(sql_update);
                         }
-
-                        Thread.Sleep(100);
                     }
                 }
                 catch (Exception ex)
@@ -443,39 +459,45 @@ namespace WindowsFormsApplication1
         }
         private void zgraph() {
             //z
-            string path3 = AppDomain.CurrentDomain.BaseDirectory + "\\log";
-            string filePath3 = path3 + "\\" + "d3" + ".txt";
-            if (File.Exists(filePath3))
+            while (true)
             {
-                FileStream fs = new FileStream(filePath3, FileMode.Open, FileAccess.Read, FileShare.ReadWrite);
-                //FileStream fs = new FileStream(filePath3, FileMode.Open);
-                StreamReader sr = new StreamReader(fs, ASCIIEncoding.Default);
-                string str = string.Empty;
-                while (true)
+                MySqlConnection con = new MySqlConnection(ConfigurationManager.ConnectionStrings["myStr"].ToString());
+                //UNIX_TIMESTAMP(NOW())-UNIX_TIMESTAMP(currTime)=2
+                string sql = "select channel_id,`data`,dtime,currTime,id,now() from datatest where UNIX_TIMESTAMP(NOW())-UNIX_TIMESTAMP(currTime)=1 and channel_id='2' and state = '0' ORDER BY  id asc ";
+                MySqlDataReader reader = null;
+                try
                 {
-                    str = sr.ReadLine();
-                    if (!string.IsNullOrEmpty(str))
+                    con.Open();
+                    MySqlCommand cmd = new MySqlCommand(sql, con);
+                    reader = cmd.ExecuteReader();
+                    while (reader.Read())
                     {
-                        double s = double.Parse(str.Substring(0, str.IndexOf(',')));
-                        int len = str.IndexOf(',');
-                        str = str.Substring(len + 1, str.Length - len - 1);
-                        double y = double.Parse(str.Substring(0, str.Length));
-                        list3.Add(s, y);
-                        this.zedGraphControl3.AxisChange();
-                        this.zedGraphControl3.Refresh();
+                        string channel_id = reader[0].ToString();
+                        string data = reader[1].ToString();
+                        string dtime = reader[2].ToString();
+                        string currtime = reader[3].ToString();
+                        string id = reader[4].ToString();
+                        string t1 = reader[5].ToString();
+                        //string t2 = reader[6].ToString();
+                        if (channel_id.Equals("2"))
+                        {
+                            list3.Add(double.Parse(dtime), double.Parse(data));
+                            this.zedGraphControl3.AxisChange();
+                            this.zedGraphControl3.Refresh();
+                            Debug.Write3(dtime + "," + data + "," + currtime + "," + DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss") + "," + t1 + ",");
+                            string sql_update = "UPDATE datatest set state='1' where id='" + id + "'";
+                            new Data.DBHelper().updateDB(sql_update);
+                        }
                     }
-                    else
-                    {
-                        sr.Close();
-                        fs.Close();
-                        break;
-                    }
-                    Thread.Sleep(100);
                 }
-            }
-            else
-            {
-
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+                finally
+                {
+                    con.Close();
+                }
             }
         }
 
@@ -521,12 +543,155 @@ namespace WindowsFormsApplication1
 
         private void timer1_Tick(object sender, EventArgs e)
         {
-            this.zedGraphControl1.AxisChange();
-            this.zedGraphControl1.Refresh();
-            this.zedGraphControl2.AxisChange();
-            this.zedGraphControl2.Refresh();
-            this.zedGraphControl3.AxisChange();
-            this.zedGraphControl3.Refresh();
+            
+        }
+        private void SyncParams()
+        {
+            MySqlConnection con = new MySqlConnection(ConfigurationManager.ConnectionStrings["myStr"].ToString());
+            string sql = "select * from all_channelgroup_message";
+            try
+            {
+                con.Open();
+                MySqlCommand cmd = new MySqlCommand(sql, con);
+                MySqlDataAdapter adapter = new MySqlDataAdapter(cmd);
+                DataSet ds = new DataSet();
+                adapter.Fill(ds);
+                dataGridViewX1.DataSource = ds.Tables[0];
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            finally
+            {
+                con.Close();
+            }
+        }
+        private void InitFrequency()
+        {
+            MySqlConnection con = new MySqlConnection(ConfigurationManager.ConnectionStrings["myStr"].ToString());
+            string sql = "select frequency_list from all_channelgroup_message where machineIP='192.168.0.102'";
+            string freq = "";
+            MySqlDataReader reader = null;
+            try
+            {
+                con.Open();
+                MySqlCommand cmd = new MySqlCommand(sql, con);
+                reader = cmd.ExecuteReader();
+                while (reader.Read())
+                {
+                    freq = reader[0].ToString();
+                }
+            }
+            catch (Exception ex)
+            {
+
+            }
+            finally
+            {
+                con.Close();
+            }
+
+            //获取采样频率可选项
+            //string strFrepList = "";
+            List<string> m_listFreq = new List<string>(); //采样频率集
+            
+            int nFreqCount = BreakString(freq, out m_listFreq, "|"); //个数
+            /// <summary>
+            /// 初始化采样频率选择列表
+            /// </summary>
+            this.comboBoxEx1.Items.Clear();
+
+            //float fltCurFreq = sampleParam.m_fltSampleFrequency;
+
+            int nCount = 0;
+            int nCurSel = -1;
+            string strFreq;
+
+            //RemoveAllEvent();
+            foreach (var val in m_listFreq)
+            {
+                GetValidFloatString(val, out strFreq);//去点号
+
+                comboBoxEx1.Items.Add(strFreq);
+
+                float flt = float.Parse(strFreq);
+                //if (fltCurFreq == flt)
+                //{
+                //    nCurSel = nCount;
+                //}
+                nCount++;
+            }
+            if (nCurSel >= 0)
+            {
+                comboBoxEx1.SelectedIndex = nCurSel;
+            }
+        }
+        //将字符串进行分解。strSeprator中的任何一个字符都作为分隔符。返回分节得到的字符串数目
+        private static int BreakString(string strSrc, out List<string> lstDest, string strSeprator)
+        {
+            //清空列表
+            lstDest = new List<string>();
+            //个数
+            int iCount = 0;
+
+            if (strSeprator.Length == 0)
+            {
+                lstDest.Add(strSrc);
+                iCount = 1;
+                return iCount;
+            }
+
+            //查找的位置
+            int iPos = 0;
+            while (iPos < strSrc.Length)
+            {
+                int iNewPos = strSrc.IndexOf(strSeprator, iPos);
+                //当前字符即分隔符
+                if (iNewPos == iPos)
+                {
+                    iPos++;
+                }
+                //没找到分隔符
+                else if (iNewPos == -1)
+                {
+                    lstDest.Add(strSrc.Substring(iPos, strSrc.Length - iPos));
+                    iCount++;
+                    iPos = strSrc.Length;
+                }
+                //其它
+                else
+                {
+                    lstDest.Add(strSrc.Substring(iPos, iNewPos - iPos));
+                    iCount++;
+                    iPos = iNewPos;
+                    iPos++;
+                }
+            }
+            return iCount;
+        }
+        public static void GetValidFloatString(string strText, out string strFloat)
+        {
+            strFloat = "";
+            if (strText.Contains('.'))
+                strFloat = strText.Substring(0, strText.LastIndexOf('.'));
+            else
+                strFloat = strText;
+        }
+
+        private void buttonX16_Click(object sender, EventArgs e)
+        {
+            string freq = comboBoxEx1.SelectedItem.ToString();
+            string sampleModel = comboBoxEx2.SelectedItem.ToString();
+            new SocketClient().ClientSendMsg("$002"+freq+"|"+sampleModel);
+            
+        }
+
+        private void buttonX17_Click(object sender, EventArgs e)
+        {
+            list.Clear();
+            list2.Clear();
+            list3.Clear();
         }
     }
 }

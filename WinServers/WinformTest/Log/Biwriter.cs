@@ -14,6 +14,10 @@ namespace WinformTest.Log
             try
             {
                 string sFileName = AppDomain.CurrentDomain.BaseDirectory + "\\blog";
+                if (!Directory.Exists(sFileName))
+                {
+                    DirectoryInfo director = Directory.CreateDirectory(sFileName);
+                }
                 FileStream fs = new FileStream(sFileName+"\\"+name, FileMode.OpenOrCreate);
                 BinaryWriter binWriter = new BinaryWriter(fs);
                 byte[] buffer = HexToByte(content);
@@ -39,7 +43,17 @@ namespace WinformTest.Log
             {
                 for (int i = 0; i < returnBytes.Length; i++)
                 {
-                    returnBytes[i] = Convert.ToByte(hexString.Substring(i * 2, 2), 16);
+                    //returnBytes[i] = Convert.ToByte(hexString.Substring(0, 2));
+                    byte bt;
+                    if (byte.TryParse(hexString.Substring(i * 2, 2), out bt))
+                    {
+                        returnBytes[i] = bt;
+                    }
+                    else
+                    {
+                        //
+                    }
+                    
                 }
                     return returnBytes;
                 

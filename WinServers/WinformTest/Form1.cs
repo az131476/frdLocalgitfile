@@ -161,6 +161,22 @@ namespace WinformTest
             int nReturnValue = 0;
             for (i = 0; i < nGroupCount; i++)
             {
+                //获取当前采样参数
+                float fltSampleFreq;
+                int nSampleMode, nTrigMode, nBlockSize, nDelayCount;
+
+                hardWare.GetHardWare().GetSampleFreq(out fltSampleFreq);
+                hardWare.GetHardWare().GetSampleMode(out nSampleMode);
+                hardWare.GetHardWare().GetSampleTrigMode(out nTrigMode);
+                hardWare.GetHardWare().GetTrigBlockCount(out nBlockSize);
+                hardWare.GetHardWare().GetTrigDelayCount(out nDelayCount);
+
+                //获取采样频率可选项
+                string strFrepList = "";
+                //1-瞬态、2-连续
+                int SampleMode = 2;
+                hardWare.GetHardWare().GetSampleFreqList(SampleMode, out strFrepList);
+
                 Control.GroupChannel stuGroupChannel = new Control.GroupChannel();
                 // 获取通道组信息
                 hardWare.GetHardWare().GetChannelGroup(i, out nGroupChannelID, out strMachineIP, out nReturnValue);
@@ -186,6 +202,7 @@ namespace WinformTest
 
                 int bOnLine = 1, nMeasureType = 0;
                 // 通道信息
+                string channel_id = "";
                 for (j = 0; j < nChannelNumber; j++)
                 {
                     Control.HardChannel HardChannel = new Control.HardChannel();
@@ -193,7 +210,7 @@ namespace WinformTest
 
                     hardWare.GetHardWare().IsChannelOnLine(nGroupChannelID, strMachineIP, nChannelID, out bOnLine);
                     hardWare.GetHardWare().GetChannelMeasureType(nGroupChannelID, strMachineIP, nChannelID, out nMeasureType);
-                    HardChannel.m_nChannelGroupID = nGroupChannelID;//通道组ID，多个通道为一组  0-3
+                    HardChannel.m_nChannelGroupID = nGroupChannelID;
                     HardChannel.m_nChannelID = nChannelID;//通道ID
                     HardChannel.m_nMeasureType = nMeasureType;//测量类型
                     HardChannel.m_bOnlineFlag = (bOnLine == 1 ? true : false);
@@ -201,21 +218,33 @@ namespace WinformTest
                     HardChannel.m_strMachineIP = strMachineIP;
                     m_listHardChannel.Add(HardChannel);
 
-                    if (bOnLine == 0)
+                    ///通道列表
+                    //GetChannelCombo();//界面显示
+                    ///频率列表
+                    //GetSampleFreqList();//界面显示
+                    ///采样参数
+                    //GetSampleParam();
+
+                    if (bOnLine == 1)
                     {
                         textBox1.Clear();
                         textBox1.Enabled = false;
-                        textBox1.Text += nChannelID + "号通道" + "\r\n"; 
+                        channel_id += nChannelID+"\r\n";
 
+                        //nGroupCount   equip_id
+                        //nReturnValue  0/1
+                        //strMachineIP  ip
+                        //nGroupChannelID group_id
+                        //nChannelFirst 0
+                        //nChannelNumber
                         //保存到数据库
-                        string sql = "insert into all_channelgroup_message(machineID,`online`, machineIP, groupCount, returnValue, channelFirst, datatype, channelNumber, channelID, channelgroupID, measuretype,flg)";
-                        sql += "VALUES('" + nGroupCount + "', '" + bOnLine + "', '" + strMachineIP + "', '" + nGroupCount + "', '" + nReturnValue + "', '" + nChannelFirst + "', '" + nDataType + "', '" + nChannelNumber + "', '" + nChannelID + "', '" + nGroupChannelID + "', '" + nMeasureType + "','N')";
+                        string sql = "insert into all_channelgroup_message(machineID,`online`, machineIP, groupCount, returnValue, channelFirst, datatype, channelNumber, channelID, channelgroupID, measuretype,flg,curr_frequency,frequency_list)";
+                        sql += "VALUES('" + nGroupCount + "', '" + bOnLine + "', '" + strMachineIP + "', '" + nGroupCount + "', '" + nReturnValue + "', '" + nChannelFirst + "', '" + nDataType + "', '" + nChannelNumber + "', '" + nChannelID + "', '" + nGroupChannelID + "', '" + nMeasureType + "','N','"+ fltSampleFreq + "','"+ strFrepList + "')";
                         Data.OperatData opear = new Data.OperatData();
-                        string sqldel = "DELETE from all_channelgroup_message";
-                        opear.delete(sqldel);
                         opear.paramsSave(sql);
                     }
                 }
+                textBox1.Text = channel_id;
             }
             GetBufferIndex();
         }
@@ -226,6 +255,9 @@ namespace WinformTest
         {
             m_listGroupChannel.Clear();
             m_listHardChannel.Clear();
+            Data.OperatData opear = new Data.OperatData();
+            string sqldel = "DELETE from all_channelgroup_message";
+            opear.delete(sqldel);
         }
         /// <summary>
         /// 仪器中的数据按照仪器ID排列，由小到大
@@ -336,12 +368,7 @@ namespace WinformTest
         {
             ///获取所有通道组信息
             GetAllGroupMsg(); 
-            ///通道列表
-            GetChannelCombo();
-            ///频率列表
-            GetSampleFreqList();
-            ///采样参数
-            GetSampleParam();
+            
         }       
         ///<summary>
         ///初始化通道选择列表
@@ -359,6 +386,7 @@ namespace WinformTest
                 string strGroupID = String.Format("{0}", nGroupID + 1);
                 string strChannelID = String.Format("{0}", m_listHardChannel[i].m_nChannelID + 1);
                 string strText = strGroupID + "-" + strChannelID;
+                Log.Debug.WriteErr("strGroupID:" + strGroupID+ " strChannelID:" + strChannelID+" "+ strText);
 
                 m_CommboChan.Add(strText);
             }
@@ -370,7 +398,9 @@ namespace WinformTest
         {
             //获取采样频率可选项
             string strFrepList = "";
-            hardWare.GetHardWare().GetSampleFreqList(2, out strFrepList);
+            //1-瞬态、2-连续
+            int nSampleMode = 2;
+            hardWare.GetHardWare().GetSampleFreqList(nSampleMode, out strFrepList);
             int nFreqCount = BreakString(strFrepList, out m_listFreq, "|"); //个数
             /// <summary>
             /// 初始化采样频率选择列表
@@ -442,8 +472,6 @@ namespace WinformTest
                 object oChnData;
                 hardWare.GetHardWare().GetAllChnDataEx(out oChnData, out nTotalDataPos, out nReceiveCount, out nChnCount, out nReturnValue);
                 
-                
-
                 if (nReceiveCount <= 0)
                     continue;
                 float[] pfltData;
@@ -486,11 +514,10 @@ namespace WinformTest
 
                             string strData = String.Format("{0:f3}", pChanData[nCount]);
                             time_ns = String.Format("{0:f4}", ((double)nTotalDataPos / 20));
-                            //time_ns = temp+double.Parse(time_ns) * (nCount+1)+"";
-                            AnlySampleData(strData,nTotalDataPos, time_ns.ToString(), nChannelGroupID, nSelGroupID, nSelChanID,nCount,nReceiveCount);
+                            string time_ns2 = temp+double.Parse(time_ns) * (nCount+1)+"";
+                            AnlySampleData(strData,nTotalDataPos, time_ns2.ToString(), nChannelGroupID, nSelGroupID, nSelChanID,nCount,nReceiveCount);
 
-                            Log.Debug.WriteErr("channelid:"+nSelChanID+" nreceive:"+nReceiveCount+"time_ns:" +time_ns+" strdata:"+strData+" ntotal:"+nTotalDataPos);
-                            
+                            Log.Debug.WriteErr("channelid:"+nSelChanID+" nreceive:"+nReceiveCount+"time_ns:" +time_ns+" times_ns2:"+time_ns2+" strdata:"+strData+" ntotal:"+nTotalDataPos);
                         }
                         temp = double.Parse(time_ns) ;
                     }
@@ -538,17 +565,19 @@ namespace WinformTest
             string currTime = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
             string sql = "insert into datatest (channel_id,data,dtime,currTime) values('" + nSelChanID + "','"+data+"','"+time_ns+"','"+currTime+"')";
             new Data.OperatData().paramsSave(sql);
+            string sql_del = "DELETE from datatest where UNIX_TIMESTAMP(NOW())-UNIX_TIMESTAMP(currTime)>60";
+            new Data.OperatData().paramsSave(sql_del);
 
             #region
             /// 二进制存储原始数据
             /// <summary>
             /// </summary>
-            string filename = DateTime.Now.ToString("yyyy-MM-dd");
+            string filename = DateTime.Now.ToString("yyyy-MM-dd")+".txt";
             Log.Biwriter.BinaryFile(filename,allData);
             #endregion
 
             #region
-            Log.Debug.Write(nd);
+            Log.Debug.Write(allData);
             SendSampleData(nd);
             #endregion
 
@@ -573,12 +602,12 @@ namespace WinformTest
             }
         }
         /// <summary>
-        /// 收到SF0请求初始参数
+        /// $101
         /// </summary>
         public void SendInitData()
         {
-
-            //sendToclient
+            
+            
         }
 
         private void button1_Click(object sender, EventArgs e)

@@ -53,7 +53,6 @@
             this.comboBoxEx4 = new DevComponents.DotNetBar.Controls.ComboBoxEx();
             this.labelX10 = new DevComponents.DotNetBar.LabelX();
             this.labelX9 = new DevComponents.DotNetBar.LabelX();
-            this.comboBoxEx3 = new DevComponents.DotNetBar.Controls.ComboBoxEx();
             this.comboBoxEx2 = new DevComponents.DotNetBar.Controls.ComboBoxEx();
             this.labelX8 = new DevComponents.DotNetBar.LabelX();
             this.labelX7 = new DevComponents.DotNetBar.LabelX();
@@ -221,7 +220,6 @@
             this.groupPanel2.Controls.Add(this.comboBoxEx4);
             this.groupPanel2.Controls.Add(this.labelX10);
             this.groupPanel2.Controls.Add(this.labelX9);
-            this.groupPanel2.Controls.Add(this.comboBoxEx3);
             this.groupPanel2.Controls.Add(this.comboBoxEx2);
             this.groupPanel2.Controls.Add(this.labelX8);
             this.groupPanel2.Controls.Add(this.labelX7);
@@ -275,10 +273,10 @@
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(243, 185);
+            this.textBox1.Location = new System.Drawing.Point(243, 147);
             this.textBox1.Multiline = true;
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(121, 146);
+            this.textBox1.Size = new System.Drawing.Size(121, 217);
             this.textBox1.TabIndex = 29;
             // 
             // labelX17
@@ -345,11 +343,11 @@
             // 
             this.comboBoxEx6.DisplayMember = "Text";
             this.comboBoxEx6.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
-            this.comboBoxEx6.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.comboBoxEx6.FormattingEnabled = true;
             this.comboBoxEx6.ItemHeight = 15;
             this.comboBoxEx6.Location = new System.Drawing.Point(670, 59);
             this.comboBoxEx6.Name = "comboBoxEx6";
+            this.comboBoxEx6.Size = new System.Drawing.Size(121, 21);
             this.comboBoxEx6.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.comboBoxEx6.TabIndex = 18;
             // 
@@ -369,11 +367,11 @@
             // 
             this.comboBoxEx5.DisplayMember = "Text";
             this.comboBoxEx5.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
-            this.comboBoxEx5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.comboBoxEx5.FormattingEnabled = true;
             this.comboBoxEx5.ItemHeight = 15;
             this.comboBoxEx5.Location = new System.Drawing.Point(670, 32);
             this.comboBoxEx5.Name = "comboBoxEx5";
+            this.comboBoxEx5.Size = new System.Drawing.Size(121, 21);
             this.comboBoxEx5.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.comboBoxEx5.TabIndex = 16;
             // 
@@ -393,11 +391,11 @@
             // 
             this.comboBoxEx4.DisplayMember = "Text";
             this.comboBoxEx4.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
-            this.comboBoxEx4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.comboBoxEx4.FormattingEnabled = true;
             this.comboBoxEx4.ItemHeight = 15;
             this.comboBoxEx4.Location = new System.Drawing.Point(670, 5);
             this.comboBoxEx4.Name = "comboBoxEx4";
+            this.comboBoxEx4.Size = new System.Drawing.Size(121, 21);
             this.comboBoxEx4.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.comboBoxEx4.TabIndex = 14;
             // 
@@ -425,18 +423,6 @@
             this.labelX9.TabIndex = 12;
             this.labelX9.Text = "在线通道";
             // 
-            // comboBoxEx3
-            // 
-            this.comboBoxEx3.DisplayMember = "Text";
-            this.comboBoxEx3.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
-            this.comboBoxEx3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.comboBoxEx3.FormattingEnabled = true;
-            this.comboBoxEx3.ItemHeight = 15;
-            this.comboBoxEx3.Location = new System.Drawing.Point(243, 149);
-            this.comboBoxEx3.Name = "comboBoxEx3";
-            this.comboBoxEx3.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.comboBoxEx3.TabIndex = 11;
-            // 
             // comboBoxEx2
             // 
             this.comboBoxEx2.AutoCompleteCustomSource.AddRange(new string[] {
@@ -445,11 +431,11 @@
             "3号机"});
             this.comboBoxEx2.DisplayMember = "Text";
             this.comboBoxEx2.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
-            this.comboBoxEx2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.comboBoxEx2.FormattingEnabled = true;
             this.comboBoxEx2.ItemHeight = 15;
             this.comboBoxEx2.Location = new System.Drawing.Point(243, 3);
             this.comboBoxEx2.Name = "comboBoxEx2";
+            this.comboBoxEx2.Size = new System.Drawing.Size(121, 21);
             this.comboBoxEx2.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.comboBoxEx2.TabIndex = 10;
             // 
@@ -481,11 +467,11 @@
             // 
             this.comboBoxEx1.DisplayMember = "Text";
             this.comboBoxEx1.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
-            this.comboBoxEx1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.comboBoxEx1.FormattingEnabled = true;
             this.comboBoxEx1.ItemHeight = 15;
             this.comboBoxEx1.Location = new System.Drawing.Point(243, 53);
             this.comboBoxEx1.Name = "comboBoxEx1";
+            this.comboBoxEx1.Size = new System.Drawing.Size(121, 21);
             this.comboBoxEx1.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.comboBoxEx1.TabIndex = 6;
             // 
@@ -622,7 +608,6 @@
         private DevComponents.DotNetBar.ButtonX buttonX1;
         private DevComponents.DotNetBar.LabelX labelX7;
         private DevComponents.DotNetBar.Controls.ComboBoxEx comboBoxEx1;
-        private DevComponents.DotNetBar.Controls.ComboBoxEx comboBoxEx3;
         private DevComponents.DotNetBar.Controls.ComboBoxEx comboBoxEx2;
         private DevComponents.DotNetBar.LabelX labelX8;
         private DevComponents.DotNetBar.Controls.ComboBoxEx comboBoxEx4;

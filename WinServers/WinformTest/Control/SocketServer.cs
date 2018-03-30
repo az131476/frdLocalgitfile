@@ -55,15 +55,11 @@ namespace WinformTest.Control
                 { 
                     clientIP = (connection.RemoteEndPoint as IPEndPoint).Address;
                     int clientPort = (connection.RemoteEndPoint as IPEndPoint).Port;
- 
                     string sendmsg = "连接服务端成功！\r\n" + "本地IP:" + clientIP + "，本地端口" + clientPort.ToString();
-                    //sendMsg(sendmsg);
 
                     string remoteEndPoint = connection.RemoteEndPoint.ToString();
                     Log.Debug.Write("成功与" + remoteEndPoint + "客户端建立连接！\t\n");
                     clientConnectionItems.Add(remoteEndPoint, connection);
-
-                    //IPEndPoint netpoint = new IPEndPoint(clientIP,clientPort); 
                     IPEndPoint netpoint = connection.RemoteEndPoint as IPEndPoint;
  
                     ParameterizedThreadStart pts = new ParameterizedThreadStart(recv);
@@ -109,7 +105,7 @@ namespace WinformTest.Control
                     int length = socketServer.Receive(arrServerRecMsg);    
                     string strSRecMsg = Encoding.UTF8.GetString(arrServerRecMsg, 0, length);
 
-                    if (strSRecMsg.Substring(0, 4).Equals("$100"))
+                    if (strSRecMsg.Substring(0, 4).Equals("$001"))
                     {
                         Log.Debug.Write("客户端参数变动设置");
                         ///<summary>
