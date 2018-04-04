@@ -18,15 +18,6 @@ namespace WinformTest.Control
             int nReturnValue;
             hardWare.GetHardWare().IsConnectMachine(out nReturnValue);
             return nReturnValue == 1 ? true : false;
-
-
-            //GetAllGroupChannel();
-            //InitChannelCombo();
-            //GetSampleFreqList();
-            //GetSampleParam();
-            //InitFrepCombo();
-            ////除通道信息外获取所有参数
-            //RefreshAllParam();
         }
     }
 }

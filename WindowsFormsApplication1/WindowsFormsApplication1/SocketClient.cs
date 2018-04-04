@@ -48,7 +48,6 @@ namespace WindowsFormsApplication1
                     int b_len = length;
                     #region
                     
-
                     #endregion
 
                     #endregion

@@ -104,47 +104,52 @@ namespace WinformTest.Control
                 {
                     int length = socketServer.Receive(arrServerRecMsg);    
                     string strSRecMsg = Encoding.UTF8.GetString(arrServerRecMsg, 0, length);
+                    #region
+                    if (strSRecMsg.Substring(0, 4).Equals("$100"))
+                    {
+                        //转发客户端请求的仪器数据
+                    }
+                    //if (strSRecMsg.Substring(0, 4).Equals("$001"))
+                    //{
+                    //    Log.Debug.Write("客户端参数变动设置");
+                    //    ///<summary>
+                    //    ///<通道参数>
+                    //    ///通道频率：根据仪器获取显示到客户端进行设置 
+                    //    ///通道列表：16个通道，显示格式为1-X，可根据客户端设置
+                    //    /// 测量类型：仪器获取
+                    //    /// 量程：
+                    //    /// <应变应力子参数>
+                    //    /// 应变应力类型：列表选择设置，根据测量类型值而不同
+                    //    /// 桥路方式：选择设置
+                    //    /// 应变计阻值：
+                    //    /// 导线电阻
+                    //    /// 灵敏度系数
+                    //    /// 泊松比
+                    //    /// 弹性模量
+                    //    /// </summary>
+                    //    //new MainHardWare().SetSampleParam();
 
-                    if (strSRecMsg.Substring(0, 4).Equals("$001"))
-                    {
-                        Log.Debug.Write("客户端参数变动设置");
-                        ///<summary>
-                        ///<通道参数>
-                        ///通道频率：根据仪器获取显示到客户端进行设置 
-                        ///通道列表：16个通道，显示格式为1-X，可根据客户端设置
-                        /// 测量类型：仪器获取
-                        /// 量程：
-                        /// <应变应力子参数>
-                        /// 应变应力类型：列表选择设置，根据测量类型值而不同
-                        /// 桥路方式：选择设置
-                        /// 应变计阻值：
-                        /// 导线电阻
-                        /// 灵敏度系数
-                        /// 泊松比
-                        /// 弹性模量
-                        /// </summary>
-                        //new MainHardWare().SetSampleParam();
+                    //}
+                    //else if (strSRecMsg.Substring(0, 4).Equals("$101"))
+                    //{
+                    //    Log.Debug.Write("客户端点击事件");
+                    //    ///<summary>
+                    //    ///启动采样
+                    //    ///平衡
+                    //    ///停止采样
+                    //    ///清零
+                    //    /// </summary>
+                    //    //设置平衡
+                    //    if (strSRecMsg.Substring(4, 7).Equals("balance"))
+                    //    {
+                    //        //执行平衡设置
+                    //    }
+                    //}
+                    //else if (strSRecMsg.Equals("sendStart"))
+                    //{
 
-                    }
-                    else if (strSRecMsg.Substring(0, 4).Equals("$101"))
-                    {
-                        Log.Debug.Write("客户端点击事件");
-                        ///<summary>
-                        ///启动采样
-                        ///平衡
-                        ///停止采样
-                        ///清零
-                        /// </summary>
-                        //设置平衡
-                        if (strSRecMsg.Substring(4, 7).Equals("balance"))
-                        {
-                            //执行平衡设置
-                        }
-                    }
-                    else if (strSRecMsg.Equals("sendStart"))
-                    {
-                        
-                    }
+                    //}
+                    #endregion
                     Log.Debug.Write("客户端:" + socketServer.RemoteEndPoint + ",time:" + GetCurrentTime() + "\r\n" + strSRecMsg + "\r\n\n");
 
                     socketServer.Send(Encoding.UTF8.GetBytes("jdk"));

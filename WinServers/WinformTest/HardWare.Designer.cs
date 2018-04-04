@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(HardWare));
-
             this.axDHTestHardWare1 = new AxDHHardWareLib.AxDHTestHardWare();
             ((System.ComponentModel.ISupportInitialize)(this.axDHTestHardWare1)).BeginInit();
             this.SuspendLayout();
@@ -37,9 +36,9 @@
             // axDHTestHardWare1
             // 
             this.axDHTestHardWare1.Enabled = true;
-            this.axDHTestHardWare1.Location = new System.Drawing.Point(20, 23);
+            this.axDHTestHardWare1.Location = new System.Drawing.Point(17, 20);
             this.axDHTestHardWare1.Name = "axDHTestHardWare1";
-            //this.axDHTestHardWare1.OcxState = ((System.Windows.Forms.AxHost.State)(resources.GetObject("axDHTestHardWare1.OcxState")));
+            this.axDHTestHardWare1.OcxState = ((System.Windows.Forms.AxHost.State)(resources.GetObject("axDHTestHardWare1.OcxState")));
             this.axDHTestHardWare1.Size = new System.Drawing.Size(192, 192);
             this.axDHTestHardWare1.TabIndex = 0;
             // 

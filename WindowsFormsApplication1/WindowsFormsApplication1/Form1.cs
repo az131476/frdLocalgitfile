@@ -23,10 +23,10 @@ namespace WindowsFormsApplication1
     {
         SocketClient client = new SocketClient();
         bool flg;
-        public PointPairList list = new PointPairList();
+        //public PointPairList list = new PointPairList();
         public PointPairList list2 = new PointPairList();
         public PointPairList list3 = new PointPairList();
-        //RollingPointPairList list = new RollingPointPairList(2000);
+        RollingPointPairList list = new RollingPointPairList(2000);
         //RollingPointPairList list2 = new RollingPointPairList(2000);
         //RollingPointPairList list3 = new RollingPointPairList(2000);
         LineItem myCurve;
@@ -46,6 +46,7 @@ namespace WindowsFormsApplication1
             #region 设置桌面风格等
             initCompoents();
             #endregion
+            InitEquip();
             #region 启动Socket与通讯服务建立连接
             Thread td_socket = new Thread(new ThreadStart(socketConnect));
             td_socket.IsBackground = true;
@@ -54,14 +55,46 @@ namespace WindowsFormsApplication1
             #region 请求获取服务器初始化设备参数，并加载界面参数列表并保存
             LoadOrderData();
             #endregion
-            if (!flg)
-            {
-                tabItem7.Visible = false;
-                tabItem.Visible = true;
-            }
+            
             ZedgraphShapInit();
         }
-
+        private bool InitEquip()
+        {
+            MySqlConnection con = new MySqlConnection(ConfigurationManager.ConnectionStrings["myStr"].ToString());
+            try
+            {
+                con.Open();
+                MySqlCommand cmd = new MySqlCommand("select DISTINCT machineID,machineIP from all_channelgroup_message  where `online`='1'", con);
+                MySqlDataReader reader = cmd.ExecuteReader();
+                while (reader.Read())
+                {
+                    comboBoxEx4.Items.Add(reader[0] + "_" + reader[1]);
+                    comboBoxEx4.SelectedIndex = 0;
+                    comboBoxEx6.Items.Add(reader[0] + "_" + reader[1]);
+                }
+            }
+            catch (Exception ex)
+            {
+                return false;
+            }
+            finally
+            {
+                con.Close();
+            }
+            return true;
+        }
+        private void buttonX18_Click(object sender, EventArgs e)
+        {
+            comboBoxEx6.Items.Clear();
+            if (InitEquip())
+            {//初始化成功
+                tabItem.Visible = true;
+                tabItem7.Visible = false;
+                comboBoxEx6.SelectedIndex = 0;
+                //string equip_ip = comboBoxEx4.SelectedItem.ToString();
+                //client.ClientSendMsg("$100"+equip_ip);
+            }
+        }
         private void socketConnect()
         {
             while (true)
@@ -93,6 +126,7 @@ namespace WindowsFormsApplication1
             tabItem3.Visible = false;
             tabItem4.Visible = false;
             tabItem5.Visible = false;
+            tabItem6.Visible = false;
             tabItem7.Text = "初始化";
 
             /*控件初始化数据
@@ -353,6 +387,9 @@ namespace WindowsFormsApplication1
         {
             tabControl1.SelectedTabIndex = 3;
             tabItem.Text = "存储设置";
+            comboBoxEx5.Items.Add("连续");
+            comboBoxEx5.Items.Add("瞬态");
+            comboBoxEx5.SelectedIndex = 0;
         }
 
         private void buttonX8_Click(object sender, EventArgs e)
@@ -684,7 +721,6 @@ namespace WindowsFormsApplication1
             string freq = comboBoxEx1.SelectedItem.ToString();
             string sampleModel = comboBoxEx2.SelectedItem.ToString();
             new SocketClient().ClientSendMsg("$002"+freq+"|"+sampleModel);
-            
         }
 
         private void buttonX17_Click(object sender, EventArgs e)
@@ -692,6 +728,58 @@ namespace WindowsFormsApplication1
             list.Clear();
             list2.Clear();
             list3.Clear();
+        }
+
+        private void buttonX20_Click(object sender, EventArgs e)
+        {
+            FolderBrowserDialog folder = new FolderBrowserDialog();
+
+            if (folder.ShowDialog() == DialogResult.OK)
+            {
+                string p1 = folder.SelectedPath;
+                textBoxX1.Text = p1;
+            }
+        }
+
+        private void buttonX19_Click(object sender, EventArgs e)
+        {
+            string comboxtext = comboBoxEx6.SelectedItem.ToString();
+            string equip_id = comboxtext.Substring(0,comboxtext.IndexOf('_'));
+            string equip_ip = comboxtext.Substring(comboxtext.IndexOf('_')+1,comboxtext.Length-comboxtext.IndexOf('_')-1);
+            int autoflg = 0;
+            if (checkBoxX1.Checked)
+            {
+                autoflg = 1;
+            }
+            else { autoflg = 0; }
+            textBoxX1.Text = @textBoxX1.Text;
+
+            string sql_insert = @"insert into client_save_set(equip_id,equip_ip,autosave,savemay,path) VALUES('"+equip_id+"','"+equip_ip+"','"+ autoflg + "','"+ comboBoxEx5.SelectedIndex+ "','"+ textBoxX1.Text+ "')";
+            string sql_select = @"select * from client_save_set where equip_ip = '"+equip_ip+"'";
+            string sql_update = @"update client_save_set set autosave='"+autoflg+"',savemay='"+comboBoxEx5.SelectedIndex+"',path='"+textBoxX1.Text+"' where equip_ip = '"+equip_ip+"'";
+
+            Data.DBHelper db = new Data.DBHelper();
+            if (db.exist(sql_select))
+            {
+                if (db.updateDB(sql_update))
+                {
+                    MessageBox.Show("保存成功");
+                }else
+                {
+                    MessageBox.Show("保存失败");
+                }
+            }
+            else
+            {
+                if (db.updateDB(sql_insert))
+                {
+                    MessageBox.Show("保存成功");
+                }
+                else
+                {
+                    MessageBox.Show("保存失败");
+                }
+            }
         }
     }
 }

@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using System.Threading;
 using DevComponents.DotNetBar;
 using MySql.Data.MySqlClient;
+using System.Configuration;
 
 namespace WinformTest
 {
@@ -26,8 +27,6 @@ namespace WinformTest
         private List<string> data_list = new List<string>();
         Control.SampleParam sampleParam = new Control.SampleParam();
         Control.SocketServer socket = new Control.SocketServer();
-        string time_ns;
-        double temp;
         double time_last;
         public Form1()
         {
@@ -458,7 +457,170 @@ namespace WinformTest
         /// </summary>
         private void GetDataThread(object o)
         {
-           
+            GetAllMachineData();
+            //GetDataX(o);
+        }
+        private void GetAllMachineData()
+        {
+            ///仪器数据
+
+            Thread equip1_td = new Thread(GetData_one);
+            equip1_td.IsBackground = true;
+            equip1_td.Start();
+        }
+        private void GetData_one()
+        {
+            // 查询所有仪器
+            for (int i = 0; i < m_listGroupChannel.Count; i++)
+            {
+                Control.GroupChannel GroupChannel = m_listGroupChannel[i];
+                int nChannelGroupID = GroupChannel.m_GroupID;
+                string equip_ip1 = ConfigurationManager.AppSettings["equip_ip1"].ToString();
+                //string equip_ip2 = ConfigurationManager.AppSettings["equip_ip2"].ToString();
+
+                if (GroupChannel.m_strMachineIP.Equals(equip_ip1))
+                {
+                    ///three channel
+                    Thread x = new Thread(GetX);
+                    x.IsBackground = true;
+                    x.Start();
+
+                    //Thread y = new Thread(GetY);
+                    //y.IsBackground = true;
+                    //y.Start();
+
+                    //Thread z = new Thread(GetZ);
+                    //z.IsBackground = true;
+                    //z.Start();
+                }
+            }
+        }
+        public void GetX()
+        {
+            // 获取每个通道的数据 默认数据类型为float
+            string time_ns = "";
+            double temp=0;
+            while (true)
+            {
+                int nSelGroupID, nSelChanID;
+                int nTotalDataPos, nReceiveCount, nChnCount, nReturnValue;
+                object oChnData;
+                hardWare.GetHardWare().GetAllChnDataEx(out oChnData, out nTotalDataPos, out nReceiveCount, out nChnCount, out nReturnValue);
+
+                if (nReceiveCount <= 0)
+                    continue;
+                float[] pfltData;
+
+                nSelChanID = 0;
+                pfltData = (float[])oChnData;
+
+                float[] pChanData = new float[nReceiveCount];
+                for (int nCount = 0; nCount < nReceiveCount; nCount++)
+                {
+                    pChanData[nCount] = pfltData[nCount];
+
+                    string strData = String.Format("{0:f3}", pChanData[nCount]);
+                    time_ns = String.Format("{0:f4}", ((double)nTotalDataPos / 20));
+                    //string time_ns2 = temp+(double.Parse(time_ns)/nReceiveCount) * (nCount+1)+"";
+                    double tem = ((double.Parse(time_ns) - temp) / nReceiveCount);
+
+                    double time_ns3 = temp + tem * (nCount + 1);
+                    string time_ns4 = String.Format("{0:f4}", time_ns3);
+
+                    AnlySampleData(strData, nTotalDataPos, time_ns4.ToString(), 0, 0, nSelChanID, nCount, nReceiveCount,nSelChanID);
+
+                    //Log.Debug.WriteErr("channelid:" + nSelChanID + " nreceive:" + nReceiveCount + "time_ns:" + time_ns + " times_ns3:" + time_ns4 + " strdata:" + strData + " ntotal:" + nTotalDataPos);
+                }
+                temp = double.Parse(time_ns);
+                //Log.Debug.WriteErr("temp:" + temp);
+                Thread.Sleep(1000);
+            }
+        }
+        public void GetY()
+        {
+            // 获取每个通道的数据 默认数据类型为float
+            string time_ns = "";
+            double temp = 0;
+            while (true)
+            {
+                int nSelGroupID, nSelChanID;
+                int nTotalDataPos, nReceiveCount, nChnCount, nReturnValue;
+                object oChnData;
+                hardWare.GetHardWare().GetAllChnDataEx(out oChnData, out nTotalDataPos, out nReceiveCount, out nChnCount, out nReturnValue);
+
+                if (nReceiveCount <= 0)
+                    continue;
+                float[] pfltData;
+
+                nSelChanID = 1;
+                pfltData = (float[])oChnData;
+
+                float[] pChanData = new float[nReceiveCount];
+                for (int nCount = 0; nCount < nReceiveCount; nCount++)
+                {
+                    pChanData[nCount] = pfltData[nCount];
+
+                    string strData = String.Format("{0:f3}", pChanData[nCount]);
+                    time_ns = String.Format("{0:f4}", ((double)nTotalDataPos / 20));
+                    //string time_ns2 = temp+(double.Parse(time_ns)/nReceiveCount) * (nCount+1)+"";
+                    double tem = ((double.Parse(time_ns) - temp) / nReceiveCount);
+
+                    double time_ns3 = temp + tem * (nCount + 1);
+                    string time_ns4 = String.Format("{0:f4}", time_ns3);
+
+                    AnlySampleData(strData, nTotalDataPos, time_ns4.ToString(), 0, 0, nSelChanID, nCount, nReceiveCount,nSelChanID);
+
+                    Log.Debug.WriteErr("channelid:" + nSelChanID + " nreceive:" + nReceiveCount + "time_ns:" + time_ns + " times_ns3:" + time_ns4 + " strdata:" + strData + " ntotal:" + nTotalDataPos);
+                }
+                temp = double.Parse(time_ns);
+                Log.Debug.WriteErr("temp:" + temp);
+                Thread.Sleep(1000);
+            }
+        }
+        private void GetZ()
+        {
+            string time_ns = "";
+            double temp = 0;
+            while (true)
+            {
+                int nSelGroupID, nSelChanID;
+                int nTotalDataPos, nReceiveCount, nChnCount, nReturnValue;
+                object oChnData;
+                hardWare.GetHardWare().GetAllChnDataEx(out oChnData, out nTotalDataPos, out nReceiveCount, out nChnCount, out nReturnValue);
+
+                if (nReceiveCount <= 0)
+                    continue;
+                float[] pfltData;
+
+                nSelChanID = 2;
+                pfltData = (float[])oChnData;
+
+                float[] pChanData = new float[nReceiveCount];
+                for (int nCount = 0; nCount < nReceiveCount; nCount++)
+                {
+                    pChanData[nCount] = pfltData[nCount];
+
+                    string strData = String.Format("{0:f3}", pChanData[nCount]);
+                    time_ns = String.Format("{0:f4}", ((double)nTotalDataPos / 20));
+                    //string time_ns2 = temp+(double.Parse(time_ns)/nReceiveCount) * (nCount+1)+"";
+                    double tem = ((double.Parse(time_ns) - temp) / nReceiveCount);
+
+                    double time_ns3 = temp + tem * (nCount + 1);
+                    string time_ns4 = String.Format("{0:f4}", time_ns3);
+
+                    AnlySampleData(strData, nTotalDataPos, time_ns4.ToString(), 0, 0, nSelChanID, nCount, nReceiveCount,nSelChanID);
+
+                    Log.Debug.WriteErr("channelid:" + nSelChanID + " nreceive:" + nReceiveCount + "time_ns:" + time_ns + " times_ns3:" + time_ns4 + " strdata:" + strData + " ntotal:" + nTotalDataPos);
+                }
+                temp = double.Parse(time_ns);
+                Log.Debug.WriteErr("temp:" + temp);
+                Thread.Sleep(1000);
+            }
+        }
+        public void GetDataX(object o)
+        {
+            string time_ns = "";
+            double temp = 0;
             Form1 main = (Form1)o;
             string strChannel = "";
             int nSelGroupID, nSelChanID;
@@ -471,7 +633,7 @@ namespace WinformTest
                 int nTotalDataPos, nReceiveCount, nChnCount, nReturnValue;
                 object oChnData;
                 hardWare.GetHardWare().GetAllChnDataEx(out oChnData, out nTotalDataPos, out nReceiveCount, out nChnCount, out nReturnValue);
-                
+
                 if (nReceiveCount <= 0)
                     continue;
                 float[] pfltData;
@@ -486,22 +648,14 @@ namespace WinformTest
                     {
                         if (main.thread_state)
                         {
-                                if (j == 0)
-                                {
-                                    strChannel = "1-1";//main.comboChan.SelectedItem.ToString();//eg:1-1/1-2/1-3
-                                }
-                                else if (j == 1)
-                                {
-                                    strChannel = "1-2";
-                                }
-                                else if (j == 2)
-                                {
-                                    strChannel = "1-3";
-                                }
+                            if (j == 0)
+                            {
+                                strChannel = "1-1";//main.comboChan.SelectedItem.ToString();//eg:1-1/1-2/1-3
+                            }
                         }
-                        nSelGroupID = int.Parse(strChannel.Substring(0, strChannel.LastIndexOf('-')))-1;
+                        nSelGroupID = int.Parse(strChannel.Substring(0, strChannel.LastIndexOf('-'))) - 1;
                         string m = "";
-                        
+
                         nSelChanID = int.Parse(strChannel.Substring(strChannel.LastIndexOf('-') + 1, strChannel.Length - 1 - strChannel.LastIndexOf('-'))) - 1;
                         if (nChannelGroupID != nSelGroupID || m_listHardChannel[j].m_nChannelID != nSelChanID)
                             continue;
@@ -514,12 +668,18 @@ namespace WinformTest
 
                             string strData = String.Format("{0:f3}", pChanData[nCount]);
                             time_ns = String.Format("{0:f4}", ((double)nTotalDataPos / 20));
-                            string time_ns2 = temp+double.Parse(time_ns) * (nCount+1)+"";
-                            AnlySampleData(strData,nTotalDataPos, time_ns2.ToString(), nChannelGroupID, nSelGroupID, nSelChanID,nCount,nReceiveCount);
+                            //string time_ns2 = temp+(double.Parse(time_ns)/nReceiveCount) * (nCount+1)+"";
+                            double tem = ((double.Parse(time_ns) - temp) / nReceiveCount);
 
-                            Log.Debug.WriteErr("channelid:"+nSelChanID+" nreceive:"+nReceiveCount+"time_ns:" +time_ns+" times_ns2:"+time_ns2+" strdata:"+strData+" ntotal:"+nTotalDataPos);
+                            double time_ns3 = temp + tem * (nCount + 1);
+                            string time_ns4 = String.Format("{0:f4}", time_ns3);
+
+                            AnlySampleData(strData, nTotalDataPos, time_ns4.ToString(), nChannelGroupID, nSelGroupID, nSelChanID, nCount, nReceiveCount,nSelChanID);
+
+                            Log.Debug.WriteErr("channelid:" + nSelChanID + " nreceive:" + nReceiveCount + "time_ns:" + time_ns + " times_ns3:" + time_ns4 + " strdata:" + strData + " ntotal:" + nTotalDataPos);
                         }
-                        temp = double.Parse(time_ns) ;
+                        temp = double.Parse(time_ns);
+                        Log.Debug.WriteErr("temp:" + temp);
                     }
                 }
                 #region 获取GPS信息
@@ -542,7 +702,7 @@ namespace WinformTest
         ///<summary>
         ///处理采样数据
         /// </summary>
-        public void AnlySampleData(string data,int nTotalDataPos, string time_ns, int nChannelGroupID,int nSelGroupID,int nSelChanID,int nCount,int nReceiveCount)
+        public void AnlySampleData(string data,int nTotalDataPos, string time_ns, int nChannelGroupID,int nSelGroupID,int nSelChanID,int nCount,int nReceiveCount,int chanid)
         {
             //strData:-164.1896  nTotalDataPos:3158  time_ns:315.0000
             //${123.00,7849,32.5432}
@@ -551,33 +711,34 @@ namespace WinformTest
             List<ArraySegment<byte>> list = new List<ArraySegment<byte>>();
             List<ArraySegment<byte>> len_list = new List<ArraySegment<byte>>();
             //
-            string d1 = "{" + "d1" + nChannelGroupID.ToString().Length + nChannelGroupID.ToString();
+            string d1 = "d1" + nChannelGroupID.ToString().Length + nChannelGroupID.ToString(); 
             string d2 = "d2" + nSelGroupID.ToString().Length + nSelGroupID.ToString();
             string d3 = "d3" + nSelChanID.ToString().Length + nSelChanID.ToString();
             string d4 = "d4" + nCount.ToString().Length + nCount.ToString();
             string d5 = "d5" + nReceiveCount.ToString().Length + nReceiveCount.ToString();
             string d6 = "d6" + data.ToString().Length + data.ToString();
             string d7 = "d7" + nTotalDataPos.ToString().Length + nTotalDataPos.ToString();
-            string d8 = "d8" + time_ns.Length + time_ns.ToString() + "}";
+            string d8 = "d8" + time_ns.Length + time_ns.ToString();
             string nd = d1 + d3 + d6 + d8;
             string n_len = "L"+nd.Length.ToString()+"N";
             string allData = d1 + d2 + d3 + d4 + d5 + d6 + d7 + d8;
             string currTime = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
             string sql = "insert into datatest (channel_id,data,dtime,currTime) values('" + nSelChanID + "','"+data+"','"+time_ns+"','"+currTime+"')";
             new Data.OperatData().paramsSave(sql);
-            string sql_del = "DELETE from datatest where UNIX_TIMESTAMP(NOW())-UNIX_TIMESTAMP(currTime)>60";
+            string sql_del = "DELETE from datatest where UNIX_TIMESTAMP(NOW())-UNIX_TIMESTAMP(currTime)>60 and channel_id='"+ chanid + "'";
             new Data.OperatData().paramsSave(sql_del);
 
             #region
             /// 二进制存储原始数据
             /// <summary>
             /// </summary>
-            string filename = DateTime.Now.ToString("yyyy-MM-dd")+".txt";
-            Log.Biwriter.BinaryFile(filename,allData);
+            string filename = DateTime.Now.ToString("yyyy-MM-dd")+"_"+nChannelGroupID+nSelChanID+".txt";
+            Log.Biwriter.SaveFile(data, filename);
             #endregion
-
+            ///转发给算法部分分析处理
+            new Arithmetic.AirthmeticData().ArithmeticDeal(nChannelGroupID,nSelGroupID,nSelChanID,time_ns,data);
             #region
-            Log.Debug.Write(allData);
+            //Log.Debug.Write(allData);
             SendSampleData(nd);
             #endregion
 
